@@ -190,6 +190,24 @@ h2 {
     background-color: #45a049; 
 }
 
+.live-link{
+    display: inline-block;
+    text-decoration: none;
+    /* Green call-to-action button */
+    background-color: #594caf; 
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-left: 20px;
+}
+
+.live-link:hover {
+    /* Darker green on hover */
+    background-color: #5645a0; 
+}
+
 /* Footer */
 footer {
     text-align: center;
