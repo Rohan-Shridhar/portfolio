@@ -163,9 +163,7 @@ h2 {
 }
 
 .tools span {
-    /* Tool pill background */
     background-color: #555555; 
-    /* Tool pill text color */
     color: #fff; 
     padding: 4px 10px;
     border-radius: 12px;
@@ -176,7 +174,6 @@ h2 {
 .repo-link {
     display: inline-block;
     text-decoration: none;
-    /* Green call-to-action button */
     background-color: #4CAF50; 
     color: white;
     padding: 10px 15px;
@@ -186,14 +183,12 @@ h2 {
 }
 
 .repo-link:hover {
-    /* Darker green on hover */
     background-color: #45a049; 
 }
 
 .live-link{
     display: inline-block;
     text-decoration: none;
-    /* Green call-to-action button */
     background-color: #594caf; 
     color: white;
     padding: 10px 15px;
@@ -204,7 +199,6 @@ h2 {
 }
 
 .live-link:hover {
-    /* Darker green on hover */
     background-color: #5645a0; 
 }
 
