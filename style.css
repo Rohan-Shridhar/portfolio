@@ -1,9 +1,7 @@
-/* General Body Styles - Dark Theme */
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    /* Dark background */
-    background-color: #1a1a1a; 
-    /* Light text color */
+    background: black;
     color: #e0e0e0; 
     line-height: 1.6;
     margin: 0;
@@ -11,21 +9,17 @@ body {
 }
 
 .container {
+    background: linear-gradient(90deg,rgb(64, 64, 64),rgb(16, 16, 16));
     max-width: 900px;
-    margin: 0 auto;
-    /* Slightly lighter dark background for container */
-    background: #242424; 
+    margin: 0 auto; 
     padding: 30px;
     border-radius: 10px;
-    /* Subtle shadow */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
 }
 
-/* Header */
 header {
     display: flex;
     align-items: center;
-    /* Lighter border for contrast */
     border-bottom: 2px solid #333; 
     padding-bottom: 20px;
     margin-bottom: 30px;
@@ -37,13 +31,11 @@ header {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 20px;
-    /* Accent color border */
     border: 3px solid #66b3ff; 
 }
 
 .header-text h1 {
     margin: 0;
-    /* Accent color for name */
     color: #66b3ff; 
     font-size: 2.5em;
 }
@@ -51,32 +43,25 @@ header {
 .header-text p {
     margin: 0;
     font-size: 1.2em;
-    /* Soft white for description */
-    color: #b0b0b0; 
+    color: white; 
 }
 
-/* Cards for sections */
 .card {
-    /* Card background slightly darker than container */
-    background: #2c2c2c; 
+    background: linear-gradient(90deg,rgb(16, 16, 16),rgb(64, 64, 64)); 
     padding: 25px;
     margin-bottom: 25px;
     border-radius: 8px;
-    /* Subtle border */
     border: 1px solid #3a3a3a; 
 }
 
 h2 {
-    /* Section title color */
     color: #ffffff; 
-    /* Accent color border */
     border-bottom: 2px solid #66b3ff; 
     padding-bottom: 10px;
     margin-top: 0;
     margin-bottom: 20px;
 }
 
-/* Contact Section */
 .contact-links {
     display: flex;
     flex-wrap: wrap;
@@ -85,7 +70,6 @@ h2 {
 
 .contact-links a {
     text-decoration: none;
-    /* Accent color for links */
     color: #66b3ff; 
     font-size: 1.1em;
     display: inline-flex;
@@ -95,18 +79,15 @@ h2 {
 }
 
 .contact-links a:hover {
-    /* Darker accent on hover */
     color: #99ccff; 
 }
 
-/* Skills Section */
 .skills-container {
     display: flex;
     gap: 40px;
 }
 
 .skills-list h3 {
-    /* List header color */
     color: #cccccc; 
     margin-bottom: 10px;
 }
@@ -118,9 +99,7 @@ h2 {
 }
 
 .skills-list li {
-    /* Skill pill background */
-    background-color: #3a3a3a; 
-    /* Skill pill text color */
+    background: linear-gradient(90deg,rgb(64, 64, 64),rgb(16, 16, 16));
     color: #99ccff; 
     padding: 8px 12px;
     border-radius: 20px;
@@ -129,19 +108,16 @@ h2 {
     font-weight: 500;
 }
 
-/* Projects Section */
 .project-grid {
     display: grid;
     gap: 20px;
 }
 
 .project-item {
-    /* Project card border */
     border: 1px solid #444; 
     padding: 20px;
     border-radius: 8px;
-    /* Project card background */
-    background-color: #333333; 
+    background: linear-gradient(90deg,rgb(64, 64, 64),rgb(16, 16, 16));
 }
 .project-item img {
     width: 100px;
@@ -149,12 +125,10 @@ h2 {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 20px;
-    /* Accent color border */
     border: 3px solid #66b3ff; 
 }
 .project-item h3 {
     margin-top: 0;
-    /* Accent color for project titles */
     color: #66b3ff; 
 }
 
@@ -174,7 +148,7 @@ h2 {
 .repo-link {
     display: inline-block;
     text-decoration: none;
-    background-color: #4CAF50; 
+    background: linear-gradient(90deg,lightgreen,lime);
     color: white;
     padding: 10px 15px;
     border-radius: 5px;
@@ -182,14 +156,12 @@ h2 {
     transition: background-color 0.3s;
 }
 
-.repo-link:hover {
-    background-color: #45a049; 
-}
+
 
 .live-link{
     display: inline-block;
     text-decoration: none;
-    background-color: #594caf; 
+    background: linear-gradient(90deg,lightblue,blue);
     color: white;
     padding: 10px 15px;
     border-radius: 5px;
@@ -198,19 +170,12 @@ h2 {
     margin-left: 20px;
 }
 
-.live-link:hover {
-    background-color: #5645a0; 
-}
-
-/* Footer */
 footer {
     text-align: center;
     margin-top: 30px;
-    /* Soft gray for footer text */
     color: #888888; 
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
