@@ -65,10 +65,14 @@ h2 {
 .contact-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    margin-left: 400px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    transform: scale(3);
 }
 
 .contact-links a {
+    margin-left: 50px;
     text-decoration: none;
     color: #66b3ff; 
     font-size: 1.1em;
@@ -79,7 +83,7 @@ h2 {
 }
 
 .contact-links a:hover {
-    color: #99ccff; 
+    color:  darkblue; 
 }
 
 .skills-container {
@@ -87,10 +91,7 @@ h2 {
     gap: 40px;
 }
 
-.skills-list h3 {
-    color: #cccccc; 
-    margin-bottom: 10px;
-}
+
 
 .skills-list ul {
     list-style-type: none;
@@ -99,13 +100,11 @@ h2 {
 }
 
 .skills-list li {
-    background: linear-gradient(90deg,rgb(64, 64, 64),rgb(16, 16, 16));
     color: #99ccff; 
     padding: 8px 12px;
-    border-radius: 20px;
-    margin-bottom: 8px;
+    margin:10px 20px 10px 10px;
     display: inline-block;
-    font-weight: 500;
+    transform: scale(3);
 }
 
 .project-grid {
@@ -133,18 +132,16 @@ h2 {
 }
 
 .tools {
-    margin: 15px 0;
+    margin: 10px 0px 10px 50px;
+    transform: scale(1.1);
 }
 
-.tools span {
-    background-color: #555555; 
-    color: #fff; 
+.tools i {
+    font-size: 30px;
+    color: #ffffff; 
     padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.9em;
     margin-right: 5px;
 }
-
 .repo-link {
     display: inline-block;
     text-decoration: none;
