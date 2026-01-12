@@ -13,4 +13,4 @@
 - Git concepts like pull requests, merge, code review, fork etc
 
 ### 💫 How to do it?? <br> 👇 Follow these simple steps
-#### - Fork this repo <br>- Create a branch<br>- Update my Readme.md<br>- Create a pull request and request approval<br>- Mention "closes #1" in the PR
+#### - Fork this repo <br>- Create a branch<br>- Update my Readme.md<br>- Create a pull request and request approval<br>- Mention "closes #3" in the PR
