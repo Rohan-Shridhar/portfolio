@@ -111,6 +111,7 @@ body {
   color: var(--text-color);
   border: 10px var(--text-color) solid;
   border-radius: 25px;
+  text-align: center;
 }
 .about-title {
   text-align: left;

@@ -25,7 +25,7 @@ const About = () => {
                 <span className="about-desc">I am a 19 year old undergraduate student from Bangalore, India. I am a very curious person and love to learn new things. I am currently learning web development. I am good at problem solving and passinate about creating interactive and user-friendly interfaces. </span>
             </div>
             <div></div>
-            <span className="about-img-box" style={{ textAlign: "center" }}><img className="about-cont-img" src="images\fpf.jpeg" alt="Profile" />
+            <span className="about-img-box"><img className="about-cont-img" src="images\fpf.jpeg" alt="Profile" />
                 <span>Profile</span></span>
         </div>
     );
