@@ -44,6 +44,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  font-family: "TikTok Sans", sans-serif;
 }
 /* ========================================= */
 .menu-bar {
@@ -110,7 +111,7 @@ body {
 .about-img-box {
   color: var(--text-color);
   border: 10px var(--text-color) solid;
-  border-radius: 25px;
+  border-radius: 35px;
   text-align: center;
 }
 .about-title {
