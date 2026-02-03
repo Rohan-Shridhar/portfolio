@@ -3,6 +3,7 @@ const App = () => {
         <Menu />
         <Home />
         <About />
+        <Contact />
         <Footer />
     </>);
 }

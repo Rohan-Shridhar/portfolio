@@ -14,6 +14,7 @@
   --btn-bg: blue;
   --btn-shadow: royalblue;
   --btn-txt: white;
+  --opp: black;
   --title: 8vh;
 }
 .red {
@@ -22,6 +23,7 @@
   --btn-bg: red;
   --btn-shadow: orangered;
   --btn-txt: black;
+  --opp: white;
 }
 .blue {
   --bg: linear-gradient(
@@ -37,6 +39,10 @@
   --btn-bg: blue;
   --btn-shadow: royalblue;
   --btn-txt: white;
+  --opp: black;
+}
+html {
+  scroll-behavior: smooth;
 }
 body {
   justify-content: center;
@@ -44,7 +50,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  font-family: "Delius", sans-serif;
+  font-family: /*"Delius",*/ sans-serif;
+  color: var(--text-color);
 }
 /* ========================================= */
 .menu-bar {
@@ -56,7 +63,10 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: var(--text-mini);
+}
+.menu-bar span a {
   color: var(--text-color);
+  text-decoration: none;
 }
 /* ========================================= */
 .home-cont {
@@ -67,7 +77,6 @@ body {
 }
 .home h1 {
   text-align: center;
-  color: var(--text-color);
   font-size: 12vh;
   margin-bottom: 10vh;
 }
@@ -92,8 +101,8 @@ body {
 }
 /* ========================================= */
 .about-cont {
-  margin-left: 15vw;
-  margin-right: 15vw;
+  scroll-margin-top: 100px;
+  margin: 25vh;
   display: grid;
   grid-template-columns: 3fr 1fr 1fr;
 }
@@ -106,10 +115,8 @@ body {
 .about-txt {
   display: grid;
   grid-template-rows: 1fr 3fr;
-  color: var(--text-color);
 }
 .about-img-box {
-  color: var(--text-color);
   border: 10px var(--text-color) solid;
   border-radius: 35px;
   text-align: center;
@@ -124,6 +131,57 @@ body {
   text-align: left;
   font-size: var(--text);
   font-weight: bold;
+}
+/* ========================================= */
+.contact {
+  scroll-margin-top: 100px;
+  margin: 25vh;
+  display: grid;
+  grid-template-rows: 1fr 1fr 2fr 1fr;
+}
+.contact-title {
+  text-align: left;
+  font-size: var(--title);
+  font-weight: bold;
+}
+.contact-icons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.contact-icons a {
+  color: var(--text-color);
+}
+.contact-icons i {
+  font-size: 10vh;
+}
+.contact-icons i:hover {
+  color: var(--opp);
+}
+.contact-email {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.mail-txt {
+  font-size: var(--text);
+  text-align: center;
+}
+.mail {
+  font-size: var(--text);
+  text-align: center;
+}
+.contact-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.line {
+  background-color: var(--text-color);
+  height: 1px;
+  width: 90%;
+  transform: translateY(-20px);
 }
 /* ========================================= */
 .footer-cont {
