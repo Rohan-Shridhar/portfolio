@@ -7,7 +7,7 @@ const Home = () => {
         document.body.className = newTheme;
     }
     return (
-        <div className="home-cont">
+        <div className="home-cont" id="home">
             <div></div>
             <div className="home">
                 <h1>Hi, I'm Rohan S M</h1>
