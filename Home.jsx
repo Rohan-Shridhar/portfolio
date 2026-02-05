@@ -14,7 +14,7 @@ const Home = () => {
                 <div className="home-btn-cont">
                     <span></span>
                     <span>
-                        <button>
+                        <button onClick={() => { location.href = '#contact' }}>
                             Contact Me
                         </button>
                     </span>

@@ -183,6 +183,31 @@ body {
   width: 90%;
   transform: translateY(-20px);
 }
+
+/* ========================================= */
+.skills-cont {
+  scroll-margin-top: 100px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin: 25vh;
+}
+.skill-row-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.skill-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.skills-title {
+  text-align: left;
+  font-size: var(--title);
+  font-weight: bold;
+}
+.skills-cont img {
+  width: 100px;
+  height: auto;
+}
 /* ========================================= */
 .footer-cont {
   margin-top: 500vh;
