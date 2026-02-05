@@ -24,7 +24,7 @@ const About = () => {
         <div id="about-me" className="about-cont" onMouseEnter={handleHover} onMouseLeave={handleLeave}>
             <div className="about-txt">
                 <span className="about-title">Who am I ?</span>
-                <span className="about-desc">I am a 19 year old undergraduate student from Bangalore, India. I am a very curious person and love to learn new things. I am currently learning web development. I am good at problem solving and passinate about creating interactive and user-friendly interfaces. </span>
+                <span className="about-desc">I am a 19 year old undergraduate student from Bangalore, India. I love to learn new things. I am currently learning web development. I am good at problem solving and passionate about creating interactive and user-friendly interfaces. </span>
             </div>
             <div></div>
             <span className="about-img-box"><img className="about-cont-img" src={img2} alt="Profile" />
