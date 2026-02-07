@@ -135,7 +135,9 @@ body {
 /* ========================================= */
 .contact {
   scroll-margin-top: 100px;
-  margin: 25vh;
+  margin-top: 25vh;
+  margin-left: 25vh;
+  margin-right: 25vh;
   display: grid;
   grid-template-rows: 1fr 1fr 2fr 1fr;
 }
@@ -188,16 +190,26 @@ body {
 .skills-cont {
   scroll-margin-top: 100px;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   margin: 25vh;
 }
 .skill-row-1 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 5vh;
+  text-align: center;
 }
 .skill-row-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 5vh;
+  text-align: center;
+}
+.skill-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 5vh;
+  text-align: center;
 }
 .skills-title {
   text-align: left;
@@ -207,6 +219,9 @@ body {
 .skills-cont img {
   width: 100px;
   height: auto;
+}
+.skills-cont img:hover {
+  transform: scale(1.1);
 }
 /* ========================================= */
 .footer-cont {
