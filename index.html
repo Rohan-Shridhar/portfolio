@@ -1,105 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohan S Mirjankar | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head> 
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Rohan S Mirjankar</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Coral+Pixels&family=Delius&family=Fugaz+One&family=Notable&family=Pinyon+Script&family=Sriracha&family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
 
-    <div class="container">
-        <header>
-            <img src="images/fpf.jpeg" alt="Rohan S Mirjankar" class="profile-pic">
-            <div class="header-text">
-                <h1>Rohan S Mirjankar</h1>
-                <p>Computer Science Student | Web Development</p>
-                <p><i class="fa-solid fa-graduation-cap"></i>  B.M.S College of Engineering  <br>            
-                    <i class="fa-solid fa-location-dot"></i> Bangalore
-                </p>
-            </div>
-        </header>
-
-
-            <div id="about" class="card">
-                <h2>About Me</h2>
-                <p>I am a second year CSE student focused on mastering core computer science concepts like DSA, OS, OOPS, DBMS, CN.<br> I am passionate about web development on my way to become a really good developer...</p>
-            </div>
-        
-            <div id="contact" class="card">
-                <h2>Contact & Links</h2>
-                <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/rohan-mirjankar/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Rohan-Shridhar" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="mailto:rohansm668@gmail.com"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.instagram.com/rohan.mirjankar/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-            </div>
-
-            <div id="skills" class="card">
-                <h2>Skills</h2>
-                <div class="skills-container">
-                    <div class="skills-list">
-                        <ul>
-                            <li><i class="fa-brands fa-js"></i></li>
-                            <li><i class="fa-brands fa-java"></i></li>
-                            <li><i class="fa-solid fa-c"></i></li>
-                            <li><i class="fa-brands fa-python"></i></li>
-                            <br>
-                            <li><i class="fa-brands fa-react"></i></li>
-                            <li><i class="fa-brands fa-html5"></i></li>
-                            <li><i class="fa-brands fa-css3-alt"></i></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div id="projects" class="card">
-                <h1>Projects Gallery</h1>
-                <div class="project-grid">
-                    <div class="project-item">
-                        <img src="images/attendance.gif">
-                        <h3>Attendance Tracker </h3>
-                        <p>A responsive web application built with React, offering a clean, intuitive interface for quickly marking daily attendance. The system simplifies record-keeping and improves data accuracy.</p>
-                        <div class="tools">
-                            <i class="fa-brands fa-react"></i>
-                            <i class="fa-brands fa-node-js"></i>
-                        </div>
-                        <a href="https://github.com/Rohan-Shridhar/Attendance-Tracker" target="_blank" class="repo-link"><i class="fab fa-github"></i> View Repository</a>
-                        <a href="http://attendance-tracker-seven-kappa.vercel.app/" target="_blank" class="live-link"><i class="fas fa-external-link-alt"></i> View Site</a>
-                    </div>
-
-                    <div class="project-item">
-                        <img src="images/clock.gif">
-                        <h3>Digital Clock </h3>
-                        <p>This is a dynamic and visually engaging Digital Clock application built using ReactJS. It leverages the useState and useEffect Hooks to achieve real-time updates every second. The clock displays the time in a 12-Hour format.</p>
-                        <div class="tools">
-                            <i class="fa-brands fa-react"></i>
-                        </div>
-                        <a href="https://github.com/Rohan-Shridhar/digital-clock.git" target="_blank" class="repo-link"><i class="fab fa-github"></i> View Repository</a>
-                        <a href="https://digital-clock-indol-beta.vercel.app/" target="_blank" class="live-link"><i class="fas fa-external-link-alt"></i> View Site</a>
-                    </div>
-
-                    <div class="project-item">
-                        <img src="images/prisoner.gif">
-                        <h3>Prisoner's Dilemma </h3>
-                        <p>The Prisoner's Dilemma is a classic thought experiment in game theory, a field that studies how and why people make decisions when their outcomes depend on the choices of others.</p>
-                        <div class="tools">
-                            <i class="fa-brands fa-java"></i>                       
-                            <i class="fa-brands fa-js"></i>
-                        </div>
-                        <a href="https://github.com/Rohan-Shridhar/Prisoners-Delima" target="_blank" class="repo-link"><i class="fab fa-github"></i> View Repository</a>
-                        <a href="https://rohan-shridhar.github.io/Prisoners-Delima/" target="_blank" class="live-link"><i class="fas fa-external-link-alt"></i> View Site</a>
-                    </div>
-                </div>
-            </div>
-        
-
-        <footer>
-            <p>&copy; 2025 Rohan S Mirjankar | Built with HTML and CSS</p>
-        </footer>
-    </div>
-
-</body>
+    <script type="text/babel" src="Menu.jsx"></script>
+    <script type="text/babel" src="Home.jsx"></script>
+    <script type="text/babel" src="About.jsx"></script>
+    <script type="text/babel" src="Skills.jsx"></script>
+    <script type="text/babel" src="Contact.jsx"></script>
+    <script type="text/babel" src="Footer.jsx"></script>
+    <script type="text/babel" src="App.jsx"></script>
+    <script type="text/babel" src="main.jsx"></script>
+  </body>
 </html>

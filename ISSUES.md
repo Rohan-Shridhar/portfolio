@@ -9,10 +9,10 @@
 - [x] Icones (https://github.com/Rohan-Shridhar/portfolio/issues/15)
 - [ ] Skills tag (https://github.com/Rohan-Shridhar/portfolio/issues/18)
 - [x] Profile photo (https://github.com/Rohan-Shridhar/portfolio/issues/19)
-- [ ] Theme (https://github.com/Rohan-Shridhar/portfolio/issues/21)
+- [x] Theme (https://github.com/Rohan-Shridhar/portfolio/issues/21)
 
 ## Fixes
-- [ ] Change language (https://github.com/Rohan-Shridhar/portfolio/issues/2)
+- [x] Change language (https://github.com/Rohan-Shridhar/portfolio/issues/2)
 - [ ] Add a readme file (https://github.com/Rohan-Shridhar/portfolio/issues/3)
 - [x] Correction to be done for languages sections (https://github.com/Rohan-Shridhar/portfolio/issues/9)
 - [ ] Clear readme (https://github.com/Rohan-Shridhar/portfolio/issues/11)
