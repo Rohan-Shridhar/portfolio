@@ -18,4 +18,4 @@
 - [ ] Clear readme (https://github.com/Rohan-Shridhar/portfolio/issues/11)
 - [x] Deployment issue (https://github.com/Rohan-Shridhar/portfolio/issues/17)
 - [ ] Mobile view issue
-(https://github.com/Rohan-Shridhar/portfolio/issues/23)
+(https://github.com/Rohan-Shridhar/portfolio/issues/25)
