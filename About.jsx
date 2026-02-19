@@ -10,6 +10,8 @@ const About = () => {
         setHover(false);
     }
     useEffect(() => {
+        const isMobile = window.innerWidth <= 600;
+        if (isMobile) return;
         if (hover) {
             document.querySelector(".about-cont-img").style.transition = "transform 0.5s ease, box-shadow 1s ease";
             document.querySelector(".about-cont-img").style.transform = "rotateZ(5deg) scale(1.25) translateX(-100px)";

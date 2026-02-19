@@ -229,3 +229,152 @@ body {
   margin-bottom: 50px;
   font-size: xx-large;
 }
+
+/* ========================================= */
+/* TABLET: 601px – 900px                     */
+/* ========================================= */
+@media (max-width: 900px) {
+  :root {
+    --title: 5vh;
+    --text: 2.5vh;
+    --text-mini: 1.8vh;
+  }
+
+  .menu-bar {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .home-cont {
+    grid-template-columns: 1fr;
+    margin-top: 12vh;
+    margin-bottom: 12vh;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .about-cont {
+    grid-template-columns: 1fr;
+    margin: 8vh 5vw;
+  }
+
+  .about-cont-img {
+    width: 60%;
+    height: auto;
+  }
+
+  .contact {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 10vh;
+  }
+
+  .skills-cont {
+    margin: 8vh 5vw;
+  }
+
+  .skill-row-1 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skill-row-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skill-row-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ========================================= */
+/* MOBILE: 600px and below                   */
+/* ========================================= */
+@media (max-width: 600px) {
+  :root {
+    --title: 6vw;
+    --text: 4vw;
+    --text-mini: 3.5vw;
+  }
+
+  /* Menu: 2 rows of 3 */
+  .menu-bar {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    padding: 0 8px;
+  }
+
+  /* Home: remove side spacer columns, center content */
+  .home-cont {
+    grid-template-columns: 1fr;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    padding: 0 16px;
+  }
+
+  .home h1 {
+    font-size: 8vw;
+    margin-bottom: 6vh;
+  }
+
+  /* Buttons: stack vertically */
+  .home-btn-cont {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* About: stack image below text */
+  .about-cont {
+    grid-template-columns: 1fr;
+    margin: 6vh 4vw;
+    gap: 16px;
+  }
+
+  .about-cont-img {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Contact: reduce side margins */
+  .contact {
+    margin-left: 4vw;
+    margin-right: 4vw;
+    margin-top: 8vh;
+  }
+
+  /* Contact email: stack instead of 3 columns */
+  .contact-email {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .contact-line {
+    display: none;
+  }
+
+  .contact-icons i {
+    font-size: 8vw;
+  }
+
+  /* Skills: 2 columns on mobile */
+  .skills-cont {
+    margin: 6vh 4vw;
+  }
+
+  .skill-row-1,
+  .skill-row-2,
+  .skill-row-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skills-cont img {
+    width: 70px;
+  }
+
+  /* Footer: remove the insane 500vh gap */
+  .footer-cont {
+    margin-top: 60px;
+    font-size: large;
+  }
+}
