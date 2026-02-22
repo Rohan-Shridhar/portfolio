@@ -9,7 +9,6 @@
 - [x] Icones (https://github.com/Rohan-Shridhar/portfolio/issues/15)
 - [ ] Skills tag (https://github.com/Rohan-Shridhar/portfolio/issues/18)
 - [x] Profile photo (https://github.com/Rohan-Shridhar/portfolio/issues/19)
-- [ ] Themes should be changed (https://github.com/Rohan-Shridhar/portfolio/issues/31)
 
 ## Fixes
 - [x] Change language (https://github.com/Rohan-Shridhar/portfolio/issues/2)
@@ -19,3 +18,4 @@
 - [x] Deployment issue (https://github.com/Rohan-Shridhar/portfolio/issues/17)
 - [ ] Mobile view issue
 (https://github.com/Rohan-Shridhar/portfolio/issues/25)
+- [ ] Themes should be changed (https://github.com/Rohan-Shridhar/portfolio/issues/31)
