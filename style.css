@@ -1,45 +1,29 @@
 :root {
-  --bg: linear-gradient(
-    180deg,
-    navy,
-    blue,
-    royalblue,
-    skyblue,
-    skyblue,
-    powderblue
-  );
-  --text-color: white;
+  --bg: #1a1a2e;
+  --text-color: #eaeaea;
   --text: 4vh;
   --text-mini: 2vh;
-  --btn-bg: blue;
-  --btn-shadow: royalblue;
-  --btn-txt: white;
-  --opp: black;
+  --btn-bg: #4a4a6a;
+  --btn-shadow: #6a6a8a;
+  --btn-txt: #ffffff;
+  --opp: #ffffff;
   --title: 8vh;
 }
-.red {
-  --bg: linear-gradient(180deg, maroon, red, orangered, pink, pink, lightpink);
-  --text-color: black;
-  --btn-bg: red;
-  --btn-shadow: orangered;
-  --btn-txt: black;
-  --opp: white;
+.light {
+  --bg: #f5f5f5;
+  --text-color: #1a1a1a;
+  --btn-bg: #333333;
+  --btn-shadow: #555555;
+  --btn-txt: #ffffff;
+  --opp: #000000;
 }
-.blue {
-  --bg: linear-gradient(
-    180deg,
-    navy,
-    blue,
-    royalblue,
-    skyblue,
-    skyblue,
-    powderblue
-  );
-  --text-color: white;
-  --btn-bg: blue;
-  --btn-shadow: royalblue;
-  --btn-txt: white;
-  --opp: black;
+.dark {
+  --bg: #1a1a2e;
+  --text-color: #eaeaea;
+  --btn-bg: #4a4a6a;
+  --btn-shadow: #6a6a8a;
+  --btn-txt: #ffffff;
+  --opp: #ffffff;
 }
 html {
   scroll-behavior: smooth;
