@@ -294,9 +294,8 @@ body {
   margin-bottom: 50px;
   font-size: xx-large;
 }
-
 /* ========================================= */
-/* TABLET: 601px – 900px                     */
+/* TABLET: 601px - 900px                     */
 /* ========================================= */
 @media (max-width: 900px) {
   :root {
@@ -305,49 +304,88 @@ body {
     --text-mini: 1.8vh;
   }
 
+  /* --- Nav --- */
   .menu-bar {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
+    margin-top: 12px;
   }
 
+  /* --- Home --- */
   .home-cont {
     grid-template-columns: 1fr;
     margin-top: 12vh;
     margin-bottom: 12vh;
     text-align: center;
-    padding: 0 16px;
+    padding: 0 20px;
+  }
+  .home h1 {
+    font-size: 8vh;
+    margin-bottom: 6vh;
+  }
+  .home-btn-cont {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
   }
 
+  /* --- About --- */
   .about-cont {
     grid-template-columns: 1fr;
     margin: 8vh 5vw;
+    gap: 16px;
   }
-
   .about-cont-img {
-    width: 60%;
+    width: 55%;
     height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+  .about-img-box {
+    text-align: center;
   }
 
+  /* --- Contact --- */
   .contact {
     margin-left: 5vw;
     margin-right: 5vw;
     margin-top: 10vh;
   }
+  .contact-icons i {
+    font-size: 7vh;
+  }
+  .contact-email {
+    grid-template-columns: 1fr 1fr;
+  }
 
+  /* --- Skills --- */
   .skills-cont {
     margin: 8vh 5vw;
   }
-
   .skill-row-1 {
     grid-template-columns: 1fr 1fr;
   }
-
   .skill-row-2 {
     grid-template-columns: 1fr 1fr;
   }
-
   .skill-row-3 {
     grid-template-columns: 1fr 1fr;
+  }
+
+  /* --- Projects --- */
+  .projects-cont {
+    margin: 8vh 5vw;
+  }
+  .project-cont {
+    grid-template-columns: 1fr 1fr;
+  }
+  .project-card-img img {
+    max-width: 38vw;
+  }
+
+  /* --- Footer --- */
+  .footer-cont {
+    margin-top: 80px;
+    font-size: x-large;
   }
 }
 
@@ -356,83 +394,131 @@ body {
 /* ========================================= */
 @media (max-width: 600px) {
   :root {
-    --title: 6vw;
+    --title: 7vw;
     --text: 4vw;
     --text-mini: 3.5vw;
   }
 
+  /* --- Nav --- */
   .menu-bar {
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
     padding: 0 8px;
+    margin-top: 8px;
   }
 
+  /* --- Home --- */
   .home-cont {
     grid-template-columns: 1fr;
     margin-top: 10vh;
     margin-bottom: 10vh;
     padding: 0 16px;
+    text-align: center;
   }
-
   .home h1 {
-    font-size: 8vw;
-    margin-bottom: 6vh;
+    font-size: 9vw;
+    margin-bottom: 5vh;
   }
-
   .home-btn-cont {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 12px;
   }
+  .home-btn-cont span {
+    width: 100%;
+  }
+  .home-btn-cont button {
+    width: 80%;
+    padding: 14px;
+  }
 
+  /* --- About --- */
   .about-cont {
     grid-template-columns: 1fr;
     margin: 6vh 4vw;
     gap: 16px;
   }
-
   .about-cont-img {
-    width: 80%;
+    width: 75%;
     height: auto;
     margin: 0 auto;
     display: block;
   }
+  .about-img-box {
+    text-align: center;
+  }
+  .about-title {
+    text-align: center;
+  }
+  .about-desc {
+    text-align: center;
+    padding: 12px;
+  }
 
+  /* --- Contact --- */
   .contact {
     margin-left: 4vw;
     margin-right: 4vw;
     margin-top: 8vh;
   }
-
+  .contact-icons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .contact-icons i {
+    font-size: 10vw;
+  }
   .contact-email {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 8px;
   }
-
   .contact-line {
     display: none;
   }
 
-  .contact-icons i {
-    font-size: 8vw;
-  }
-
+  /* --- Skills --- */
   .skills-cont {
     margin: 6vh 4vw;
   }
-
   .skill-row-1,
   .skill-row-2,
   .skill-row-3 {
     grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
-
   .skills-cont img {
-    width: 70px;
+    width: 60px;
   }
 
-  /* Footer: remove the insane 500vh gap */
+  /* --- Projects --- */
+  .projects-cont {
+    margin: 6vh 4vw;
+  }
+  .project-cont {
+    grid-template-columns: 1fr;
+  }
+  .project-card {
+    margin: 8px 0;
+  }
+  .project-card-img img {
+    max-width: 85vw;
+  }
+  .project-card-btn {
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 10px;
+  }
+  .project-card-title {
+    font-size: 5vw;
+  }
+  .project-card-desc {
+    font-size: 3.5vw;
+    padding: 0 8px;
+  }
+
+  /* --- Footer --- */
   .footer-cont {
     margin-top: 60px;
     font-size: large;
+    text-align: center;
   }
 }
