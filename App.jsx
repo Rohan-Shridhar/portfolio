@@ -5,6 +5,7 @@ const App = () => {
         <About />
         <Skills />
         <Contact />
+        <Projects />
         <Footer />
     </>);
 }

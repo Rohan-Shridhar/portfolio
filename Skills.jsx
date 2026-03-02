@@ -6,7 +6,9 @@ const python = "images/python.png"
 const cpp = "images/cpp.png"
 const java = "images/java.png"
 const sql = "images/postgress.png"
+const md = "images/markdown.png"
 const mongodb = "images/mongodb.png"
+
 const Skills = () => {
     return (
         <div className="skills-cont" id="skills">
@@ -24,6 +26,7 @@ const Skills = () => {
             </div>
             <div className="skill-row-3">
                 <div className="skill-sql"><img src={sql} alt="PostgresSql" /></div>
+                <div className="skill-md"><img src={md} alt="Markdown" /></div>
                 <div className="skill-mongodb"><img src={mongodb} alt="mongodb" /></div>
             </div>
         </div>
