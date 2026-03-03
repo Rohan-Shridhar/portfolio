@@ -1,7 +1,7 @@
 const { useState, useEffect } = React;
 const project1 = "images/black-loginpage.png";
 const project2 = "images/prisioner-delima.png";
-const project3 = "images/todolist.png";
+const project3 = "images/grid.png";
 const Projects = () => {
 
     return (
@@ -10,14 +10,14 @@ const Projects = () => {
             <div className="project-cont">
                 <div className="project-card">
                     <div className="project-card-img">
-                        <img src={project1} alt="Attendance Tracker" />
+                        <img src={project3} alt="Gridcraft" />
                     </div>
-                    <div className="project-card-title">Attendance Tracker</div>
-                    <div className="project-card-desc">A web application that tracks attendance of students and lets teachers mark attendance of students.</div>
+                    <div className="project-card-title">GridCraft</div>
+                    <div className="project-card-desc">Front end application using react.js that runs directly in your browser used to create pixel arts in a 16 X 16 grid and download as an image</div>
                     <div className="project-card-btn">
-                        <a href="https://github.com/Rohan-Shridhar/Attendance-Tracker"><i className="fab fa-github"></i></a>
+                        <a href="https://github.com/Rohan-Shridhar/gridcraft"><i className="fab fa-github"></i></a>
                         <div />
-                        <a href="https://attendance-tracker-seven-kappa.vercel.app/"><i className="fas fa-globe"></i></a>
+                        <a href="https://rohan-shridhar.github.io/gridcraft/"><i className="fas fa-globe"></i></a>
                     </div>
                 </div>
                 <div className="project-card">
@@ -34,14 +34,14 @@ const Projects = () => {
                 </div>
                 <div className="project-card">
                     <div className="project-card-img">
-                        <img src={project3} alt="To Do List" />
+                        <img src={project1} alt="Attendance Tracker" />
                     </div>
-                    <div className="project-card-title">To Do List</div>
-                    <div className="project-card-desc">A basic, functional To-Do List application built with React for managing tasks. Includes basic task management functionality (add, delete, complete).</div>
+                    <div className="project-card-title">Attendance Tracker</div>
+                    <div className="project-card-desc">A web application that tracks attendance of students and lets teachers mark attendance of students.</div>
                     <div className="project-card-btn">
-                        <a href="https://github.com/Rohan-Shridhar/to-do-list"><i className="fab fa-github"></i></a>
+                        <a href="https://github.com/Rohan-Shridhar/Attendance-Tracker"><i className="fab fa-github"></i></a>
                         <div />
-                        <a href="https://to-do-list-iota-fawn-49.vercel.app/"><i className="fas fa-globe"></i></a>
+                        <a href="https://attendance-tracker-seven-kappa.vercel.app/"><i className="fas fa-globe"></i></a>
                     </div>
                 </div>
             </div>
