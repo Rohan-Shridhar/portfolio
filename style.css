@@ -148,7 +148,7 @@ body {
 }
 .contact-icons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -225,10 +225,11 @@ body {
 }
 /* ========================================= */
 .projects-cont {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 200px;
   display: grid;
   grid-template-rows: 1fr 5fr;
   margin: 25vh;
+  margin-top: 33vh;
 }
 .project-title {
   text-align: left;
@@ -290,9 +291,7 @@ body {
 }
 /* ========================================= */
 .footer-cont {
-  margin-top: 500vh;
-  margin-bottom: 50px;
-  font-size: xx-large;
+  text-align: center;
 }
 /* ========================================= */
 /* TABLET: 601px - 900px                     */
@@ -384,8 +383,7 @@ body {
 
   /* --- Footer --- */
   .footer-cont {
-    margin-top: 80px;
-    font-size: x-large;
+    text-align: center;
   }
 }
 
@@ -517,8 +515,6 @@ body {
 
   /* --- Footer --- */
   .footer-cont {
-    margin-top: 60px;
-    font-size: large;
     text-align: center;
   }
 }
