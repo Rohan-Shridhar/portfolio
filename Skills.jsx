@@ -8,10 +8,11 @@ const java = "images/languages/java.png"
 const sql = "images/DBs/postgress.png"
 const md = "images/tools/markdown.png"
 const mongodb = "images/DBs/mongodb.png"
-const git = "images/tools/git.png"
-const vscode = "images/tools/vscode.png"
-const figma = "images/tools/figma.png"
-const vercel = "images/tools/vercel.png"
+const git = "images/Tools/git.png"
+const vscode = "images/Tools/vscode.png"
+const figma = "images/Tools/figma.png"
+const vercel = "images/Tools/vercel.png"
+const antigravity = "images/Tools/antigravity.png"
 
 const Skills = () => {
     return (
@@ -41,6 +42,7 @@ const Skills = () => {
             <div className="skill-row-4">
                 <div className="skill-git" id="skill"><img src={git} alt="Git version control" /></div>
                 <div className="skills-vscode" id="skill"><img src={vscode} alt="VS Code" /></div>
+                <div className="skills-antigravity" id="skill"><img src={antigravity} alt="Antigravity" /></div>
                 <div className="skill-md" id="skill"><img src={md} alt="Markdown" /></div>
                 <div className="skills-figma" id="skill"><img src={figma} alt="Figma" /></div>
                 <div className="skills-vercel" id="skill"><img src={vercel} alt="Vercel" /></div>
