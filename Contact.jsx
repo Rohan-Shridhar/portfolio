@@ -33,6 +33,7 @@ const Contact = () => {
             <div className="contact-icons">
                 <span><a href="https://www.linkedin.com/in/rohan-mirjankar/" target="_blank" aria-label="linkedin" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a></span>
                 <span><a href="https://github.com/Rohan-Shridhar" target="_blank" aria-label="github" rel="noopener noreferrer"><i className="fab fa-github"></i></a></span>
+                <span><a href="https://dev.to/rohan_mirjankar" target="_blank" aria-label="dev" rel="noopener noreferrer"><i className="fa-brands fa-dev"></i></a></span>
                 <span><a href="https://www.instagram.com/rohan.mirjankar/" target="_blank" aria-label="instagram" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a></span>
                 <span><a href="https://x.com/Rohan_shridhar" target="_blank" aria-label="twitter" rel="noopener noreferrer"><i className="fa-brands fa-x-twitter"></i></a></span>
             </div>

@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <div className="footer-cont">
-            <span> The End</span>
+            <span>Built with Antigravity by Rohan</span>
         </div>
     );
 }
