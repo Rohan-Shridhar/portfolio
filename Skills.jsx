@@ -6,12 +6,12 @@ const python = "images/languages/python.png"
 const cpp = "images/languages/cpp.png"
 const java = "images/languages/java.png"
 const sql = "images/DBs/postgress.png"
-const md = "images/tools/markdown.png"
+const md = "images/Tools/markdown.png"
 const mongodb = "images/DBs/mongodb.png"
-const git = "images/tools/git.png"
-const vscode = "images/tools/vscode.png"
-const figma = "images/tools/figma.png"
-const vercel = "images/tools/vercel.png"
+const git = "images/Tools/git.png"
+const vscode = "images/Tools/vscode.png"
+const figma = "images/Tools/figma.png"
+const vercel = "images/Tools/vercel.png"
 
 const Skills = () => {
     return (
