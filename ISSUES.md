@@ -1,5 +1,5 @@
 ## Enhancements
-- [ ] Projects display (https://github.com/Rohan-Shridhar/portfolio/issues/1)
+- [x] Projects display (https://github.com/Rohan-Shridhar/portfolio/issues/1)
 - [ ] Include certificates (https://github.com/Rohan-Shridhar/portfolio/issues/6)
 - [ ] Make UI professional (https://github.com/Rohan-Shridhar/portfolio/issues/7)
 - [x] Tabs (https://github.com/Rohan-Shridhar/portfolio/issues/8)
@@ -9,7 +9,7 @@
 - [x] Icones (https://github.com/Rohan-Shridhar/portfolio/issues/15)
 - [ ] Skills tag (https://github.com/Rohan-Shridhar/portfolio/issues/18)
 - [x] Profile photo (https://github.com/Rohan-Shridhar/portfolio/issues/19)
-- [ ] Include markdown (https://github.com/Rohan-Shridhar/portfolio/issues/34) 
+- [x] Include markdown (https://github.com/Rohan-Shridhar/portfolio/issues/34) 
 
 ## Fixes
 - [x] Change language (https://github.com/Rohan-Shridhar/portfolio/issues/2)
@@ -17,6 +17,6 @@
 - [x] Correction to be done for languages sections (https://github.com/Rohan-Shridhar/portfolio/issues/9)
 - [x] Clear readme (https://github.com/Rohan-Shridhar/portfolio/issues/11)
 - [x] Deployment issue (https://github.com/Rohan-Shridhar/portfolio/issues/17)
-- [ ] Mobile view issue
-(https://github.com/Rohan-Shridhar/portfolio/issues/25)
+- [x] Mobile view issue(https://github.com/Rohan-Shridhar/portfolio/issues/25)
+- [x] Resume button issue mobile view(https://github.com/Rohan-Shridhar/portfolio/issues/29)
 - [ ] Themes should be changed (https://github.com/Rohan-Shridhar/portfolio/issues/31)
