@@ -13,12 +13,14 @@ const About = () => {
         const isMobile = window.innerWidth <= 600;
         if (isMobile) return;
         if (hover) {
-            document.querySelector(".about-cont-img").style.transition = "transform 0.5s ease, box-shadow 1s ease";
+            document.querySelector(".about-cont-img").style.transition = "transform 0.5s ease, box-shadow 1s ease, opacity 1s ease";
             document.querySelector(".about-cont-img").style.transform = "rotateZ(5deg) scale(1.25) translateX(-100px)";
             document.querySelector(".about-cont-img").style.boxShadow = "0 0 50px var(--text-color)";
+            document.querySelector(".about-cont-img").style.opacity = "0.8";
         } else {
             document.querySelector(".about-cont-img").style.transform = "rotateZ(0deg) scale(1) translateX(0px)";
             document.querySelector(".about-cont-img").style.boxShadow = "none";
+            document.querySelector(".about-cont-img").style.opacity = "1";
         }
     }, [hover]);
 

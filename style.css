@@ -213,7 +213,11 @@ body {
 }
 #skill {
   background-color: var(--btn-bg);
-  backdrop-filter: blur(50px);
+  opacity: 0.5;
+}
+#skill:hover {
+  opacity: 1;
+  box-shadow: 0 0 30px var(--btn-shadow);
 }
 .skill-row-1 {
   display: grid;
