@@ -6,7 +6,7 @@ const Menu = () => {
             <span><a href="#skills">Skills</a></span>
             <span><a href="#contact">Contact</a></span>
             <span><a href="#projects">Projects</a></span>
-            <span><a href="#certificates">Certificates</a></span>
+            <span><a href="../404.html">Certificates</a></span>
         </div>
     );
 }
