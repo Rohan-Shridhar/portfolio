@@ -16,6 +16,7 @@
   --text: 4vh;
   --text-mini: 2vh;
   --title: 8vh;
+  --width: 170px;
 }
 /*
 .red {
@@ -28,6 +29,24 @@
 }
   */
 .red {
+  --bg: linear-gradient(
+    180deg,
+    gainsboro,
+    whitesmoke,
+    ghostwhite,
+    snow,
+    snow,
+    snow,
+    lightgray
+  );
+  --text-color: black;
+  --btn-bg: lightgray;
+  --btn-shadow: black;
+  --btn-txt: black;
+  --opp: white;
+}
+/*
+.red {
   --bg: linear-gradient(180deg, olive, goldenrod, gold, yellow, yellow, khaki);
   --text-color: black;
   --btn-bg: khaki;
@@ -35,6 +54,7 @@
   --btn-txt: black;
   --opp: white;
 }
+  */
 /*.blue {
   --bg: linear-gradient(180deg, navy, blue, royalblue, skyblue, skyblue, powderblue);
   --text-color: white;
@@ -68,7 +88,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  font-family: /*"Delius",*/ sans-serif;
+  font-family: "Delius", sans-serif;
   color: var(--text-color);
 }
 /* ========================================= */
@@ -214,16 +234,11 @@ body {
 #skill {
   background-color: var(--btn-bg);
   opacity: 0.5;
+  text-align: center;
 }
 #skill:hover {
   opacity: 1;
   box-shadow: 0 0 30px var(--btn-shadow);
-}
-.skill-row-1 {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  margin-bottom: 5vh;
-  text-align: center;
 }
 .lang {
   text-align: left;
@@ -231,21 +246,27 @@ body {
   justify-content: center;
   align-items: center;
 }
+.skill-row-1 {
+  display: grid;
+  grid-template-columns: repeat(6, var(--width));
+  margin-bottom: 5vh;
+  text-align: center;
+}
 .skill-row-2 {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(5, var(--width));
   margin-bottom: 5vh;
   text-align: center;
 }
 .skill-row-3 {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(4, var(--width));
   margin-bottom: 5vh;
   text-align: center;
 }
 .skill-row-4 {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(7, var(--width));
   margin-bottom: 5vh;
   text-align: center;
 }
@@ -279,11 +300,8 @@ body {
   font-weight: bold;
 }
 .skills-cont img {
-  width: 50px;
+  width: 35px;
   height: auto;
-}
-.skills-cont img:hover {
-  transform: scale(1.1);
 }
 /* ========================================= */
 .projects-cont {
@@ -291,7 +309,7 @@ body {
   display: grid;
   grid-template-rows: 1fr 5fr;
   margin: 25vh;
-  margin-top: 33vh;
+  margin-top: 20vh;
 }
 .project-title {
   text-align: left;
@@ -355,6 +373,13 @@ body {
 .footer-cont {
   text-align: center;
 }
+.footer-cont a {
+  color: var(--text-color);
+}
+.footer-cont a:hover {
+  cursor: pointer;
+  color: var(--opp);
+}
 /* ========================================= */
 /* TABLET: 601px - 900px                     */
 /* ========================================= */
@@ -363,6 +388,7 @@ body {
     --title: 5vh;
     --text: 2.5vh;
     --text-mini: 1.8vh;
+    --width: 120px;
   }
 
   /* --- Nav --- */
@@ -411,6 +437,9 @@ body {
     margin-right: 5vw;
     margin-top: 10vh;
   }
+  .contact-icons {
+    gap: 20px;
+  }
   .contact-icons i {
     font-size: 7vh;
   }
@@ -421,13 +450,15 @@ body {
   /* --- Skills --- */
   .skills-cont {
     margin: 8vh 5vw;
+    overflow-x: auto;
   }
   .skill-row-1,
   .skill-row-2,
   .skill-row-3,
   .skill-row-4 {
-    grid-template-columns: 1fr 1fr;
+    justify-items: center;
   }
+
   .skill-row-1 div,
   .skill-row-2 div,
   .skill-row-3 div,
@@ -444,9 +475,10 @@ body {
   }
   .project-cont {
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
   .project-card-img img {
-    max-width: 38vw;
+    max-width: 35vw;
   }
 
   /* --- Footer --- */
@@ -463,6 +495,7 @@ body {
     --title: 7vw;
     --text: 4vw;
     --text-mini: 3.5vw;
+    --width: 100px;
   }
 
   /* --- Nav --- */
@@ -528,7 +561,7 @@ body {
   }
   .contact-icons {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 20px;
   }
   .contact-icons i {
     font-size: 10vw;
@@ -545,12 +578,13 @@ body {
   /* --- Skills --- */
   .skills-cont {
     margin: 6vh 4vw;
+    overflow-x: auto;
   }
   .skill-row-1,
   .skill-row-2,
   .skill-row-3,
   .skill-row-4 {
-    grid-template-columns: 1fr 1fr;
+    justify-items: center;
     gap: 16px;
   }
   .skill-row-1 div,
@@ -562,9 +596,6 @@ body {
     padding: 10px;
     border-radius: 15%;
   }
-  .skills-cont img {
-    width: 60px;
-  }
 
   /* --- Projects --- */
   .projects-cont {
@@ -572,12 +603,13 @@ body {
   }
   .project-cont {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   .project-card {
     margin: 8px 0;
   }
   .project-card-img img {
-    max-width: 85vw;
+    max-width: 90%;
   }
   .project-card-btn {
     grid-template-columns: 1fr 2fr 1fr;
