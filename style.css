@@ -84,7 +84,6 @@ html {
 }
 body {
   justify-content: center;
-  background: var(--bg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
