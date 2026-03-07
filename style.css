@@ -19,7 +19,7 @@
   --width: 170px;
 }
 /*
-.red {
+.light {
   --bg: linear-gradient(180deg, maroon, red, orangered, pink, pink, lightpink);
   --text-color: black;
   --btn-bg: red;
@@ -28,7 +28,7 @@
   --opp: white;
 }
 */
-.red {
+.light {
   --bg: linear-gradient(
     180deg,
     gainsboro,
@@ -40,13 +40,13 @@
     lightgray
   );
   --text-color: black;
-  --btn-bg: lightgray;
+  --btn-bg: gray;
   --btn-shadow: black;
   --btn-txt: black;
-  --opp: white;
+  --opp: lightgray;
 }
 /*
-.red {
+.light {
   --bg: linear-gradient(180deg, olive, goldenrod, gold, yellow, yellow, khaki);
   --text-color: black;
   --btn-bg: khaki;
@@ -55,7 +55,7 @@
   --opp: white;
 }
 
-.blue {
+.space {
   --bg: linear-gradient(180deg, navy, blue, royalblue, skyblue, skyblue, powderblue);
   --text-color: white;
   --btn-bg: blue;
@@ -63,7 +63,7 @@
   --btn-txt: white;
   --opp: black;
 }*/
-.blue {
+.space {
   --bg: linear-gradient(
     180deg,
     #020617,
