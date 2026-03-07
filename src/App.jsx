@@ -1,11 +1,13 @@
 const App = () => {
     return (<>
-        <Menu />
-        <Home />
-        <About />
-        <Skills />
-        <Contact />
-        <Projects />
-        <Footer />
+        <section className="menu"><Menu /></section>
+
+        <section className="panel"><Home /></section>
+        <section className="panel"><About /></section>
+        <section className="panel"><Skills /></section>
+        <section className="panel"><Contact /></section>
+        <section className="panel"><Projects /></section>
+
+        <section className="panel"><Footer /></section>
     </>);
 }

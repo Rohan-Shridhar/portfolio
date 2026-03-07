@@ -27,7 +27,7 @@
   --btn-txt: black;
   --opp: white;
 }
-  */
+*/
 .red {
   --bg: linear-gradient(
     180deg,
@@ -54,8 +54,8 @@
   --btn-txt: black;
   --opp: white;
 }
-  */
-/*.blue {
+
+.blue {
   --bg: linear-gradient(180deg, navy, blue, royalblue, skyblue, skyblue, powderblue);
   --text-color: white;
   --btn-bg: blue;
@@ -90,6 +90,22 @@ body {
   background-position: center;
   font-family: "Delius", sans-serif;
   color: var(--text-color);
+}
+/* ========================================= */
+.menu {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.panel {
+  position: sticky;
+  top: 0;
+  overflow-y: scroll;
+  background: var(--bg);
+}
+.panel::-webkit-scrollbar {
+  display: none;
 }
 /* ========================================= */
 .menu-bar {
@@ -173,9 +189,7 @@ body {
 /* ========================================= */
 .contact {
   scroll-margin-top: 100px;
-  margin-top: 25vh;
-  margin-left: 25vh;
-  margin-right: 25vh;
+  margin: 25vh;
   display: grid;
   grid-template-rows: 1fr 1fr 2fr 1fr;
 }
@@ -226,10 +240,10 @@ body {
 
 /* ========================================= */
 .skills-cont {
-  scroll-margin-top: 100px;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  margin: 25vh;
+  margin-left: 25vh;
+  margin-right: 25vh;
 }
 #skill {
   background-color: var(--btn-bg);
