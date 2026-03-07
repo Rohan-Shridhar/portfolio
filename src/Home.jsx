@@ -1,8 +1,8 @@
 const { useState } = React
 const Home = () => {
-    const [theme, setTheme] = useState("blue");
+    const [theme, setTheme] = useState("space");
     function toggleTheme() {
-        const newTheme = theme === "red" ? "blue" : "red";
+        const newTheme = theme === "light" ? "space" : "light";
         setTheme(newTheme);
         document.body.className = newTheme;
     }
