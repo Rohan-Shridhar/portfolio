@@ -83,6 +83,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  background: var(--bg);
   justify-content: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -90,7 +91,7 @@ body {
   font-family: "Delius", sans-serif;
   color: var(--text-color);
 }
-/* ========================================= */
+/* ========================================= 
 .menu {
   position: absolute;
   top: 0;
@@ -106,7 +107,7 @@ body {
 .panel::-webkit-scrollbar {
   display: none;
 }
-/* ========================================= */
+ ========================================= */
 .menu-bar {
   margin-top: 20px;
   display: grid;
