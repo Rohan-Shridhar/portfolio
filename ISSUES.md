@@ -9,7 +9,8 @@
 - [x] Icones (https://github.com/Rohan-Shridhar/portfolio/issues/15)
 - [ ] Skills tag (https://github.com/Rohan-Shridhar/portfolio/issues/18)
 - [x] Profile photo (https://github.com/Rohan-Shridhar/portfolio/issues/19)
-- [x] Include markdown (https://github.com/Rohan-Shridhar/portfolio/issues/34) 
+- [x] Include markdown (https://github.com/Rohan-Shridhar/portfolio/issues/34)
+- [ ] Blogs (https://github.com/Rohan-Shridhar/portfolio/issues/39)
 
 ## Fixes
 - [x] Change language (https://github.com/Rohan-Shridhar/portfolio/issues/2)
