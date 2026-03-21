@@ -11,6 +11,7 @@
 - [x] Profile photo (https://github.com/Rohan-Shridhar/portfolio/issues/19)
 - [x] Include markdown (https://github.com/Rohan-Shridhar/portfolio/issues/34)
 - [ ] Blogs (https://github.com/Rohan-Shridhar/portfolio/issues/39)
+- [ ] Notion (https://github.com/Rohan-Shridhar/portfolio/issues/40)
 
 ## Fixes
 - [x] Change language (https://github.com/Rohan-Shridhar/portfolio/issues/2)
