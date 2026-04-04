@@ -25,7 +25,7 @@ const Projects = () => {
                         <img src={project2} alt="NotJS" />
                     </div>
                     <div className="project-card-title">NotJS</div>
-                    <div className="project-card-desc">A simple code recognition application for only javascript and throws 418 teapot HTTp error if javascript is not detected</div>
+                    <div className="project-card-desc">A simple code recognition application for only javascript code and throws 418 teapot HTTP error if javascript is not detected</div>
                     <div className="project-card-btn">
                         <div />
                         <a href="https://github.com/Rohan-Shridhar/NotJS"><i className="fab fa-github"></i></a>
