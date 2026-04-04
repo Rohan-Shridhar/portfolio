@@ -1,6 +1,5 @@
 const { useState, useEffect } = React;
-const img1 = "images/pfp.jpg";
-const img2 = "images/fpf.jpeg";
+const img = "images/pfp.jpeg";
 const About = () => {
     const [hover, setHover] = useState(false);
     function handleHover() {
@@ -31,7 +30,7 @@ const About = () => {
                 <span className="about-desc">I am a 19 year old undergraduate student from Bangalore, India. I love to learn new things. I am a Frontend Developer currently learning web development. I am good at problem solving and passionate about creating interactive and user-friendly interfaces. </span>
             </div>
             <div></div>
-            <span className="about-img-box"><img className="about-cont-img" src={img2} alt="Profile" />
+            <span className="about-img-box"><img className="about-cont-img" src={img} alt="Profile" />
                 <span>Profile</span></span>
         </div>
     );
