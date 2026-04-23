@@ -141,12 +141,16 @@ body {
 .home-btn-cont span {
   text-align: center;
 }
+.home-cont i {
+  margin-left: 10px;
+}
 .home-btn-cont button {
   background-color: var(--btn-bg);
-  padding: 20px;
+  padding: 10px;
   border: none;
-  border-radius: 25px;
+  border-radius: 10px;
   color: var(--btn-txt);
+  font-size: var(--text-mini);
   font-weight: bolder;
   transition: box-shadow 0.3s ease;
 }
@@ -280,7 +284,7 @@ body {
 }
 .skill-row-4 {
   display: grid;
-  grid-template-columns: repeat(7, var(--width));
+  grid-template-columns: repeat(6, var(--width));
   margin-bottom: 5vh;
   text-align: center;
 }
