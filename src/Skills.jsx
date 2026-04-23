@@ -44,8 +44,7 @@ const Skills = () => {
                 <div className="skills-vscode" id="skill"><img src={vscode} alt="VS Code" /><br /><hr />Editor</div>
                 <div className="skills-antigravity" id="skill"><img src={antigravity} alt="Antigravity" /><br /><hr />Editor</div>
                 <div className="skill-md" id="skill"><img src={md} alt="Markdown" /><br /><hr />Writting</div>
-                <div className="skills-figma" id="skill"><img src={figma} alt="Figma" /><br /><hr />Design</div>
-                <div className="skills-vercel" id="skill"><img src={vercel} alt="Vercel" /><br /><hr />Deployment</div>
+                <div></div>
                 <p className="lang">Tools</p>
             </div>
         </div>
