@@ -343,18 +343,27 @@ body {
   background-color: var(--btn-bg);
   display: grid;
   grid-template-rows: 2fr 1fr 1fr 1fr;
-  border: 1px var(--text-color) solid;
+  border: 1px rgba(255, 255, 255, 0.1) solid;
   border-radius: 25px;
-  margin: 10px;
+  margin: 15px;
   padding: 10px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
 }
 .project-card-img {
   text-align: center;
+  overflow: hidden;
+  border-radius: 15px;
 }
 .project-card-img img {
-  max-width: 22vw;
-  height: auto;
-  border-radius: 5%;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.4s ease;
 }
 .project-card-btn {
   margin-top: 10px;
@@ -375,13 +384,10 @@ body {
   font-size: var(--text);
 }
 .project-card-title {
-  padding-top: 3vh;
+  padding-top: 1vh;
   text-align: center;
   font-size: var(--text);
   font-weight: bold;
-}
-.project-card-title:hover {
-  color: var(--opp);
 }
 .project-card-desc {
   text-align: center;
@@ -496,7 +502,7 @@ body {
     gap: 20px;
   }
   .project-card-img img {
-    max-width: 35vw;
+    width: 100%;
   }
 
   /* --- Footer --- */
@@ -627,7 +633,7 @@ body {
     margin: 8px 0;
   }
   .project-card-img img {
-    max-width: 90%;
+    width: 100%;
   }
   .project-card-btn {
     grid-template-columns: 1fr 2fr 1fr;
