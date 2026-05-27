@@ -77,6 +77,12 @@ const Projects = () => {
                     </div>
                 </div>
             </div>
+            <div className="explore-more-cont">
+                <a href="https://rohan-shridhar.github.io/rohan-shridhar/" target="_blank" rel="noopener noreferrer" className="explore-more-btn">
+                    Explore more projects <i className="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
     );
 }
+
