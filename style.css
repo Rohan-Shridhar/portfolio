@@ -144,6 +144,14 @@ body {
 .home-cont i {
   margin-left: 10px;
 }
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-btn i {
+  margin-left: 0;
+}
 .home-btn-cont button {
   background-color: var(--btn-bg);
   padding: 10px;
@@ -420,7 +428,7 @@ body {
   overflow: hidden;
 }
 .explore-more-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
