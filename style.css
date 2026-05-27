@@ -151,6 +151,16 @@ body {
 }
 .theme-btn i {
   margin-left: 0;
+  padding: 0 7px 0 7px;
+}
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.resume-btn i {
+  margin-left: 0;
+  padding: 0 7px 0 7px;
 }
 .home-btn-cont button {
   background-color: var(--btn-bg);
