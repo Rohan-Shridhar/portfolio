@@ -108,11 +108,10 @@ const Home = () => {
                 <h1>Hi, I'm Rohan S M</h1>
                 <div className="home-btn-cont">
                     <span></span>
-
-                    <span ref={themePlaceholderRef} style={{ display: 'inline-block', position: 'relative' }}>
-                        <button onClick={toggleTheme} ref={themeBtnRef} className="theme-btn" style={themeBtnStyle}>
-                            <span style={themeTextStyle}>Theme </span>
-                            <i className="fa-solid fa-circle-half-stroke"></i>
+                    <span ref={resumePlaceholderRef} style={{ display: 'inline-block', position: 'relative' }}>
+                        <button onClick={downloadResume} ref={resumeBtnRef} className="resume-btn" style={resumeBtnStyle}>
+                            <span style={resumeTextStyle}>Resume </span>
+                            <i className="fa-solid fa-download"></i>
                         </button>
                     </span>
                     <span>
@@ -121,12 +120,13 @@ const Home = () => {
                             <i className="fa-solid fa-square-envelope"></i>
                         </button>
                     </span>
-                    <span ref={resumePlaceholderRef} style={{ display: 'inline-block', position: 'relative' }}>
-                        <button onClick={downloadResume} ref={resumeBtnRef} className="resume-btn" style={resumeBtnStyle}>
-                            <span style={resumeTextStyle}>Resume </span>
-                            <i className="fa-solid fa-download"></i>
+                    <span ref={themePlaceholderRef} style={{ display: 'inline-block', position: 'relative' }}>
+                        <button onClick={toggleTheme} ref={themeBtnRef} className="theme-btn" style={themeBtnStyle}>
+                            <span style={themeTextStyle}>Theme </span>
+                            <i className="fa-solid fa-circle-half-stroke"></i>
                         </button>
                     </span>
+
                     <span></span>
                 </div>
             </div>

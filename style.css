@@ -138,6 +138,17 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
+.home-btn-cont button {
+  background-color: var(--btn-bg);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: var(--btn-txt);
+  font-size: var(--text-mini);
+  font-weight: bolder;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
 .home-btn-cont span {
   text-align: center;
 }
@@ -148,6 +159,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 .theme-btn i {
   margin-left: 0;
@@ -161,17 +173,6 @@ body {
 .resume-btn i {
   margin-left: 0;
   padding: 0 7px 0 7px;
-}
-.home-btn-cont button {
-  background-color: var(--btn-bg);
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  color: var(--btn-txt);
-  font-size: var(--text-mini);
-  font-weight: bolder;
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
 }
 .home-btn-cont button:hover {
   box-shadow: 0 0 30px var(--btn-shadow);
