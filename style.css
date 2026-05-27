@@ -325,7 +325,8 @@ body {
 .projects-cont {
   scroll-margin-top: 100px;
   display: grid;
-  grid-template-rows: 1fr 5fr;
+  grid-template-rows: auto auto auto;
+  gap: 30px;
   margin: 25vh;
   margin-top: 20vh;
 }
@@ -392,6 +393,60 @@ body {
 .project-card-desc {
   text-align: center;
   font-weight: bold;
+}
+.explore-more-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.explore-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--btn-bg);
+  color: var(--btn-txt);
+  padding: 14px 28px;
+  font-size: var(--text-mini);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.explore-more-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: 0.5s;
+}
+.explore-more-btn:hover::before {
+  left: 100%;
+}
+.explore-more-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--btn-shadow);
+  color: var(--btn-txt);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.explore-more-btn i {
+  transition: transform 0.3s ease;
+}
+.explore-more-btn:hover i {
+  transform: translateX(5px);
 }
 /* ========================================= */
 .footer-cont {
