@@ -153,6 +153,7 @@ body {
   font-size: var(--text-mini);
   font-weight: bolder;
   transition: box-shadow 0.3s ease;
+  cursor: pointer;
 }
 .home-btn-cont button:hover {
   box-shadow: 0 0 30px var(--btn-shadow);
