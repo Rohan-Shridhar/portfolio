@@ -11,7 +11,7 @@
 - [x] Profile photo (https://github.com/Rohan-Shridhar/portfolio/issues/19)
 - [x] Include markdown (https://github.com/Rohan-Shridhar/portfolio/issues/34)
 - [ ] Blogs (https://github.com/Rohan-Shridhar/portfolio/issues/39)
-- [ ] Notion (https://github.com/Rohan-Shridhar/portfolio/issues/40)
+- [x] Notion (https://github.com/Rohan-Shridhar/portfolio/issues/40)
 
 ## Fixes
 - [x] Change language (https://github.com/Rohan-Shridhar/portfolio/issues/2)
@@ -21,4 +21,4 @@
 - [x] Deployment issue (https://github.com/Rohan-Shridhar/portfolio/issues/17)
 - [x] Mobile view issue(https://github.com/Rohan-Shridhar/portfolio/issues/25)
 - [x] Resume button issue mobile view(https://github.com/Rohan-Shridhar/portfolio/issues/29)
-- [ ] Themes should be changed (https://github.com/Rohan-Shridhar/portfolio/issues/31)
+- [x] Themes should be changed (https://github.com/Rohan-Shridhar/portfolio/issues/31)
