@@ -1,5 +1,5 @@
-const { useState, useEffect } = React;
-const Contact = () => {
+import { useState, useEffect } from 'react';
+export default function Contact() {
     const [hover, setHover] = useState(false);
     function handleHover() {
         setHover(true);

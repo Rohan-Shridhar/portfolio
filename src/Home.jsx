@@ -1,6 +1,6 @@
-const { useState, useEffect, useRef } = React;
+import { useState, useEffect, useRef } from 'react';
 
-const Home = () => {
+export default function Home(){
     const [theme, setTheme] = useState("space");
 
     // Theme button refs & state (top-right corner)
