@@ -1,4 +1,4 @@
-const Menu = () => {
+export default function Menu(){
     return (
         <div className="menu-bar">
             <span><a href="#home">Home</a></span>
