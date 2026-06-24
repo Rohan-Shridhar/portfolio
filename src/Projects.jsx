@@ -1,8 +1,8 @@
-const { useState, useEffect } = React;
-const project1 = "images/grid.png";
-const project2 = "images/ciphex.jpg";
-const project3 = "images/envguard.png";
-const Projects = () => {
+import { useState, useEffect } from 'react';
+import project1 from './assets/images/grid.png';
+import project2 from './assets/images/ciphex.jpg';
+import project3 from './assets/images/envguard.png';
+export default function Projects() {
     useEffect(() => {
         const cards = document.querySelectorAll('.project-card');
         
