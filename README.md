@@ -1,16 +1,49 @@
-# React + Vite
+## Rohan S. Mirjankar — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Single‑page personal portfolio built with React (UMD) and Babel directly in the browser. Showcases projects, skills, and contact links with a playful, scrollable layout.
 
-Currently, two official plugins are available:
+**Live site:** https://rohan-mirjankar.is-a-good.dev/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive single-page layout with anchored navigation
+- About, Skills, Projects (cards), and Contact sections
+- Iconography via Font Awesome CDN
+- Zero-build setup: runs straight from `index.html` with in-browser Babel
 
-## Expanding the ESLint configuration
+## Quick start
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+
+git clone https://github.com/Rohan-Shridhar/portfolio.git
+cd portfolio
+
+npm install
+
+npm run dev
+
+open localhost link in browser
+```
+
+You can also open `index.html` directly in your browser, but a local server ensures fonts/icons load correctly.
+
+## Project structure
+
+- `index.html` — loads styles, fonts, React/Babel CDNs, and mounts the app
+- `style.css` — global styles and section theming
+- `*.jsx` — React components 
+- `images/` — asset files for hero/skills/project cards
+
+
+## Contributing
+
+Improvements are welcome! Please:
+
+1. Fork and branch from `main`.
+2. Make changes (docs or UI tweaks).
+3. Open a PR with a short description; mention related issue numbers if applicable.
+
+## License
+
+MIT
