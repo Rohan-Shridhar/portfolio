@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import project1 from './assets/images/grid.png';
-import project2 from './assets/images/ciphex.jpg';
+import project2 from './assets/images/clipboard.png';
 import project3 from './assets/images/envguard.png';
 export default function Projects() {
     useEffect(() => {
@@ -56,12 +56,11 @@ export default function Projects() {
                     <div className="project-card-img">
                         <img src={project2} alt="NotJS" />
                     </div>
-                    <div className="project-card-title">Ciphex</div>
-                    <div className="project-card-desc">ciphex is a lightweight Node.js package that combines Vigenère and Affine ciphers to encrypt and decrypt text across all 96 printable ASCII characters using a key.env file and a generated [b, a] key pair.</div>
+                    <div className="project-card-title">Kravoxin</div>
+                    <div className="project-card-desc">Browser extension for storing copied itmes along with categorisation and editing</div>
                     <div className="project-card-btn">
                         <div />
-                        <a href="https://github.com/Rohan-Shridhar/ciphex"><i className="fab fa-github"></i></a>
-                        <a href="https://www.npmjs.com/package/ciphex"><i className="fas fa-globe"></i></a>
+                        <a href="https://github.com/Rohan-Shridhar/Kravoxin"><i className="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div className="project-card">
