@@ -31,7 +31,8 @@ const skillGroups = [
             { name: 'Git', level: 'Version Control', icon: 'https://skillicons.dev/icons?i=git', alt: 'Git' },
             { name: 'VS Code', level: 'Editor', icon: 'https://skillicons.dev/icons?i=vscode', alt: 'VS Code' },
             { name: 'Antigravity', level: 'Editor', icon: antigravity, alt: 'Antigravity' },
-            { name: 'Markdown', level: 'Writing', icon: 'https://skillicons.dev/icons?i=markdown', alt: 'Markdown' }
+            { name: 'Markdown', level: 'Writing', icon: 'https://skillicons.dev/icons?i=markdown', alt: 'Markdown' },
+            { name: 'Excalidraw', level:'Visualising', icon: 'https://www.google.com/s2/favicons?domain=excalidraw.com&sz=32', alt: 'Excalidraw'}
         ]
     }
 ];
