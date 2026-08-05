@@ -61,6 +61,7 @@ export default function Projects() {
                     <div className="project-card-btn">
                         <div />
                         <a href="https://github.com/Rohan-Shridhar/Kravoxin"><i className="fab fa-github"></i></a>
+                        <a href="https://rohan-shridhar.github.io/kravoxin/"><i className="fas fa-globe"></i></a>
                     </div>
                 </div>
                 <div className="project-card">
