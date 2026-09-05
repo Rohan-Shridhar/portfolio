@@ -1,4 +1,5 @@
 :root {
+  --font-family: 'Minecraft', sans-serif;
   --bg: linear-gradient(180deg,
       #020617,
       #020024,
@@ -18,6 +19,12 @@
   --text-mini: 2vh;
   --title: 8vh;
   --width: 170px;
+}
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url("/fonts/Minecraft.woff2") format("woff2");
+  font-display: swap;
 }
 
 /*
@@ -84,6 +91,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: var(--font-family);
 }
 
 .back-to-top {
@@ -125,13 +133,21 @@ html {
   stroke-linejoin: round;
 }
 
+body,
+button,
+input,
+textarea,
+select,
+option {
+  font-family: var(--font-family);
+}
+
 body {
   background: var(--bg);
   justify-content: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  font-family: "Delius", sans-serif;
   color: var(--text-color);
 }
 
