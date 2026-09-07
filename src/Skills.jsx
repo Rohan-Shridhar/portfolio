@@ -1,4 +1,6 @@
 import antigravity from './assets/images/Tools/antigravity.png';
+import useViewportReveal from './hooks/useViewportReveal.js';
+import { Badge, BlockCard, BlockGrid, PixelBorder } from './components/ui/index.js';
 
 const skillGroups = [
     {
@@ -37,24 +39,110 @@ const skillGroups = [
     }
 ];
 
-export default function Skills() {
+const groupVariants = {
+    Languages: 'diamond',
+    'Web Dev': 'wood',
+    Databases: 'stone',
+    Tools: 'grass',
+};
+
+function getSkillId(groupTitle, skillName) {
+    return `${groupTitle}-${skillName}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
+
+function getMeterFill(level) {
+    if (level === 'Intermediate') return 6;
+    if (level === 'Beginner') return 3;
+    return 0;
+}
+
+function SkillMeter({ level }) {
+    const filledSegments = getMeterFill(level);
+
+    if (!filledSegments) return null;
+
     return (
-        <div className="skills-cont" id="skills">
-            <div className="skills-title">What do I know ?</div>
-            {skillGroups.map((group) => (
-                <section className="skill-group" key={group.title}>
-                    <p className="lang">{group.title}</p>
-                    <div className="skill-grid">
-                        {group.skills.map((skill) => (
-                            <div className="skill-card" key={skill.name}>
-                                <img src={skill.icon} alt={skill.alt} />
-                                <hr />
-                                <span>{skill.level}</span>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            ))}
+        <div className="skill-meter" aria-hidden="true">
+            <span className="skill-meter-label">XP</span>
+            <span className="skill-meter-segments">
+                {Array.from({ length: 10 }, (_, index) => (
+                    <i className={index < filledSegments ? 'is-filled' : undefined} key={index} />
+                ))}
+            </span>
         </div>
+    );
+}
+
+export default function Skills() {
+    const { ref: skillsRef } = useViewportReveal({
+        targetSelector: '.skill-card',
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.15,
+    });
+
+    return (
+        <section ref={skillsRef} className="skills-cont" id="skills" aria-labelledby="skills-title">
+            <div className="skills-heading">
+                <span className="skills-kicker">PLAYER INVENTORY</span>
+                <h2 className="skills-title" id="skills-title">What do I know ?</h2>
+                <span className="skills-divider" aria-hidden="true" />
+            </div>
+
+            <div className="skills-groups">
+                {skillGroups.map((group) => {
+                    const groupVariant = groupVariants[group.title] || 'stone';
+                    const groupId = `${getSkillId(group.title, 'group')}-title`;
+
+                    return (
+                        <BlockCard
+                            as="section"
+                            className="skill-group"
+                            variant={groupVariant}
+                            inset
+                            key={group.title}
+                            aria-labelledby={groupId}
+                        >
+                            <div className="skill-group-heading">
+                                <span className="skill-group-marker" aria-hidden="true" />
+                                <h3 className="lang" id={groupId}>{group.title}</h3>
+                            </div>
+                            <BlockGrid className="skill-grid" minItemWidth="148px">
+                                {group.skills.map((skill, index) => {
+                                    const skillId = getSkillId(group.title, skill.name);
+                                    const tooltipId = `${skillId}-tooltip`;
+
+                                    return (
+                                        <article
+                                            className="skill-card block-enter inventory-select"
+                                            key={skill.name}
+                                            tabIndex="0"
+                                            aria-describedby={tooltipId}
+                                            style={{
+                                                '--skill-delay': `${index * 60}ms`,
+                                                '--reveal-delay': `${index * 60}ms`,
+                                            }}
+                                        >
+                                            <PixelBorder className="skill-card-icon-frame" variant={groupVariant} inset>
+                                                <img src={skill.icon} alt={skill.alt} loading="lazy" decoding="async" />
+                                            </PixelBorder>
+                                            <div className="skill-card-body">
+                                                <span className="skill-name">{skill.name}</span>
+                                                <Badge className="skill-level" variant={groupVariant}>{skill.level}</Badge>
+                                                <SkillMeter level={skill.level} />
+                                            </div>
+                                            <div className="skill-tooltip" id={tooltipId} role="tooltip">
+                                                <strong>{skill.name}</strong>
+                                                <span>{group.title}</span>
+                                                <span>{skill.level}</span>
+                                            </div>
+                                        </article>
+                                    );
+                                })}
+                            </BlockGrid>
+                        </BlockCard>
+                    );
+                })}
+            </div>
+        </section>
     );
 }

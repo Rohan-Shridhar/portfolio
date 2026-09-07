@@ -1,47 +1,122 @@
-import { useState, useEffect } from 'react';
-export default function Contact() {
-    const [hover, setHover] = useState(false);
-    function handleHover() {
-        setHover(true);
-    }
-    function handleLeave() {
-        setHover(false);
-    }
-    useEffect(() => {
-        if (hover) {
-            document.querySelector(".mail-txt").style.transition = "transform 1s ease";
-            document.querySelector(".mail").style.transition = "transform 1s ease";
-            document.querySelector(".mail-txt").style.transform = "translateX(50px)";
-            document.querySelector(".mail").style.transform = "translateX(50px)";
-            document.querySelector(".line").style.width = "60%";
-            document.querySelector(".line").style.transition = "width 0.8s ease";
+import useViewportReveal from './hooks/useViewportReveal.js';
+import { Badge, BlockButton, BlockCard, PixelBorder } from './components/ui/index.js';
 
-            document.querySelector(".contact-icons").style.transition = "transform 1s ease";
-            document.querySelector(".contact-icons").style.transform = "translateX(-50px)";
-        } else {
-            document.querySelector(".mail-txt").style.transform = "translateX(0px)";
-            document.querySelector(".mail").style.transform = "translateX(0px)";
-            document.querySelector(".line").style.width = "90%";
-            document.querySelector(".contact-icons").style.transform = "translateX(0px)";
-        }
-    }
-        , [hover]);
+const socialLinks = [
+    {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/rohan-mirjankar/',
+        ariaLabel: 'linkedin',
+        icon: 'fab fa-linkedin',
+    },
+    {
+        label: 'GitHub',
+        href: 'https://github.com/Rohan-Shridhar',
+        ariaLabel: 'github',
+        icon: 'fab fa-github',
+    },
+    {
+        label: 'DEV',
+        href: 'https://dev.to/rohan_mirjankar',
+        ariaLabel: 'dev',
+        icon: 'fa-brands fa-dev',
+    },
+    {
+        label: 'Instagram',
+        href: 'https://www.instagram.com/rohan.mirjankar/',
+        ariaLabel: 'instagram',
+        icon: 'fa-brands fa-instagram',
+    },
+    {
+        label: 'X / Twitter',
+        href: 'https://x.com/Rohan_shridhar',
+        ariaLabel: 'twitter',
+        icon: 'fa-brands fa-x-twitter',
+    },
+];
+
+export default function Contact() {
+    const { ref: contactRef } = useViewportReveal({
+        targetSelector: '.contact-reveal-item',
+        rootMargin: '0px 0px -12% 0px',
+        threshold: 0.12,
+    });
+
     return (
-        <div className="contact" onMouseEnter={handleHover} onMouseLeave={handleLeave} id="contact">
-            <div className="contact-title">Connect with me</div>
-            <div></div>
-            <div className="contact-icons">
-                <span><a href="https://www.linkedin.com/in/rohan-mirjankar/" target="_blank" aria-label="linkedin" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a></span>
-                <span><a href="https://github.com/Rohan-Shridhar" target="_blank" aria-label="github" rel="noopener noreferrer"><i className="fab fa-github"></i></a></span>
-                <span><a href="https://dev.to/rohan_mirjankar" target="_blank" aria-label="dev" rel="noopener noreferrer"><i className="fa-brands fa-dev"></i></a></span>
-                <span><a href="https://www.instagram.com/rohan.mirjankar/" target="_blank" aria-label="instagram" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a></span>
-                <span><a href="https://x.com/Rohan_shridhar" target="_blank" aria-label="twitter" rel="noopener noreferrer"><i className="fa-brands fa-x-twitter"></i></a></span>
+        <section
+            ref={contactRef}
+            className="contact"
+            id="contact"
+            aria-labelledby="contact-title"
+        >
+            <header className="contact-heading contact-reveal-item contact-reveal-heading block-enter">
+                <Badge className="contact-kicker" variant="stone">CONTACT ME</Badge>
+                <h2 className="contact-title" id="contact-title">Connect with me</h2>
+                <span className="contact-divider" aria-hidden="true" />
+            </header>
+
+            <div className="contact-grid">
+                <BlockCard
+                    as="section"
+                    className="contact-social-panel contact-reveal-item block-enter"
+                    variant="wood"
+                    inset
+                    aria-labelledby="contact-social-title"
+                >
+                    <div className="contact-panel-heading">
+                        <Badge className="contact-panel-label" variant="wood" as="h3" id="contact-social-title">
+                            SOCIAL LINKS
+                        </Badge>
+                        <span className="contact-panel-rule" aria-hidden="true" />
+                    </div>
+                    <ul className="contact-icons" aria-label="Social links">
+                        {socialLinks.map((link, index) => (
+                            <li
+                                className="contact-slot contact-reveal-item block-enter"
+                                style={{
+                                    '--contact-delay': `${140 + index * 45}ms`,
+                                    '--reveal-delay': `${140 + index * 45}ms`,
+                                }}
+                                key={link.href}
+                            >
+                                <BlockButton
+                                    as="a"
+                                    className="contact-link"
+                                    variant="stone"
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={link.ariaLabel}
+                                    icon={<i className={link.icon} aria-hidden="true" />}
+                                >
+                                    <span className="contact-link-label">{link.label}</span>
+                                </BlockButton>
+                            </li>
+                        ))}
+                    </ul>
+                </BlockCard>
+
+                <BlockCard
+                    as="section"
+                    className="contact-email-panel contact-reveal-item block-enter"
+                    variant="stone"
+                    inset
+                    aria-labelledby="contact-email-title"
+                >
+                    <div className="contact-panel-heading">
+                        <Badge className="contact-panel-label" variant="stone" as="h3" id="contact-email-title">
+                            DIRECT CONTACT
+                        </Badge>
+                        <span className="contact-panel-rule" aria-hidden="true" />
+                    </div>
+                    <PixelBorder as="address" className="contact-email-slot" variant="wood" inset>
+                        <span className="mail-txt">Or you can reach me at </span>
+                        <span className="contact-line" aria-hidden="true">
+                            <span className="line" />
+                        </span>
+                        <span className="mail">rohansm668@gmail.com</span>
+                    </PixelBorder>
+                </BlockCard>
             </div>
-            <div className="contact-email">
-                <span className="mail-txt">Or you can reach me at </span>
-                <span className="contact-line"><span className="line"></span></span>
-                <span className="mail">rohansm668@gmail.com</span>
-            </div>
-        </div>
+        </section>
     );
 }

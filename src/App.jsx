@@ -7,12 +7,25 @@ import Contact from './Contact.jsx'
 import Projects from './Projects.jsx'
 import Footer from './Footer.jsx'
 
+function EnvironmentBackground() {
+  return (
+    <div className="environment-background" aria-hidden="true">
+      <span className="environment-layer environment-layer-end" />
+      <span className="environment-layer environment-layer-nether" />
+      <span className="environment-overlay" />
+    </div>
+  )
+}
+
 function App() {
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
+      const nextIsScrolled = window.scrollY > 24
       setShowBackToTop(window.scrollY > 500)
+      setIsScrolled((current) => current === nextIsScrolled ? current : nextIsScrolled)
     }
 
     handleScroll()
@@ -26,13 +39,20 @@ function App() {
   }
 
   return (<>
-    <section className="menu"><Menu /></section>
-    <section className="panel"><Home /></section>
-    <section className="panel"><About /></section>
-    <section className="panel"><Skills /></section>
-    <section className="panel"><Contact /></section>
-    <section className="panel"><Projects /></section>
-    <section className="panel"><Footer /></section>
+    <EnvironmentBackground />
+
+    <header className="site-header">
+      <Menu isScrolled={isScrolled} />
+    </header>
+
+    <main className="page-shell">
+      <section className="panel"><Home /></section>
+      <section className="panel"><About /></section>
+      <section className="panel"><Skills /></section>
+      <section className="panel"><Contact /></section>
+      <section className="panel"><Projects /></section>
+      <section className="panel"><Footer /></section>
+    </main>
 
     {showBackToTop && (
       <button
