@@ -12,7 +12,7 @@ const projects = [
         description: 'Front end application using react.js that runs directly in your browser used to create pixel arts in a 16 X 16 grid and download as an image',
         badges: [{ label: 'React.js', variant: 'diamond' }],
         github: 'https://github.com/Rohan-Shridhar/gridcraft',
-        demo: 'https://rohan-shridhar.github.io/gridcraft/',
+        demo: 'https://gridcraft-by-me.vercel.app/',
         demoLabel: 'Live demo',
     },
     {
@@ -23,7 +23,7 @@ const projects = [
         badges: [{ label: 'Browser extension', variant: 'wood' }],
         github: 'https://github.com/Rohan-Shridhar/Kravoxin',
         demo: 'https://rohan-shridhar.github.io/Kravoxin/',
-        demoLabel: 'Live demo',
+        demoLabel: 'Landing page',
     },
     {
         name: 'Envguard',
