@@ -73,6 +73,7 @@
   --duration-interactive: 150ms;
   --duration-normal: 240ms;
   --duration-slow: 240ms;
+  --duration-environment: 1100ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --opacity-disabled: 0.48;
 
@@ -223,6 +224,66 @@ body {
   background-attachment: fixed;
   background-position: center;
   color: var(--text-color);
+}
+
+/* ========================================= */
+/* Global environment (End / Nether) wallpaper system */
+.environment-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.environment-layer {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity var(--duration-environment) var(--ease-standard);
+  will-change: opacity;
+}
+
+.environment-layer-end {
+  background-image: url('/wallpapers/end.jpg');
+  opacity: 1;
+}
+
+.environment-layer-nether {
+  background-image: url('/wallpapers/nether.jpg');
+  opacity: 0;
+}
+
+body.nether .environment-layer-end {
+  opacity: 0;
+}
+
+body.nether .environment-layer-nether {
+  opacity: 1;
+}
+
+.environment-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 20, 0.62) 0%,
+    rgba(9, 9, 20, 0.8) 45%,
+    rgba(6, 6, 14, 0.94) 100%
+  );
+  transition: background var(--duration-environment) var(--ease-standard);
+}
+
+body.nether .environment-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(28, 9, 6, 0.58) 0%,
+    rgba(21, 8, 7, 0.78) 45%,
+    rgba(12, 6, 6, 0.94) 100%
+  );
 }
 
 .back-to-top {
@@ -2366,6 +2427,11 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .environment-layer,
+  .environment-overlay {
+    transition: none;
   }
 
   .menu-frame,

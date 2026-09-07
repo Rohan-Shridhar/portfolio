@@ -7,6 +7,16 @@ import Contact from './Contact.jsx'
 import Projects from './Projects.jsx'
 import Footer from './Footer.jsx'
 
+function EnvironmentBackground() {
+  return (
+    <div className="environment-background" aria-hidden="true">
+      <span className="environment-layer environment-layer-end" />
+      <span className="environment-layer environment-layer-nether" />
+      <span className="environment-overlay" />
+    </div>
+  )
+}
+
 function App() {
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,6 +39,8 @@ function App() {
   }
 
   return (<>
+    <EnvironmentBackground />
+
     <header className="site-header">
       <Menu isScrolled={isScrolled} />
     </header>
