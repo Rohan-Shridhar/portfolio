@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import profile from './assets/images/pfp.jpeg';
+import profile from './assets/images/chick.jpg';
 import { Badge, BlockButton, BlockCard, PixelBorder } from './components/ui/index.js';
 import {
     ENVIRONMENTS,
@@ -35,7 +35,6 @@ export default function Home(){
 
     return (
         <div className="home-cont hero-section" id="home">
-            <div className="hero-environment" aria-hidden="true" />
             <BlockCard
                 as="section"
                 className="hero-shell"
@@ -54,8 +53,8 @@ export default function Home(){
                 <div className="hero-copy hero-block-fall">
                     <div className="hero-identity">
                         <span className="hero-eyebrow">PLAYER IDENTITY</span>
-                        <h1 id="hero-title">Hi, I'm Rohan S M</h1>
-                        <p className="hero-role">Frontend Developer</p>
+                        <h1 id="hero-title">Hi, I'm Rohan </h1>
+                        <p className="hero-role">Software Developer</p>
                     </div>
 
                     <div className="home-btn-cont hero-actions hero-block-fall" role="group" aria-label="Hero actions">
