@@ -38,7 +38,7 @@ export function applyEnvironment(environment) {
 
 export function startEnvironmentTransition(duration = 600) {
     if (typeof document === 'undefined' || typeof window === 'undefined') return;
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches) return;
 
     const body = document.body;
     window.clearTimeout(environmentTransitionTimeout);
