@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+@import './components/ui/ui.css';
+
 :root {
+  /* Existing theme contract is preserved until individual sections are redesigned. */
   --font-family: 'Minecraft', sans-serif;
   --bg: linear-gradient(180deg,
       #020617,
@@ -19,24 +23,67 @@
   --text-mini: 2vh;
   --title: 8vh;
   --width: 170px;
+
+  /* Minecraft-inspired design-system tokens for new shared primitives. */
+  --font-family-ui: 'JetBrains Mono', 'Courier New', monospace;
+  --font-family-pixel: 'Minecraft', 'JetBrains Mono', 'Courier New', monospace;
+  --color-grass: #7CB342;
+  --color-stone: #8B8B8B;
+  --color-dirt: #8B7355;
+  --color-oak-wood: #8B4513;
+  --color-diamond: #33EBDC;
+  --color-diamond-dark: #20BFAF;
+  --color-redstone: #C41E3A;
+  --color-redstone-dark: #8F142A;
+  --color-sky-blue: #87CEEB;
+  --color-obsidian: #0F0F1E;
+  --color-leaves: #558B2F;
+  --color-white: #FFFFFF;
+  --color-canvas: var(--color-obsidian);
+  --color-surface: rgba(139, 139, 139, 0.12);
+  --color-surface-raised: rgba(139, 115, 85, 0.28);
+  --color-text-primary: var(--color-white);
+  --color-text-secondary: rgba(255, 255, 255, 0.78);
+  --color-text-tertiary: rgba(255, 255, 255, 0.58);
+  --color-border: rgba(139, 139, 139, 0.42);
+  --color-border-strong: var(--color-stone);
+  --color-focus: var(--color-diamond);
+  --color-on-accent: var(--color-obsidian);
+  --color-overlay: rgba(15, 15, 30, 0.9);
+  --border-hairline: 1px;
+  --border-thin: 2px;
+  --border-medium: 4px;
+  --radius-none: 0px;
+  --radius-control: 0px;
+  --shadow-sm: 0 2px 0 rgba(0, 0, 0, 0.52), 0 5px 12px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 3px 0 rgba(0, 0, 0, 0.62), 0 12px 28px rgba(0, 0, 0, 0.3);
+  --shadow-inset: inset 2px 2px 0 rgba(255, 255, 255, 0.14), inset -2px -2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-pressed: inset 2px 2px 0 rgba(0, 0, 0, 0.42), inset -1px -1px 0 rgba(255, 255, 255, 0.12);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --duration-fast: 120ms;
+  --duration-interactive: 150ms;
+  --duration-normal: 240ms;
+  --duration-slow: 240ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --opacity-disabled: 0.48;
 }
 
 @font-face {
   font-family: 'Minecraft';
-  src: url("/fonts/Minecraft.woff2") format("woff2");
+  src: url('/fonts/Minecraft.woff2') format('woff2');
   font-display: swap;
 }
 
-/*
-.light {
-  --bg: linear-gradient(180deg, maroon, red, orangered, pink, pink, lightpink);
-  --text-color: black;
-  --btn-bg: red;
-  --btn-shadow: orangered;
-  --btn-txt: black;
-  --opp: white;
-}
-*/
+/* Existing theme toggles are preserved. These additional values are consumed only by new primitives. */
 .light {
   --bg: linear-gradient(180deg,
       gainsboro,
@@ -56,24 +103,6 @@
   --skill-shadow: rgba(15, 23, 42, 0.08);
 }
 
-/*
-.light {
-  --bg: linear-gradient(180deg, olive, goldenrod, gold, yellow, yellow, khaki);
-  --text-color: black;
-  --btn-bg: khaki;
-  --btn-shadow: gold;
-  --btn-txt: black;
-  --opp: white;
-}
-
-.space {
-  --bg: linear-gradient(180deg, navy, blue, royalblue, skyblue, skyblue, powderblue);
-  --text-color: white;
-  --btn-bg: blue;
-  --btn-shadow: royalblue;
-  --btn-txt: white;
-  --opp: black;
-}*/
 .space {
   --bg: linear-gradient(180deg,
       #020617,
@@ -89,9 +118,60 @@
   --opp: black;
 }
 
+body.light {
+  --color-canvas: var(--color-sky-blue);
+  --color-surface: rgba(255, 255, 255, 0.72);
+  --color-surface-raised: var(--color-white);
+  --color-text-primary: var(--color-obsidian);
+  --color-text-secondary: rgba(15, 15, 30, 0.74);
+  --color-text-tertiary: rgba(15, 15, 30, 0.58);
+  --color-border: rgba(15, 15, 30, 0.34);
+  --color-border-strong: var(--color-obsidian);
+  --color-focus: var(--color-oak-wood);
+  --color-on-accent: var(--color-white);
+  --color-overlay: rgba(255, 255, 255, 0.92);
+}
+
+body.space {
+  --color-canvas: var(--color-obsidian);
+  --color-surface: rgba(139, 139, 139, 0.12);
+  --color-surface-raised: rgba(139, 115, 85, 0.28);
+  --color-text-primary: var(--color-white);
+  --color-text-secondary: rgba(255, 255, 255, 0.78);
+  --color-text-tertiary: rgba(255, 255, 255, 0.58);
+  --color-border: rgba(139, 139, 139, 0.42);
+  --color-border-strong: var(--color-stone);
+  --color-focus: var(--color-diamond);
+  --color-on-accent: var(--color-obsidian);
+  --color-overlay: rgba(15, 15, 30, 0.9);
+}
+
 html {
   scroll-behavior: smooth;
   font-family: var(--font-family);
+}
+
+:focus-visible {
+  outline: var(--border-thin) solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+body,
+button,
+input,
+textarea,
+select,
+option {
+  font-family: var(--font-family);
+}
+
+body {
+  background: var(--bg);
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: var(--text-color);
 }
 
 .back-to-top {
@@ -133,25 +213,7 @@ html {
   stroke-linejoin: round;
 }
 
-body,
-button,
-input,
-textarea,
-select,
-option {
-  font-family: var(--font-family);
-}
-
-body {
-  background: var(--bg);
-  justify-content: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  color: var(--text-color);
-}
-
-/* ========================================= 
+/* =========================================
 .menu {
   position: absolute;
   top: 0;
@@ -167,7 +229,7 @@ body {
 .panel::-webkit-scrollbar {
   display: none;
 }
- ========================================= */
+========================================= */
 .menu-bar {
   margin-top: 20px;
   display: grid;
@@ -218,10 +280,6 @@ body {
 
 .home-btn-cont span {
   text-align: center;
-}
-
-.home-cont i {
-  margin-left: 10px;
 }
 
 .theme-btn {
@@ -853,5 +911,11 @@ body {
   /* --- Footer --- */
   .footer-cont {
     text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

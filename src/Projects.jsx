@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import project1 from './assets/images/grid.png';
 import project2 from './assets/images/clipboard.png';
 import project3 from './assets/images/envguard.png';
