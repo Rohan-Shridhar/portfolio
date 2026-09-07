@@ -2,6 +2,7 @@ import { forwardRef } from 'react'
 
 const BlockButton = forwardRef(function BlockButton(
   {
+    as: Component = 'button',
     variant = 'grass',
     size = 'md',
     icon = null,
@@ -21,9 +22,9 @@ const BlockButton = forwardRef(function BlockButton(
   ) : null
 
   return (
-    <button
+    <Component
       ref={ref}
-      type={type}
+      type={Component === 'button' ? type : undefined}
       className={classes}
       data-variant={variant}
       data-size={size}
@@ -32,7 +33,7 @@ const BlockButton = forwardRef(function BlockButton(
       {iconPosition === 'start' && iconSlot}
       {children && <span className="block-button__label">{children}</span>}
       {iconPosition === 'end' && iconSlot}
-    </button>
+    </Component>
   )
 })
 

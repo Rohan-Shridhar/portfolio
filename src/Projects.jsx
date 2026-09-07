@@ -2,87 +2,149 @@ import { useEffect } from 'react';
 import project1 from './assets/images/grid.png';
 import project2 from './assets/images/clipboard.png';
 import project3 from './assets/images/envguard.png';
+import { Badge, BlockButton, BlockCard, PixelBorder } from './components/ui/index.js';
+
+const projects = [
+    {
+        name: 'GridCraft',
+        image: project1,
+        alt: 'GridCraft project preview',
+        description: 'Front end application using react.js that runs directly in your browser used to create pixel arts in a 16 X 16 grid and download as an image',
+        badges: [{ label: 'React.js', variant: 'diamond' }],
+        github: 'https://github.com/Rohan-Shridhar/gridcraft',
+        demo: 'https://rohan-shridhar.github.io/gridcraft/',
+        demoLabel: 'Live demo',
+    },
+    {
+        name: 'Kravoxin',
+        image: project2,
+        alt: 'Kravoxin project preview',
+        description: 'Browser extension for storing copied itmes along with categorisation and editing',
+        badges: [{ label: 'Browser extension', variant: 'wood' }],
+        github: 'https://github.com/Rohan-Shridhar/Kravoxin',
+        demo: 'https://rohan-shridhar.github.io/Kravoxin/',
+        demoLabel: 'Live demo',
+    },
+    {
+        name: 'Envguard',
+        image: project3,
+        alt: 'Envguard project preview',
+        description: 'envguard is a zero-boilerplate environment variable validator for Node.js that checks all your env vars at startup, coerces types like numbers and booleans, and throws a clear combined error if anything is missing or invalid. ',
+        badges: [{ label: 'Node.js', variant: 'grass' }],
+        github: 'https://github.com/Rohan-Shridhar/envguard',
+        demo: 'https://www.npmjs.com/package/@rohansm14/envguard',
+        demoLabel: 'NPM package',
+    },
+];
+
 export default function Projects() {
     useEffect(() => {
-        const cards = document.querySelectorAll('.project-card');
-        
-        const handleMouseEnter = (e) => {
-            e.currentTarget.style.backgroundColor = 'transparent';
-            e.currentTarget.style.transform = 'translateY(-10px)';
-            e.currentTarget.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.3)';
-            const img = e.currentTarget.querySelector('img');
-            if (img) img.style.transform = 'scale(1.05)';
-        };
+        const projectSection = document.querySelector('.projects-cont');
+        const cards = [...document.querySelectorAll('.project-card')];
 
-        const handleMouseLeave = (e) => {
-            e.currentTarget.style.backgroundColor = 'var(--btn-bg)';
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
-            const img = e.currentTarget.querySelector('img');
-            if (img) img.style.transform = 'scale(1)';
-        };
+        if (!projectSection || !cards.length) return undefined;
 
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', handleMouseEnter);
-            card.addEventListener('mouseleave', handleMouseLeave);
-        });
+        projectSection.classList.add('projects-ready');
 
-        // Cleanup function to remove event listeners
-        return () => {
-            cards.forEach(card => {
-                card.removeEventListener('mouseenter', handleMouseEnter);
-                card.removeEventListener('mouseleave', handleMouseLeave);
-            });
-        };
+        if (!('IntersectionObserver' in window)) {
+            cards.forEach((card) => card.classList.add('is-visible'));
+            return undefined;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                });
+            },
+            { rootMargin: '0px 0px -10% 0px', threshold: 0.15 },
+        );
+
+        cards.forEach((card) => observer.observe(card));
+
+        return () => observer.disconnect();
     }, []);
 
     return (
-        <div className="projects-cont" id="projects">
-            <div className="project-title">What have i built?</div>
+        <section className="projects-cont" id="projects" aria-labelledby="projects-title">
+            <div className="projects-heading">
+                <span className="projects-kicker">PROJECT INVENTORY</span>
+                <h2 className="project-title" id="projects-title">What have i built?</h2>
+                <span className="projects-divider" aria-hidden="true" />
+            </div>
+
             <div className="project-cont">
-                <div className="project-card">
-                    <div className="project-card-img">
-                        <img src={project1} alt="Gridcraft" />
-                    </div>
-                    <div className="project-card-title">GridCraft</div>
-                    <div className="project-card-desc">Front end application using react.js that runs directly in your browser used to create pixel arts in a 16 X 16 grid and download as an image</div>
-                    <div className="project-card-btn">
-                        <div />
-                        <a href="https://github.com/Rohan-Shridhar/gridcraft"><i className="fab fa-github"></i></a>
-                        <a href="https://rohan-shridhar.github.io/gridcraft/"><i className="fas fa-globe"></i></a>
-                    </div>
-                </div>
-                <div className="project-card">
-                    <div className="project-card-img">
-                        <img src={project2} alt="NotJS" />
-                    </div>
-                    <div className="project-card-title">Kravoxin</div>
-                    <div className="project-card-desc">Browser extension for storing copied itmes along with categorisation and editing</div>
-                    <div className="project-card-btn">
-                        <div />
-                        <a href="https://github.com/Rohan-Shridhar/Kravoxin"><i className="fab fa-github"></i></a>
-                        <a href="https://rohan-shridhar.github.io/Kravoxin/"><i className="fas fa-globe"></i></a>
-                    </div>
-                </div>
-                <div className="project-card">
-                    <div className="project-card-img">
-                        <img src={project3} alt="To Do List" />
-                    </div>
-                    <div className="project-card-title">Envguard</div>
-                    <div className="project-card-desc">envguard is a zero-boilerplate environment variable validator for Node.js that checks all your env vars at startup, coerces types like numbers and booleans, and throws a clear combined error if anything is missing or invalid. </div>
-                    <div className="project-card-btn">
-                        <div />
-                        <a href="https://github.com/Rohan-Shridhar/envguard"><i className="fab fa-github"></i></a>
-                        <a href="https://www.npmjs.com/package/@rohansm14/envguard"><i className="fas fa-globe"></i></a>
-                    </div>
-                </div>
+                {projects.map((project) => (
+                    <BlockCard
+                        as="article"
+                        className="project-card"
+                        variant="stone"
+                        inset
+                        key={project.name}
+                    >
+                        <PixelBorder className="project-card-img" variant="wood" inset>
+                            <img src={project.image} alt={project.alt} loading="lazy" />
+                        </PixelBorder>
+
+                        <div className="project-card-content">
+                            <h3 className="project-card-title">{project.name}</h3>
+                            <p className="project-card-desc">{project.description}</p>
+                            <div className="project-card-badges" role="group" aria-label={`${project.name} technologies and format`}>
+                                {project.badges.map((badge) => (
+                                    <Badge variant={badge.variant} key={badge.label}>{badge.label}</Badge>
+                                ))}
+                            </div>
+                        </div>
+
+                        <span className="project-card-tooltip" aria-hidden="true">
+                            <strong>{project.name}</strong>
+                            <span>Build links below</span>
+                        </span>
+
+                        <div className="project-card-btn" role="group" aria-label={`${project.name} links`}>
+                            <BlockButton
+                                as="a"
+                                className="project-link project-link-github"
+                                variant="stone"
+                                size="sm"
+                                href={project.github}
+                                icon={<i className="fab fa-github" />}
+                                aria-label={`${project.name} GitHub repository`}
+                            >
+                                GitHub
+                            </BlockButton>
+                            <BlockButton
+                                as="a"
+                                className="project-link project-link-demo"
+                                variant="diamond"
+                                size="sm"
+                                href={project.demo}
+                                icon={<i className="fas fa-globe" />}
+                                aria-label={`${project.name} ${project.demoLabel}`}
+                            >
+                                {project.demoLabel}
+                            </BlockButton>
+                        </div>
+                    </BlockCard>
+                ))}
             </div>
+
             <div className="explore-more-cont">
-                <a href="https://rohan-shridhar.github.io/rohan-shridhar/" target="_blank" rel="noopener noreferrer" className="explore-more-btn">
-                    Explore more projects <i className="fas fa-arrow-right"></i>
-                </a>
+                <BlockButton
+                    as="a"
+                    href="https://rohan-shridhar.github.io/rohan-shridhar/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="explore-more-btn"
+                    variant="wood"
+                    icon={<i className="fas fa-arrow-right" />}
+                    iconPosition="end"
+                >
+                    Explore more projects
+                </BlockButton>
             </div>
-        </div>
+        </section>
     );
 }
-
