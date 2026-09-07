@@ -2,29 +2,13 @@
 @import './components/ui/ui.css';
 
 :root {
-  /* Existing theme contract is preserved until individual sections are redesigned. */
   --font-family: 'Minecraft', sans-serif;
-  --bg: linear-gradient(180deg,
-      #020617,
-      #020024,
-      #0a0f2c,
-      #0f172a,
-      #0f172a,
-      #1e3a8a);
-  --text-color: white;
-  --btn-bg: #1e3a8a;
-  --btn-shadow: #0a0f2c;
-  --btn-txt: white;
-  --opp: black;
-  --skill-surface: rgba(255, 255, 255, 0.08);
-  --skill-border: rgba(255, 255, 255, 0.16);
-  --skill-shadow: rgba(2, 6, 23, 0.24);
   --text: 4vh;
   --text-mini: 2vh;
   --title: 8vh;
   --width: 170px;
 
-  /* Minecraft-inspired design-system tokens for new shared primitives. */
+  /* Minecraft-inspired design-system tokens for shared primitives. */
   --font-family-ui: 'JetBrains Mono', 'Courier New', monospace;
   --font-family-pixel: 'Minecraft', 'JetBrains Mono', 'Courier New', monospace;
   --color-grass: #7CB342;
@@ -39,17 +23,38 @@
   --color-obsidian: #0F0F1E;
   --color-leaves: #558B2F;
   --color-white: #FFFFFF;
-  --color-canvas: var(--color-obsidian);
-  --color-surface: rgba(139, 139, 139, 0.12);
-  --color-surface-raised: rgba(139, 115, 85, 0.28);
-  --color-text-primary: var(--color-white);
-  --color-text-secondary: rgba(255, 255, 255, 0.78);
-  --color-text-tertiary: rgba(255, 255, 255, 0.58);
-  --color-border: rgba(139, 139, 139, 0.42);
-  --color-border-strong: var(--color-stone);
-  --color-focus: var(--color-diamond);
-  --color-on-accent: var(--color-obsidian);
-  --color-overlay: rgba(15, 15, 30, 0.9);
+
+  /* ===== Global environment theme — END is the default, NETHER overrides below ===== */
+  --theme-bg: #0B0712;
+  --theme-void: #120B1F;
+  --theme-surface: #171122;
+  --theme-surface-hover: #292039;
+  --theme-border: #513A70;
+  --theme-border-strong: #6F42C1;
+  --theme-text: #F5F0FF;
+  --theme-muted: #B8A9C9;
+  --theme-accent: #B86BFF;
+  --theme-highlight: #D8B4FE;
+  --theme-shadow: rgba(6, 3, 12, 0.55);
+  --theme-overlay-top: rgba(18, 11, 31, 0.42);
+  --theme-overlay-mid: rgba(15, 9, 24, 0.58);
+  --theme-overlay-bottom: rgba(9, 6, 16, 0.76);
+
+  /* Semantic aliases consumed by shared primitives — automatically follow the active theme. */
+  --color-canvas: var(--theme-bg);
+  --color-surface: color-mix(in srgb, var(--theme-surface) 55%, transparent);
+  --color-surface-raised: color-mix(in srgb, var(--theme-surface-hover) 65%, transparent);
+  --color-text-primary: var(--theme-text);
+  --color-text-secondary: color-mix(in srgb, var(--theme-text) 78%, transparent);
+  --color-text-tertiary: color-mix(in srgb, var(--theme-text) 58%, transparent);
+  --color-border: color-mix(in srgb, var(--theme-border) 65%, transparent);
+  --color-border-strong: var(--theme-border-strong);
+  --color-focus: var(--theme-accent);
+  --color-on-accent: var(--theme-bg);
+  --color-overlay: color-mix(in srgb, var(--theme-bg) 90%, transparent);
+  --text-color: var(--theme-text);
+  --opp: var(--theme-accent);
+
   --border-hairline: 1px;
   --border-thin: 2px;
   --border-medium: 4px;
@@ -73,7 +78,8 @@
   --duration-interactive: 150ms;
   --duration-normal: 240ms;
   --duration-slow: 240ms;
-  --duration-environment: 1100ms;
+  --duration-theme: 480ms;
+  --duration-environment: 600ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --opacity-disabled: 0.48;
 
@@ -81,120 +87,30 @@
   --page-gutter: clamp(16px, 4vw, 48px);
   --nav-offset: 112px;
   --control-touch-min: 44px;
-  --layout-background: var(--color-obsidian);
-  --layout-texture: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.018) 0,
-    rgba(255, 255, 255, 0.018) 1px,
-    transparent 1px,
-    transparent 32px
-  ), repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.012) 0,
-    rgba(255, 255, 255, 0.012) 1px,
-    transparent 1px,
-    transparent 32px
-  );
-  --layout-divider: rgba(139, 139, 139, 0.3);
+  --layout-divider: color-mix(in srgb, var(--theme-border) 55%, transparent);
+}
+
+body.nether {
+  --theme-bg: #170706;
+  --theme-void: #240A08;
+  --theme-surface: #21100D;
+  --theme-surface-hover: #3A1813;
+  --theme-border: #743025;
+  --theme-border-strong: #C0392B;
+  --theme-text: #FFF4E8;
+  --theme-muted: #CDB7AA;
+  --theme-accent: #FF6B35;
+  --theme-highlight: #FF9D2E;
+  --theme-shadow: rgba(23, 7, 6, 0.55);
+  --theme-overlay-top: rgba(28, 9, 6, 0.4);
+  --theme-overlay-mid: rgba(21, 8, 7, 0.56);
+  --theme-overlay-bottom: rgba(12, 6, 6, 0.74);
 }
 
 @font-face {
   font-family: 'Minecraft';
   src: url('/fonts/Minecraft.woff2') format('woff2');
   font-display: swap;
-}
-
-/* Existing theme toggles are preserved. These additional values are consumed only by new primitives. */
-.light {
-  --bg: linear-gradient(180deg,
-      gainsboro,
-      whitesmoke,
-      ghostwhite,
-      snow,
-      snow,
-      snow,
-      lightgray);
-  --text-color: black;
-  --btn-bg: #64748b;
-  --btn-shadow: #475569;
-  --btn-txt: white;
-  --opp: lightgray;
-  --skill-surface: rgba(255, 255, 255, 0.8);
-  --skill-border: rgba(15, 23, 42, 0.08);
-  --skill-shadow: rgba(15, 23, 42, 0.08);
-  --layout-background: var(--color-sky-blue);
-  --layout-texture: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.16) 0,
-    rgba(255, 255, 255, 0.16) 1px,
-    transparent 1px,
-    transparent 36px
-  ), repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.1) 0,
-    rgba(255, 255, 255, 0.1) 1px,
-    transparent 1px,
-    transparent 36px
-  );
-  --layout-divider: rgba(139, 69, 19, 0.42);
-}
-
-.space {
-  --bg: linear-gradient(180deg,
-      #020617,
-      #020024,
-      #0a0f2c,
-      #0f172a,
-      #0f172a,
-      #1e3a8a);
-  --text-color: white;
-  --btn-bg: #1e3a8a;
-  --btn-shadow: #0a0f2c;
-  --btn-txt: white;
-  --opp: black;
-  --layout-background: var(--color-obsidian);
-  --layout-texture: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.018) 0,
-    rgba(255, 255, 255, 0.018) 1px,
-    transparent 1px,
-    transparent 32px
-  ), repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.012) 0,
-    rgba(255, 255, 255, 0.012) 1px,
-    transparent 1px,
-    transparent 32px
-  );
-  --layout-divider: rgba(139, 139, 139, 0.3);
-}
-
-body.light {
-  --color-canvas: var(--color-sky-blue);
-  --color-surface: rgba(255, 255, 255, 0.72);
-  --color-surface-raised: var(--color-white);
-  --color-text-primary: var(--color-obsidian);
-  --color-text-secondary: rgba(15, 15, 30, 0.74);
-  --color-text-tertiary: rgba(15, 15, 30, 0.58);
-  --color-border: rgba(15, 15, 30, 0.34);
-  --color-border-strong: var(--color-obsidian);
-  --color-focus: var(--color-oak-wood);
-  --color-on-accent: var(--color-white);
-  --color-overlay: rgba(255, 255, 255, 0.92);
-}
-
-body.space {
-  --color-canvas: var(--color-obsidian);
-  --color-surface: rgba(139, 139, 139, 0.12);
-  --color-surface-raised: rgba(139, 115, 85, 0.28);
-  --color-text-primary: var(--color-white);
-  --color-text-secondary: rgba(255, 255, 255, 0.78);
-  --color-text-tertiary: rgba(255, 255, 255, 0.58);
-  --color-border: rgba(139, 139, 139, 0.42);
-  --color-border-strong: var(--color-stone);
-  --color-focus: var(--color-diamond);
-  --color-on-accent: var(--color-obsidian);
-  --color-overlay: rgba(15, 15, 30, 0.9);
 }
 
 html {
@@ -217,13 +133,11 @@ option {
 }
 
 body {
-  background-color: var(--layout-background);
-  background-image: var(--layout-texture), var(--bg);
+  background-color: var(--theme-bg);
   justify-content: center;
-  background-repeat: repeat, no-repeat;
-  background-attachment: fixed;
-  background-position: center;
   color: var(--text-color);
+  transition: background-color var(--duration-environment) var(--ease-standard),
+    color var(--duration-theme) var(--ease-standard);
 }
 
 /* ========================================= */
@@ -239,7 +153,6 @@ body {
 .environment-layer {
   position: absolute;
   inset: 0;
-  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0;
@@ -249,11 +162,13 @@ body {
 
 .environment-layer-end {
   background-image: url('/wallpapers/end.jpg');
+  background-position: center 38%;
   opacity: 1;
 }
 
 .environment-layer-nether {
-  background-image: url('/wallpapers/nether.jpg');
+  background-image: url('/wallpapers/nether.jpeg');
+  background-position: center 55%;
   opacity: 0;
 }
 
@@ -270,20 +185,11 @@ body.nether .environment-layer-nether {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(9, 9, 20, 0.62) 0%,
-    rgba(9, 9, 20, 0.8) 45%,
-    rgba(6, 6, 14, 0.94) 100%
+    var(--theme-overlay-top) 0%,
+    var(--theme-overlay-mid) 45%,
+    var(--theme-overlay-bottom) 100%
   );
   transition: background var(--duration-environment) var(--ease-standard);
-}
-
-body.nether .environment-overlay {
-  background: linear-gradient(
-    180deg,
-    rgba(28, 9, 6, 0.58) 0%,
-    rgba(21, 8, 7, 0.78) 45%,
-    rgba(12, 6, 6, 0.94) 100%
-  );
 }
 
 .back-to-top {
@@ -292,10 +198,10 @@ body.nether .environment-overlay {
   bottom: 24px;
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: var(--border-hairline) solid var(--theme-border);
   border-radius: 999px;
-  background: rgba(30, 58, 138, 0.9);
-  color: var(--btn-txt);
+  background: color-mix(in srgb, var(--theme-surface) 78%, transparent);
+  color: var(--theme-text);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -303,7 +209,13 @@ body.nether .environment-overlay {
   z-index: 1000;
   box-shadow: 0 12px 30px rgba(2, 6, 23, 0.25);
   backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease,
+    background-color var(--duration-theme) var(--ease-standard),
+    border-color var(--duration-theme) var(--ease-standard);
+}
+
+.back-to-top:hover {
+  border-color: var(--theme-accent);
 }
 
 .back-to-top:hover {
@@ -360,26 +272,18 @@ body.nether .environment-overlay {
   margin: 0 auto;
   padding: var(--space-2);
   border-color: var(--color-border-strong);
-  background: rgba(15, 15, 30, 0.9);
+  background: color-mix(in srgb, var(--theme-surface) 62%, transparent);
   color: var(--color-text-primary);
   box-shadow: var(--shadow-inset), var(--shadow-sm);
-  transition: background-color var(--duration-interactive) var(--ease-standard),
+  transition: background-color var(--duration-theme) var(--ease-standard),
     box-shadow var(--duration-interactive) var(--ease-standard),
-    border-color var(--duration-interactive) var(--ease-standard);
+    border-color var(--duration-theme) var(--ease-standard);
 }
 
 .menu-frame.is-scrolled {
-  background: rgba(15, 15, 30, 0.98);
-  border-color: var(--color-stone);
+  background: color-mix(in srgb, var(--theme-surface) 82%, transparent);
+  border-color: var(--theme-border-strong);
   box-shadow: var(--shadow-inset), var(--shadow-md);
-}
-
-.light .menu-frame {
-  background: rgba(255, 255, 255, 0.92);
-}
-
-.light .menu-frame.is-scrolled {
-  background: rgba(255, 255, 255, 0.98);
 }
 
 .menu-bar {
@@ -404,9 +308,9 @@ body.nether .environment-overlay {
   gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
   overflow: hidden;
-  border: var(--border-hairline) solid rgba(139, 139, 139, 0.48);
+  border: var(--border-hairline) solid var(--color-border);
   border-radius: var(--radius-none);
-  background: rgba(15, 15, 30, 0.88);
+  background: color-mix(in srgb, var(--theme-surface) 55%, transparent);
   color: var(--color-text-secondary);
   font-family: var(--font-family-ui);
   font-size: clamp(0.7rem, 1.1vw, 0.875rem);
@@ -415,16 +319,11 @@ body.nether .environment-overlay {
   line-height: 1.2;
   text-decoration: none;
   box-shadow: var(--shadow-inset);
-  transition: background-color var(--duration-interactive) var(--ease-standard),
+  transition: background-color var(--duration-theme) var(--ease-standard),
     border-color var(--duration-interactive) var(--ease-standard),
     box-shadow var(--duration-interactive) var(--ease-standard),
-    color var(--duration-interactive) var(--ease-standard),
+    color var(--duration-theme) var(--ease-standard),
     transform var(--duration-fast) var(--ease-standard);
-}
-
-.light .menu-link {
-  background: rgba(255, 255, 255, 0.76);
-  color: rgba(15, 15, 30, 0.76);
 }
 
 .menu-link::after {
@@ -433,23 +332,20 @@ body.nether .environment-overlay {
   bottom: 3px;
   left: var(--space-2);
   height: 2px;
-  background: var(--color-diamond);
+  background: var(--theme-accent);
   content: '';
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform var(--duration-interactive) var(--ease-standard);
+  transition: transform var(--duration-interactive) var(--ease-standard),
+    background-color var(--duration-theme) var(--ease-standard);
 }
 
 .menu-link:hover {
-  border-color: rgba(51, 235, 220, 0.7);
-  background: rgba(139, 139, 139, 0.2);
+  border-color: color-mix(in srgb, var(--theme-accent) 70%, transparent);
+  background: color-mix(in srgb, var(--theme-surface-hover) 55%, transparent);
   color: var(--color-white);
   transform: translateY(-1px) scale(1.01);
-  box-shadow: var(--shadow-inset), 0 0 0 1px rgba(51, 235, 220, 0.14);
-}
-
-.light .menu-link:hover {
-  color: var(--color-obsidian);
+  box-shadow: var(--shadow-inset), 0 0 0 1px color-mix(in srgb, var(--theme-accent) 14%, transparent);
 }
 
 .menu-link:active {
@@ -458,10 +354,10 @@ body.nether .environment-overlay {
 }
 
 .menu-link[aria-current='page'] {
-  border-color: var(--color-diamond);
-  background: rgba(51, 235, 220, 0.12);
-  color: var(--color-diamond);
-  box-shadow: var(--shadow-inset), 0 0 0 1px rgba(51, 235, 220, 0.18);
+  border-color: var(--theme-accent);
+  background: color-mix(in srgb, var(--theme-highlight) 16%, transparent);
+  color: var(--theme-accent);
+  box-shadow: var(--shadow-inset), 0 0 0 1px color-mix(in srgb, var(--theme-accent) 18%, transparent);
 }
 
 .menu-link[aria-current='page']::after {
@@ -581,34 +477,6 @@ body.nether .environment-overlay {
   opacity: 0.7;
 }
 
-.light .hero-environment {
-  background:
-    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.42), transparent 28%),
-    linear-gradient(160deg, rgba(135, 206, 235, 0.92), rgba(135, 206, 235, 0.68));
-}
-
-.light .hero-environment::before {
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent 0 35px,
-    rgba(255, 255, 255, 0.14) 35px 36px
-  ), repeating-linear-gradient(
-    0deg,
-    transparent 0 35px,
-    rgba(255, 255, 255, 0.14) 35px 36px
-  );
-}
-
-.light .hero-environment::after {
-  background: var(--color-white);
-  box-shadow:
-    76px 28px 0 rgba(255, 255, 255, 0.62),
-    144px 84px 0 rgba(255, 255, 255, 0.46),
-    224px 20px 0 rgba(51, 235, 220, 0.46),
-    -90px 148px 0 rgba(255, 255, 255, 0.5),
-    -176px 64px 0 rgba(255, 255, 255, 0.38);
-}
-
 .hero-shell {
   position: relative;
   z-index: 1;
@@ -618,16 +486,12 @@ body.nether .environment-overlay {
   padding: clamp(24px, 5vw, 64px);
   gap: clamp(28px, 6vw, 80px);
   align-items: center;
-  border-color: var(--color-stone);
-  background: rgba(15, 15, 30, 0.82);
+  border-color: var(--theme-border-strong);
+  background: color-mix(in srgb, var(--theme-surface) 72%, transparent);
   color: var(--color-text-primary);
   box-shadow: var(--shadow-inset), var(--shadow-md);
-}
-
-.light .hero-shell {
-  border-color: var(--color-oak-wood);
-  background: rgba(255, 255, 255, 0.84);
-  color: var(--color-obsidian);
+  transition: background-color var(--duration-theme) var(--ease-standard),
+    border-color var(--duration-theme) var(--ease-standard);
 }
 
 .hero-avatar-frame {
@@ -666,9 +530,9 @@ body.nether .environment-overlay {
 }
 
 .hero-avatar-frame:hover {
-  border-color: var(--color-diamond);
+  border-color: var(--theme-accent);
   transform: translateY(-2px) scale(1.01);
-  box-shadow: var(--shadow-inset), 0 0 0 2px rgba(51, 235, 220, 0.2), var(--shadow-md);
+  box-shadow: var(--shadow-inset), 0 0 0 2px color-mix(in srgb, var(--theme-accent) 20%, transparent), var(--shadow-md);
 }
 
 .hero-avatar {
@@ -764,25 +628,20 @@ body.nether .environment-overlay {
   gap: var(--space-1);
   padding: var(--space-2);
   border: var(--border-hairline) solid var(--color-border);
-  background: rgba(15, 15, 30, 0.38);
+  background: color-mix(in srgb, var(--theme-surface) 38%, transparent);
   color: var(--color-text-secondary);
   font-family: var(--font-family-ui);
   font-size: clamp(0.64rem, 1.1vw, 0.76rem);
   letter-spacing: 0.05em;
   text-align: center;
   transition: border-color var(--duration-interactive) var(--ease-standard),
-    background-color var(--duration-interactive) var(--ease-standard),
+    background-color var(--duration-theme) var(--ease-standard),
     transform var(--duration-fast) var(--ease-standard);
 }
 
-.light .hero-hud-item {
-  background: rgba(255, 255, 255, 0.56);
-  color: rgba(15, 15, 30, 0.72);
-}
-
 .hero-hud-item:hover {
-  border-color: var(--color-diamond);
-  background: rgba(51, 235, 220, 0.1);
+  border-color: var(--theme-accent);
+  background: color-mix(in srgb, var(--theme-highlight) 12%, transparent);
   transform: translateY(-1px);
 }
 
@@ -869,7 +728,7 @@ body.nether .environment-overlay {
   width: min(300px, 68vw);
   height: 4px;
   background: var(--color-stone);
-  box-shadow: 12px 0 0 var(--color-dirt), 24px 0 0 var(--color-diamond);
+  box-shadow: 12px 0 0 var(--color-dirt), 24px 0 0 var(--theme-accent);
 }
 
 .about-profile-grid {
@@ -888,15 +747,11 @@ body.nether .environment-overlay {
   min-width: 0;
   border-color: var(--color-border-strong);
   border-radius: var(--radius-none);
-  background: rgba(15, 15, 30, 0.7);
+  background: color-mix(in srgb, var(--theme-surface) 60%, transparent);
   color: var(--color-text-primary);
   box-shadow: var(--shadow-inset), var(--shadow-sm);
-}
-
-.light .about-profile-panel,
-.light .about-copy-panel,
-.light .about-info-panel {
-  background: rgba(255, 255, 255, 0.78);
+  transition: background-color var(--duration-theme) var(--ease-standard),
+    border-color var(--duration-theme) var(--ease-standard);
 }
 
 .about-profile-panel {
@@ -988,7 +843,7 @@ body.nether .environment-overlay {
   width: min(220px, 46%);
   height: 3px;
   background: var(--color-stone);
-  box-shadow: 12px 0 0 var(--color-diamond);
+  box-shadow: 12px 0 0 var(--theme-accent);
 }
 
 .about-desc {
@@ -1002,12 +857,8 @@ body.nether .environment-overlay {
   text-align: left;
 }
 
-.light .about-desc {
-  color: var(--color-text-secondary);
-}
-
 .about-info-heading {
-  color: var(--color-diamond);
+  color: var(--theme-accent);
   font-size: 0.78rem;
   letter-spacing: 0.14em;
 }
@@ -1030,11 +881,7 @@ body.nether .environment-overlay {
   overflow-wrap: anywhere;
   border-right: var(--border-hairline) solid var(--color-border);
   border-bottom: var(--border-hairline) solid var(--color-border);
-  background: rgba(15, 15, 30, 0.46);
-}
-
-.light .about-info-slot {
-  background: rgba(255, 255, 255, 0.58);
+  background: color-mix(in srgb, var(--theme-surface) 40%, transparent);
 }
 
 .about-info-slot:last-child::after {
@@ -1043,7 +890,7 @@ body.nether .environment-overlay {
   bottom: 0;
   width: 4px;
   height: 4px;
-  background: var(--color-diamond);
+  background: var(--theme-accent);
   content: '';
 }
 
@@ -1140,7 +987,7 @@ body.nether .environment-overlay {
   width: min(300px, 68vw);
   height: 4px;
   background: var(--color-stone);
-  box-shadow: 12px 0 0 var(--color-dirt), 24px 0 0 var(--color-diamond);
+  box-shadow: 12px 0 0 var(--color-dirt), 24px 0 0 var(--theme-accent);
 }
 
 .contact-grid {
@@ -1157,18 +1004,20 @@ body.nether .environment-overlay {
   box-shadow: var(--shadow-inset), var(--shadow-sm);
 }
 
+.contact-social-panel,
+.contact-email-panel {
+  transition: background-color var(--duration-theme) var(--ease-standard),
+    border-color var(--duration-theme) var(--ease-standard);
+}
+
 .contact-social-panel {
   border-color: var(--color-dirt);
-  background: var(--color-oak-wood);
+  background: color-mix(in srgb, var(--color-oak-wood) 58%, transparent);
 }
 
 .contact-email-panel {
   border-color: var(--color-stone);
-  background: rgba(15, 15, 30, 0.72);
-}
-
-.light .contact-email-panel {
-  background: rgba(255, 255, 255, 0.82);
+  background: color-mix(in srgb, var(--theme-surface) 60%, transparent);
 }
 
 .contact-panel-heading {
@@ -1196,7 +1045,7 @@ body.nether .environment-overlay {
   width: min(180px, 48%);
   height: 3px;
   background: var(--color-stone);
-  box-shadow: 12px 0 0 var(--color-diamond);
+  box-shadow: 12px 0 0 var(--theme-accent);
 }
 
 .contact-icons {
@@ -1222,9 +1071,9 @@ body.nether .environment-overlay {
 }
 
 .block-button.contact-link {
-  --block-bg: rgba(15, 15, 30, 0.82);
-  --block-hover: rgba(51, 235, 220, 0.12);
-  --block-border: rgba(255, 255, 255, 0.24);
+  --block-bg: color-mix(in srgb, var(--theme-surface) 68%, transparent);
+  --block-hover: color-mix(in srgb, var(--theme-highlight) 14%, transparent);
+  --block-border: var(--color-border);
   --block-text: var(--color-white);
   width: 100%;
   min-height: 96px;
@@ -1236,33 +1085,21 @@ body.nether .environment-overlay {
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-align: center;
-  transition: background-color var(--duration-interactive) var(--ease-standard),
+  transition: background-color var(--duration-theme) var(--ease-standard),
     border-color var(--duration-interactive) var(--ease-standard),
     box-shadow var(--duration-interactive) var(--ease-standard),
-    color var(--duration-interactive) var(--ease-standard),
+    color var(--duration-theme) var(--ease-standard),
     transform var(--duration-fast) var(--ease-standard);
-}
-
-.light .block-button.contact-link {
-  --block-bg: rgba(255, 255, 255, 0.9);
-  --block-hover: rgba(255, 255, 255, 1);
-  --block-border: rgba(15, 15, 30, 0.28);
-  --block-text: var(--color-obsidian);
 }
 
 .block-button.contact-link:hover:not(:disabled),
 .block-button.contact-link:focus-visible {
-  --block-border: var(--color-diamond);
-  --block-text: var(--color-diamond);
-}
-
-.light .block-button.contact-link:hover:not(:disabled),
-.light .block-button.contact-link:focus-visible {
-  --block-text: var(--color-obsidian);
+  --block-border: var(--theme-accent);
+  --block-text: var(--theme-accent);
 }
 
 .block-button.contact-link:focus-visible {
-  outline: var(--border-thin) solid var(--color-diamond);
+  outline: var(--border-thin) solid var(--theme-accent);
   outline-offset: 3px;
 }
 
@@ -1270,7 +1107,7 @@ body.nether .environment-overlay {
   width: 1.5rem;
   height: 1.5rem;
   font-size: 1.45rem;
-  transition: color var(--duration-interactive) var(--ease-standard),
+  transition: color var(--duration-theme) var(--ease-standard),
     transform var(--duration-interactive) var(--ease-standard);
 }
 
@@ -1285,7 +1122,7 @@ body.nether .environment-overlay {
 
 .block-button.contact-link:hover .block-button__icon,
 .block-button.contact-link:focus-visible .block-button__icon {
-  color: var(--color-diamond);
+  color: var(--theme-accent);
   transform: translateY(-2px);
 }
 
@@ -1299,7 +1136,7 @@ body.nether .environment-overlay {
   padding: var(--space-5);
   border-color: var(--color-dirt);
   border-radius: var(--radius-none);
-  background: var(--color-oak-wood);
+  background: color-mix(in srgb, var(--color-oak-wood) 78%, transparent);
   box-shadow: var(--shadow-inset);
   font-style: normal;
 }
@@ -1344,7 +1181,7 @@ body.nether .environment-overlay {
   left: 50%;
   width: 4px;
   height: 4px;
-  background: var(--color-diamond);
+  background: var(--theme-accent);
   content: '';
   transform: translate(-50%, -50%);
 }
@@ -1461,7 +1298,7 @@ body.nether .environment-overlay {
   height: 4px;
   margin-top: var(--space-2);
   background: var(--color-stone);
-  box-shadow: 12px 0 0 var(--color-wood, var(--color-dirt)), 24px 0 0 var(--color-diamond);
+  box-shadow: 12px 0 0 var(--color-wood, var(--color-dirt)), 24px 0 0 var(--theme-accent);
 }
 
 .skills-groups {
@@ -1475,12 +1312,10 @@ body.nether .environment-overlay {
   padding: var(--space-5);
   border-color: var(--color-border-strong);
   border-radius: var(--radius-none);
-  background: rgba(15, 15, 30, 0.68);
+  background: color-mix(in srgb, var(--theme-surface) 46%, transparent);
   box-shadow: var(--shadow-inset), var(--shadow-sm);
-}
-
-.light .skill-group {
-  background: rgba(255, 255, 255, 0.72);
+  transition: background-color var(--duration-theme) var(--ease-standard),
+    border-color var(--duration-theme) var(--ease-standard);
 }
 
 .skill-group[data-variant='diamond'] {
@@ -1547,7 +1382,7 @@ body.nether .environment-overlay {
   overflow: visible;
   border: var(--border-hairline) solid var(--color-border);
   border-radius: var(--radius-none);
-  background: rgba(15, 15, 30, 0.82);
+  background: color-mix(in srgb, var(--theme-surface) 76%, transparent);
   color: var(--color-text-primary);
   text-align: center;
   box-shadow: var(--shadow-inset);
@@ -1555,13 +1390,8 @@ body.nether .environment-overlay {
   transition: opacity 420ms var(--ease-standard) var(--skill-delay, 0ms),
     transform 420ms var(--ease-standard) var(--skill-delay, 0ms),
     border-color var(--duration-interactive) var(--ease-standard),
-    background-color var(--duration-interactive) var(--ease-standard),
+    background-color var(--duration-theme) var(--ease-standard),
     box-shadow var(--duration-interactive) var(--ease-standard);
-}
-
-.light .skill-card {
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--color-obsidian);
 }
 
 .skills-ready .skill-card {
@@ -1578,14 +1408,14 @@ body.nether .environment-overlay {
 .skill-card:focus-within,
 .skill-card:focus-visible {
   z-index: 2;
-  border-color: var(--color-diamond);
-  background: rgba(51, 235, 220, 0.09);
-  box-shadow: var(--shadow-inset), 0 0 0 1px rgba(51, 235, 220, 0.22), var(--shadow-md);
+  border-color: var(--theme-accent);
+  background: color-mix(in srgb, var(--theme-highlight) 10%, transparent);
+  box-shadow: var(--shadow-inset), 0 0 0 1px color-mix(in srgb, var(--theme-accent) 22%, transparent), var(--shadow-md);
   transform: translateY(-2px);
 }
 
 .skill-card:focus-visible {
-  outline: var(--border-thin) solid var(--color-diamond);
+  outline: var(--border-thin) solid var(--theme-accent);
   outline-offset: 3px;
 }
 
@@ -1692,9 +1522,9 @@ body.nether .environment-overlay {
   max-width: 210px;
   gap: 2px;
   padding: var(--space-2) var(--space-3);
-  border: var(--border-hairline) solid var(--color-diamond);
+  border: var(--border-hairline) solid var(--theme-accent);
   border-radius: var(--radius-none);
-  background: rgba(15, 15, 30, 0.97);
+  background: color-mix(in srgb, var(--theme-surface) 94%, transparent);
   color: var(--color-white);
   font-family: var(--font-family-ui);
   font-size: 0.68rem;
@@ -1712,15 +1542,15 @@ body.nether .environment-overlay {
   left: 50%;
   width: 8px;
   height: 8px;
-  border-right: var(--border-hairline) solid var(--color-diamond);
-  border-bottom: var(--border-hairline) solid var(--color-diamond);
-  background: rgba(15, 15, 30, 0.97);
+  border-right: var(--border-hairline) solid var(--theme-accent);
+  border-bottom: var(--border-hairline) solid var(--theme-accent);
+  background: color-mix(in srgb, var(--theme-surface) 94%, transparent);
   content: '';
   transform: translateX(-50%) rotate(45deg);
 }
 
 .skill-tooltip strong {
-  color: var(--color-diamond);
+  color: var(--theme-accent);
   font-size: 0.76rem;
   letter-spacing: 0.04em;
 }
