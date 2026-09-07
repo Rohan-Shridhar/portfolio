@@ -267,22 +267,152 @@ body.theme-switching .theme-toggle {
   stroke-linejoin: round;
 }
 
-/* =========================================
-.menu {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-.panel {
+/* ========================================= */
+/* Full-width Minecraft navigation HUD */
+.site-header {
   position: sticky;
   top: 0;
-  overflow-y: scroll;
-  background: var(--bg);
+  z-index: 900;
+  width: 100%;
+  pointer-events: none;
 }
-.panel::-webkit-scrollbar {
-  display: none;
+
+.site-header > .menu-frame {
+  pointer-events: auto;
 }
+
+.menu-frame {
+  width: 100%;
+  margin: 0;
+  padding: var(--space-2) var(--page-gutter);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: var(--border-thin) solid var(--theme-border-strong);
+  border-left: 0;
+  background: color-mix(in srgb, var(--theme-surface) 78%, transparent);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-inset), var(--shadow-sm);
+  transition: background-color var(--duration-theme) var(--ease-standard),
+    border-color var(--duration-theme) var(--ease-standard),
+    box-shadow var(--duration-hover) var(--ease-standard);
+}
+
+.menu-frame.is-scrolled {
+  background: color-mix(in srgb, var(--theme-surface) 94%, transparent);
+  border-bottom-color: var(--theme-accent);
+  box-shadow: var(--shadow-inset), var(--shadow-md);
+}
+
+.menu-bar {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-2);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-bar li {
+  min-width: 0;
+}
+
+.menu-link {
+  position: relative;
+  display: flex;
+  min-height: var(--control-touch-min);
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  overflow: hidden;
+  border: var(--border-hairline) solid var(--color-border);
+  border-radius: var(--radius-none);
+  background: color-mix(in srgb, var(--theme-surface) 56%, transparent);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-ui);
+  font-size: clamp(0.7rem, 1.1vw, 0.875rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: var(--shadow-inset);
+  transition: background-color var(--duration-theme) var(--ease-standard),
+    border-color var(--duration-hover) var(--ease-standard),
+    box-shadow var(--duration-hover) var(--ease-standard),
+    color var(--duration-theme) var(--ease-standard),
+    transform var(--duration-press) var(--ease-standard);
+}
+
+.menu-link::after {
+  position: absolute;
+  right: var(--space-2);
+  bottom: 3px;
+  left: var(--space-2);
+  height: 2px;
+  background: var(--theme-accent);
+  content: '';
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--duration-hover) var(--ease-standard),
+    background-color var(--duration-theme) var(--ease-standard);
+}
+
+.menu-link:hover {
+  border-color: var(--theme-accent);
+  background: color-mix(in srgb, var(--theme-highlight) 12%, transparent);
+  color: var(--theme-accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+.menu-link:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-pressed);
+}
+
+.menu-link[aria-current='page'] {
+  border-color: var(--theme-accent);
+  background: color-mix(in srgb, var(--theme-highlight) 18%, transparent);
+  color: var(--theme-accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.menu-link[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+.menu-link:focus-visible {
+  z-index: 1;
+  border-color: var(--theme-accent);
+  outline: var(--border-thin) solid var(--theme-accent);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-hover);
+}
+
+.menu-icon {
+  display: inline-flex;
+  width: 1.1rem;
+  flex: 0 0 1.1rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-muted);
+  font-size: 0.95rem;
+  transition: color var(--duration-hover) var(--ease-standard),
+    transform var(--duration-hover) var(--ease-standard);
+}
+
+.menu-link:hover .menu-icon,
+.menu-link[aria-current='page'] .menu-icon,
+.menu-link:focus-visible .menu-icon {
+  color: var(--theme-accent);
+  transform: translateY(-1px);
+}
+
+.menu-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* ========================================= */
@@ -1636,8 +1766,7 @@ body.theme-switching .theme-toggle {
 
   /* --- Navigation HUD --- */
   .site-header {
-    padding-right: var(--space-5);
-    padding-left: var(--space-5);
+    padding: 0;
   }
 
   .menu-bar {
@@ -1787,7 +1916,7 @@ body.theme-switching .theme-toggle {
 
   /* --- Navigation HUD --- */
   .site-header {
-    padding: var(--space-2) var(--space-3) 0;
+    padding: 0;
   }
 
   .menu-frame {

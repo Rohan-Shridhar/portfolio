@@ -28,17 +28,25 @@ export default function Menu({ isScrolled = false }) {
 
         if (!sections.length) return undefined
 
+        const visibleSections = new Map()
         const observer = new IntersectionObserver(
             (entries) => {
-                const visibleSection = entries
-                    .filter((entry) => entry.isIntersecting)
-                    .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0]
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        visibleSections.set(entry.target.id, entry.intersectionRatio)
+                    } else {
+                        visibleSections.delete(entry.target.id)
+                    }
+                })
 
-                if (visibleSection) setActiveId(visibleSection.target.id)
+                const visibleSection = [...visibleSections.entries()]
+                    .sort(([, firstRatio], [, secondRatio]) => secondRatio - firstRatio)[0]
+
+                if (visibleSection) setActiveId(visibleSection[0])
             },
             {
-                rootMargin: '-30% 0px -55% 0px',
-                threshold: [0, 0.25, 0.5, 0.75, 1],
+                rootMargin: '-24% 0px -58% 0px',
+                threshold: [0, 0.15, 0.3, 0.5, 0.75, 1],
             },
         )
 
