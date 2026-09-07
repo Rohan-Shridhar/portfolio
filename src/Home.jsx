@@ -52,7 +52,6 @@ export default function Home(){
 
                 <div className="hero-copy hero-block-fall">
                     <div className="hero-identity">
-                        <span className="hero-eyebrow">PLAYER IDENTITY</span>
                         <h1 id="hero-title">Hi, I'm Rohan </h1>
                         <p className="hero-role">Software Developer</p>
                     </div>
