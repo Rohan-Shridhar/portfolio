@@ -9,10 +9,13 @@ import Footer from './Footer.jsx'
 
 function App() {
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
+      const nextIsScrolled = window.scrollY > 24
       setShowBackToTop(window.scrollY > 500)
+      setIsScrolled((current) => current === nextIsScrolled ? current : nextIsScrolled)
     }
 
     handleScroll()
@@ -26,13 +29,18 @@ function App() {
   }
 
   return (<>
-    <section className="menu"><Menu /></section>
-    <section className="panel"><Home /></section>
-    <section className="panel"><About /></section>
-    <section className="panel"><Skills /></section>
-    <section className="panel"><Contact /></section>
-    <section className="panel"><Projects /></section>
-    <section className="panel"><Footer /></section>
+    <header className="site-header">
+      <Menu isScrolled={isScrolled} />
+    </header>
+
+    <main className="page-shell">
+      <section className="panel"><Home /></section>
+      <section className="panel"><About /></section>
+      <section className="panel"><Skills /></section>
+      <section className="panel"><Contact /></section>
+      <section className="panel"><Projects /></section>
+      <section className="panel"><Footer /></section>
+    </main>
 
     {showBackToTop && (
       <button

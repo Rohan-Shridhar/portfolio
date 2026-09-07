@@ -1,12 +1,94 @@
-export default function Menu(){
+import { useEffect, useState } from 'react'
+import { PixelBorder } from './components/ui/index.js'
+
+const navigationItems = [
+    { id: 'home', label: 'Home', href: '#home', sectionId: 'home', icon: 'fa-house' },
+    { id: 'about-me', label: 'About Me', href: '#about-me', sectionId: 'about-me', icon: 'fa-book-open' },
+    { id: 'skills', label: 'Skills', href: '#skills', sectionId: 'skills', icon: 'fa-gears' },
+    { id: 'contact', label: 'Contact', href: '#contact', sectionId: 'contact', icon: 'fa-envelope' },
+    { id: 'projects', label: 'Projects', href: '#projects', sectionId: 'projects', icon: 'fa-screwdriver-wrench' },
+    { id: 'certificates', label: 'Certificates', href: '../404.html', icon: 'fa-certificate' },
+]
+
+function getInitialActiveId() {
+    if (typeof window === 'undefined') return 'home'
+
+    const hash = window.location.hash.slice(1)
+    return navigationItems.some((item) => item.sectionId === hash) ? hash : 'home'
+}
+
+export default function Menu({ isScrolled = false }) {
+    const [activeId, setActiveId] = useState(getInitialActiveId)
+
+    useEffect(() => {
+        const sections = navigationItems
+            .filter((item) => item.sectionId)
+            .map((item) => document.getElementById(item.sectionId))
+            .filter(Boolean)
+
+        if (!sections.length) return undefined
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visibleSection = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0]
+
+                if (visibleSection) setActiveId(visibleSection.target.id)
+            },
+            {
+                rootMargin: '-30% 0px -55% 0px',
+                threshold: [0, 0.25, 0.5, 0.75, 1],
+            },
+        )
+
+        sections.forEach((section) => observer.observe(section))
+
+        const syncActiveHash = () => {
+            const hash = window.location.hash.slice(1)
+            if (navigationItems.some((item) => item.sectionId === hash)) setActiveId(hash)
+        }
+
+        window.addEventListener('hashchange', syncActiveHash)
+
+        return () => {
+            observer.disconnect()
+            window.removeEventListener('hashchange', syncActiveHash)
+        }
+    }, [])
+
+    const menuFrameClassName = ['menu-frame', isScrolled && 'is-scrolled']
+        .filter(Boolean)
+        .join(' ')
+
     return (
-        <div className="menu-bar">
-            <span><a href="#home">Home</a></span>
-            <span><a href="#about-me">About Me</a></span>
-            <span><a href="#skills">Skills</a></span>
-            <span><a href="#contact">Contact</a></span>
-            <span><a href="#projects">Projects</a></span>
-            <span><a href="../404.html">Certificates</a></span>
-        </div>
-    );
+        <PixelBorder
+            as="nav"
+            className={menuFrameClassName}
+            variant="stone"
+            aria-label="Primary navigation"
+        >
+            <ul className="menu-bar">
+                {navigationItems.map((item) => {
+                    const isActive = item.sectionId === activeId
+
+                    return (
+                        <li key={item.id}>
+                            <a
+                                className="menu-link"
+                                href={item.href}
+                                aria-current={isActive ? 'page' : undefined}
+                                onClick={() => {
+                                    if (item.sectionId) setActiveId(item.sectionId)
+                                }}
+                            >
+                                <i className={`menu-icon fa-solid ${item.icon}`} aria-hidden="true" />
+                                <span className="menu-label">{item.label}</span>
+                            </a>
+                        </li>
+                    )
+                })}
+            </ul>
+        </PixelBorder>
+    )
 }
