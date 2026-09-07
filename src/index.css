@@ -76,11 +76,18 @@
   --space-16: 64px;
   --duration-fast: 120ms;
   --duration-interactive: 150ms;
+  --duration-micro: 120ms;
+  --duration-hover: 150ms;
+  --duration-press: 110ms;
   --duration-normal: 240ms;
-  --duration-slow: 240ms;
-  --duration-theme: 480ms;
+  --duration-slow: 420ms;
+  --duration-reveal: 420ms;
+  --duration-theme: 600ms;
   --duration-environment: 600ms;
+  --duration-pulse: 360ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-block-fall: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --shadow-hover: var(--shadow-inset), 0 0 0 1px color-mix(in srgb, var(--theme-accent) 20%, transparent), 0 8px 18px color-mix(in srgb, var(--theme-accent) 12%, transparent);
   --opacity-disabled: 0.48;
 
   --layout-max-width: 1180px;
@@ -192,6 +199,24 @@ body.nether .environment-layer-nether {
   transition: background var(--duration-environment) var(--ease-standard);
 }
 
+body.theme-switching .theme-toggle {
+  animation: dimension-toggle-pulse var(--duration-pulse) var(--ease-standard);
+}
+
+@keyframes dimension-toggle-pulse {
+  0% {
+    box-shadow: var(--shadow-inset);
+  }
+
+  55% {
+    box-shadow: var(--shadow-inset), 0 0 0 4px color-mix(in srgb, var(--theme-accent) 22%, transparent);
+  }
+
+  100% {
+    box-shadow: var(--shadow-inset);
+  }
+}
+
 .back-to-top {
   position: fixed;
   right: 24px;
@@ -207,24 +232,29 @@ body.nether .environment-layer-nether {
   justify-content: center;
   cursor: pointer;
   z-index: 1000;
-  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.25);
+  box-shadow: var(--shadow-sm);
   backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease,
+  transition: transform var(--duration-hover) var(--ease-standard),
+    box-shadow var(--duration-hover) var(--ease-standard),
+    opacity var(--duration-hover) var(--ease-standard),
     background-color var(--duration-theme) var(--ease-standard),
     border-color var(--duration-theme) var(--ease-standard);
 }
 
 .back-to-top:hover {
   border-color: var(--theme-accent);
-}
-
-.back-to-top:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(2, 6, 23, 0.32);
+  box-shadow: var(--shadow-hover);
 }
 
 .back-to-top:active {
-  transform: translateY(0);
+  transform: translateY(2px);
+  box-shadow: var(--shadow-pressed);
+}
+
+.back-to-top:focus-visible {
+  outline: var(--border-thin) solid var(--theme-accent);
+  outline-offset: 3px;
 }
 
 .back-to-top svg {
@@ -341,11 +371,11 @@ body.nether .environment-layer-nether {
 }
 
 .menu-link:hover {
-  border-color: color-mix(in srgb, var(--theme-accent) 70%, transparent);
+  border-color: var(--theme-accent);
   background: color-mix(in srgb, var(--theme-surface-hover) 55%, transparent);
-  color: var(--color-white);
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: var(--shadow-inset), 0 0 0 1px color-mix(in srgb, var(--theme-accent) 14%, transparent);
+  color: var(--theme-accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
 }
 
 .menu-link:active {
@@ -366,8 +396,10 @@ body.nether .environment-layer-nether {
 
 .menu-link:focus-visible {
   z-index: 1;
-  outline: var(--border-thin) solid var(--color-diamond);
+  border-color: var(--theme-accent);
+  outline: var(--border-thin) solid var(--theme-accent);
   outline-offset: 2px;
+  box-shadow: var(--shadow-hover);
 }
 
 .menu-icon {
@@ -384,7 +416,7 @@ body.nether .environment-layer-nether {
 
 .menu-link:hover .menu-icon,
 .menu-link[aria-current='page'] .menu-icon {
-  color: var(--color-diamond);
+  color: var(--theme-accent);
   transform: translateY(-1px);
 }
 
@@ -653,7 +685,7 @@ body.nether .environment-layer-nether {
 }
 
 .hero-block-fall {
-  animation: hero-block-fall 520ms cubic-bezier(0.22, 1.18, 0.36, 1) both;
+  animation: hero-block-fall var(--duration-reveal) var(--ease-block-fall) both;
 }
 
 .hero-avatar-frame.hero-block-fall {
@@ -786,6 +818,15 @@ body.nether .environment-layer-nether {
   border: var(--border-medium) solid var(--color-stone);
   background: var(--color-oak-wood);
   box-shadow: var(--shadow-inset), var(--shadow-sm);
+  transition: transform var(--duration-hover) var(--ease-standard),
+    box-shadow var(--duration-hover) var(--ease-standard),
+    border-color var(--duration-hover) var(--ease-standard);
+}
+
+.about-avatar-frame:hover {
+  border-color: var(--theme-accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
 }
 
 .about-avatar-media {
@@ -916,10 +957,7 @@ body.nether .environment-layer-nether {
 
 .about-reveal-item {
   --about-delay: 0ms;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 420ms var(--ease-standard) var(--about-delay),
-    transform 420ms var(--ease-standard) var(--about-delay);
+  --reveal-delay: var(--about-delay);
 }
 
 .about-reveal-avatar {
@@ -934,16 +972,8 @@ body.nether .environment-layer-nether {
   --about-delay: 140ms;
 }
 
-.about-cont:not(.about-is-visible) .about-reveal-item {
-  opacity: 0;
-  transform: translateY(-14px);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .about-reveal-item,
-  .about-cont:not(.about-is-visible) .about-reveal-item {
-    opacity: 1;
-    transform: none;
+  .about-reveal-item {
     transition: none;
   }
 }
@@ -1188,10 +1218,7 @@ body.nether .environment-layer-nether {
 
 .contact-reveal-item {
   --contact-delay: 0ms;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 420ms var(--ease-standard) var(--contact-delay),
-    transform 420ms var(--ease-standard) var(--contact-delay);
+  --reveal-delay: var(--contact-delay);
 }
 
 .contact-reveal-heading {
@@ -1206,56 +1233,14 @@ body.nether .environment-layer-nether {
   --contact-delay: 140ms;
 }
 
-.contact-ready:not(.contact-is-visible) .contact-reveal-item {
-  opacity: 0;
-  transform: translateY(-12px);
-}
-
-.contact:hover .contact-icons,
-.contact:focus-within .contact-icons {
-  transform: translateX(-8px);
-}
-
-.contact:hover .mail-txt,
-.contact:focus-within .mail-txt,
-.contact:hover .mail,
-.contact:focus-within .mail {
-  transform: translateX(8px);
-}
-
-.contact:hover .line,
-.contact:focus-within .line {
-  width: 76%;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .contact-reveal-item,
-  .contact-ready:not(.contact-is-visible) .contact-reveal-item {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
   .contact-icons,
   .mail-txt,
   .mail,
   .line,
   .contact-link .block-button__icon {
     transition: none;
-  }
-
-  .contact:hover .contact-icons,
-  .contact:focus-within .contact-icons,
-  .contact:hover .mail-txt,
-  .contact:focus-within .mail-txt,
-  .contact:hover .mail,
-  .contact:focus-within .mail {
-    transform: none;
-  }
-
-  .contact:hover .line,
-  .contact:focus-within .line {
-    width: 100%;
   }
 }
 
@@ -1387,21 +1372,11 @@ body.nether .environment-layer-nether {
   text-align: center;
   box-shadow: var(--shadow-inset);
   outline: none;
-  transition: opacity 420ms var(--ease-standard) var(--skill-delay, 0ms),
-    transform 420ms var(--ease-standard) var(--skill-delay, 0ms),
-    border-color var(--duration-interactive) var(--ease-standard),
+  transition: opacity var(--duration-reveal) var(--ease-block-fall) var(--reveal-delay, 0ms),
+    transform var(--duration-reveal) var(--ease-block-fall) var(--reveal-delay, 0ms),
+    border-color var(--duration-hover) var(--ease-standard),
     background-color var(--duration-theme) var(--ease-standard),
-    box-shadow var(--duration-interactive) var(--ease-standard);
-}
-
-.skills-ready .skill-card {
-  opacity: 0;
-  transform: translateY(-14px);
-}
-
-.skills-ready .skill-card.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+    box-shadow var(--duration-hover) var(--ease-standard);
 }
 
 .skill-card:hover,
@@ -1410,7 +1385,7 @@ body.nether .environment-layer-nether {
   z-index: 2;
   border-color: var(--theme-accent);
   background: color-mix(in srgb, var(--theme-highlight) 10%, transparent);
-  box-shadow: var(--shadow-inset), 0 0 0 1px color-mix(in srgb, var(--theme-accent) 22%, transparent), var(--shadow-md);
+  box-shadow: var(--shadow-hover);
   transform: translateY(-2px);
 }
 
@@ -1427,6 +1402,9 @@ body.nether .environment-layer-nether {
   place-items: center;
   border-color: var(--color-stone);
   background: rgba(139, 139, 139, 0.16);
+  transition: border-color var(--duration-hover) var(--ease-standard),
+    background-color var(--duration-theme) var(--ease-standard),
+    transform var(--duration-hover) var(--ease-standard);
 }
 
 .skill-card-icon-frame[data-variant='diamond'] {
@@ -1448,6 +1426,16 @@ body.nether .environment-layer-nether {
   width: 36px;
   height: 36px;
   object-fit: contain;
+  transition: transform var(--duration-hover) var(--ease-standard);
+}
+
+.skill-card:hover .skill-card-icon-frame,
+.skill-card:focus-within .skill-card-icon-frame,
+.skill-card:focus-visible .skill-card-icon-frame,
+.skill-card:hover .skill-card-icon-frame img,
+.skill-card:focus-within .skill-card-icon-frame img,
+.skill-card:focus-visible .skill-card-icon-frame img {
+  transform: translateY(-1px);
 }
 
 .skill-card-body {
@@ -1623,11 +1611,11 @@ body.nether .environment-layer-nether {
   background: rgba(15, 15, 30, 0.78);
   color: var(--color-text-primary);
   box-shadow: var(--shadow-inset), var(--shadow-sm);
-  transition: opacity 480ms var(--ease-standard),
-    transform var(--duration-interactive) var(--ease-standard),
-    border-color var(--duration-interactive) var(--ease-standard),
-    box-shadow var(--duration-interactive) var(--ease-standard),
-    background-color var(--duration-interactive) var(--ease-standard);
+  transition: opacity var(--duration-reveal) var(--ease-block-fall) var(--reveal-delay, 0ms),
+    transform var(--duration-hover) var(--ease-standard),
+    border-color var(--duration-hover) var(--ease-standard),
+    box-shadow var(--duration-hover) var(--ease-standard),
+    background-color var(--duration-theme) var(--ease-standard);
 }
 
 .light .project-card {
@@ -1635,31 +1623,13 @@ body.nether .environment-layer-nether {
   color: var(--color-obsidian);
 }
 
-.projects-ready .project-card {
-  opacity: 0;
-  transform: translateY(-18px);
-}
-
-.projects-ready .project-card.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.project-card:nth-child(2) {
-  transition-delay: 70ms;
-}
-
-.project-card:nth-child(3) {
-  transition-delay: 140ms;
-}
-
 .project-card:hover,
 .project-card:focus-within {
   z-index: 2;
-  border-color: var(--color-diamond);
-  background: rgba(15, 15, 30, 0.9);
-  transform: translateY(-3px) scale(1.015);
-  box-shadow: var(--shadow-inset), 0 0 0 1px rgba(51, 235, 220, 0.24), var(--shadow-md);
+  border-color: var(--theme-accent);
+  background: color-mix(in srgb, var(--theme-surface-hover) 76%, transparent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 .light .project-card:hover,
@@ -1682,14 +1652,12 @@ body.nether .environment-layer-nether {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--duration-normal) var(--ease-standard),
-    filter var(--duration-normal) var(--ease-standard);
+  transition: transform var(--duration-hover) var(--ease-standard);
 }
 
 .project-card:hover .project-card-img img,
 .project-card:focus-within .project-card-img img {
-  filter: saturate(1.08) contrast(1.03);
-  transform: scale(1.025);
+  transform: scale(1.015);
 }
 
 .project-card-content {
@@ -1816,11 +1784,15 @@ body.nether .environment-layer-nether {
 
 .footer-cont a {
   color: var(--text-color);
+  text-underline-offset: 3px;
+  transition: color var(--duration-hover) var(--ease-standard);
 }
 
-.footer-cont a:hover {
+.footer-cont a:hover,
+.footer-cont a:focus-visible {
   cursor: pointer;
-  color: var(--opp);
+  color: var(--theme-accent);
+  text-decoration: underline;
 }
 
 /* ========================================= */
@@ -2260,15 +2232,30 @@ body.nether .environment-layer-nether {
   }
 
   .environment-layer,
-  .environment-overlay {
-    transition: none;
-  }
-
+  .environment-overlay,
+  .theme-toggle,
   .menu-frame,
   .menu-link,
   .menu-link::after,
-  .menu-icon {
+  .menu-icon,
+  .hero-avatar-frame,
+  .hero-hud-item,
+  .about-avatar-frame,
+  .project-card,
+  .project-card-img img,
+  .project-card-tooltip,
+  .skill-card,
+  .skill-card-icon-frame,
+  .skill-card-icon-frame img,
+  .skill-tooltip,
+  .contact-link .block-button__icon,
+  .footer-cont a {
     transition: none;
+  }
+
+  body.theme-switching .theme-toggle,
+  .hero-block-fall {
+    animation: none;
   }
 
   .menu-link:hover,
@@ -2276,53 +2263,21 @@ body.nether .environment-layer-nether {
   .menu-link:hover .menu-icon,
   .menu-link[aria-current='page'] .menu-icon,
   .hero-avatar-frame:hover,
-  .hero-hud-item:hover {
-    transform: none;
-  }
-
-  .hero-block-fall {
-    animation: none;
-  }
-
-  .hero-avatar-frame,
-  .hero-hud-item {
-    transition: none;
-  }
-
-  .projects-ready .project-card,
-  .projects-ready .project-card.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
+  .hero-hud-item:hover,
+  .about-avatar-frame:hover,
   .project-card:hover,
   .project-card:focus-within,
   .project-card:hover .project-card-img img,
-  .project-card:focus-within .project-card-img img {
-    transform: none;
-    transition: none;
-  }
-
-  .project-card-tooltip {
-    transition: none;
-  }
-
-  .skills-ready .skill-card,
-  .skills-ready .skill-card.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
+  .project-card:focus-within .project-card-img img,
   .skill-card:hover,
   .skill-card:focus-within,
-  .skill-card:focus-visible {
+  .skill-card:focus-visible,
+  .skill-card:hover .skill-card-icon-frame,
+  .skill-card:focus-within .skill-card-icon-frame,
+  .skill-card:focus-visible .skill-card-icon-frame,
+  .skill-card:hover .skill-card-icon-frame img,
+  .skill-card:focus-within .skill-card-icon-frame img,
+  .skill-card:focus-visible .skill-card-icon-frame img {
     transform: none;
-    transition: none;
-  }
-
-  .skill-tooltip {
-    transition: none;
   }
 }

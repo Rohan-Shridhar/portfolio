@@ -6,12 +6,14 @@ import {
     applyEnvironment,
     getInitialEnvironment,
     persistEnvironment,
+    startEnvironmentTransition,
 } from './theme.js';
 
 export default function Home(){
     const [theme, setTheme] = useState(getInitialEnvironment);
 
     function toggleTheme() {
+        startEnvironmentTransition();
         setTheme((currentTheme) => (
             currentTheme === ENVIRONMENTS.END
                 ? ENVIRONMENTS.NETHER
@@ -79,7 +81,7 @@ export default function Home(){
                         </span>
                         <span className="hero-action-slot">
                             <BlockButton
-                                className="theme-btn hero-action-button"
+                                className="theme-btn theme-toggle hero-action-button"
                                 variant="stone"
                                 icon={
                                     <i

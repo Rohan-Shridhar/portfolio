@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import profile from './assets/images/pfp.jpeg';
+import useViewportReveal from './hooks/useViewportReveal.js';
 import { Badge, BlockCard, BlockGrid, PixelBorder } from './components/ui/index.js';
 
 const biography = 'I am a 19 year old undergraduate student from Bangalore, India. I love to learn new things. I am a Frontend Developer currently learning web development. I am good at problem solving and passionate about creating interactive and user-friendly interfaces. ';
@@ -12,32 +12,11 @@ const profileFacts = [
 ];
 
 export default function About() {
-    const aboutRef = useRef(null);
-
-    useEffect(() => {
-        const section = aboutRef.current;
-        if (!section) return undefined;
-
-        const revealSection = () => section.classList.add('about-is-visible');
-
-        if (!('IntersectionObserver' in window)) {
-            revealSection();
-            return undefined;
-        }
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (!entry.isIntersecting) return;
-                revealSection();
-                observer.disconnect();
-            },
-            { rootMargin: '0px 0px -12% 0px', threshold: 0.12 },
-        );
-
-        observer.observe(section);
-
-        return () => observer.disconnect();
-    }, []);
+    const { ref: aboutRef } = useViewportReveal({
+        targetSelector: '.about-reveal-item',
+        rootMargin: '0px 0px -12% 0px',
+        threshold: 0.12,
+    });
 
     return (
         <section
@@ -57,7 +36,7 @@ export default function About() {
             <div className="about-profile-grid">
                 <BlockCard
                     as="aside"
-                    className="about-profile-panel about-reveal-item about-reveal-avatar"
+                    className="about-profile-panel about-reveal-item about-reveal-avatar block-enter"
                     variant="stone"
                     inset
                     aria-labelledby="about-avatar-caption"
@@ -74,7 +53,7 @@ export default function About() {
 
                 <BlockCard
                     as="article"
-                    className="about-copy-panel about-reveal-item"
+                    className="about-copy-panel about-reveal-item block-enter"
                     variant="stone"
                     inset
                     aria-labelledby="about-record-title"
@@ -88,7 +67,7 @@ export default function About() {
 
                 <BlockCard
                     as="aside"
-                    className="about-info-panel about-reveal-item"
+                    className="about-info-panel about-reveal-item block-enter"
                     variant="stone"
                     inset
                     aria-labelledby="about-info-title"

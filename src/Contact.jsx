@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import useViewportReveal from './hooks/useViewportReveal.js';
 import { Badge, BlockButton, BlockCard, PixelBorder } from './components/ui/index.js';
 
 const socialLinks = [
@@ -35,34 +35,11 @@ const socialLinks = [
 ];
 
 export default function Contact() {
-    const contactRef = useRef(null);
-
-    useEffect(() => {
-        const section = contactRef.current;
-        if (!section) return undefined;
-
-        section.classList.add('contact-ready');
-
-        const revealSection = () => section.classList.add('contact-is-visible');
-
-        if (!('IntersectionObserver' in window)) {
-            revealSection();
-            return undefined;
-        }
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (!entry.isIntersecting) return;
-                revealSection();
-                observer.disconnect();
-            },
-            { rootMargin: '0px 0px -12% 0px', threshold: 0.12 },
-        );
-
-        observer.observe(section);
-
-        return () => observer.disconnect();
-    }, []);
+    const { ref: contactRef } = useViewportReveal({
+        targetSelector: '.contact-reveal-item',
+        rootMargin: '0px 0px -12% 0px',
+        threshold: 0.12,
+    });
 
     return (
         <section
@@ -71,7 +48,7 @@ export default function Contact() {
             id="contact"
             aria-labelledby="contact-title"
         >
-            <header className="contact-heading contact-reveal-item contact-reveal-heading">
+            <header className="contact-heading contact-reveal-item contact-reveal-heading block-enter">
                 <Badge className="contact-kicker" variant="stone">CONTACT ME</Badge>
                 <h2 className="contact-title" id="contact-title">Connect with me</h2>
                 <span className="contact-divider" aria-hidden="true" />
@@ -80,7 +57,7 @@ export default function Contact() {
             <div className="contact-grid">
                 <BlockCard
                     as="section"
-                    className="contact-social-panel contact-reveal-item"
+                    className="contact-social-panel contact-reveal-item block-enter"
                     variant="wood"
                     inset
                     aria-labelledby="contact-social-title"
@@ -94,8 +71,11 @@ export default function Contact() {
                     <ul className="contact-icons" aria-label="Social links">
                         {socialLinks.map((link, index) => (
                             <li
-                                className="contact-slot contact-reveal-item"
-                                style={{ '--contact-delay': `${140 + index * 45}ms` }}
+                                className="contact-slot contact-reveal-item block-enter"
+                                style={{
+                                    '--contact-delay': `${140 + index * 45}ms`,
+                                    '--reveal-delay': `${140 + index * 45}ms`,
+                                }}
                                 key={link.href}
                             >
                                 <BlockButton
@@ -117,7 +97,7 @@ export default function Contact() {
 
                 <BlockCard
                     as="section"
-                    className="contact-email-panel contact-reveal-item"
+                    className="contact-email-panel contact-reveal-item block-enter"
                     variant="stone"
                     inset
                     aria-labelledby="contact-email-title"

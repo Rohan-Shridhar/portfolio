@@ -5,6 +5,8 @@ export const ENVIRONMENTS = Object.freeze({
 
 export const THEME_STORAGE_KEY = 'portfolio-theme';
 
+let environmentTransitionTimeout;
+
 export function isEnvironment(value) {
     return value === ENVIRONMENTS.END || value === ENVIRONMENTS.NETHER;
 }
@@ -32,6 +34,22 @@ export function applyEnvironment(environment) {
     document.body.classList.add(normalizedEnvironment);
 
     return normalizedEnvironment;
+}
+
+export function startEnvironmentTransition(duration = 600) {
+    if (typeof document === 'undefined' || typeof window === 'undefined') return;
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+
+    const body = document.body;
+    window.clearTimeout(environmentTransitionTimeout);
+    body.classList.remove('theme-switching');
+    void body.offsetWidth;
+    body.classList.add('theme-switching');
+
+    environmentTransitionTimeout = window.setTimeout(() => {
+        body.classList.remove('theme-switching');
+        environmentTransitionTimeout = undefined;
+    }, duration);
 }
 
 export function persistEnvironment(environment) {

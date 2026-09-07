@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
 import project1 from './assets/images/grid.png';
 import project2 from './assets/images/clipboard.png';
 import project3 from './assets/images/envguard.png';
+import useViewportReveal from './hooks/useViewportReveal.js';
 import { Badge, BlockButton, BlockCard, PixelBorder } from './components/ui/index.js';
 
 const projects = [
@@ -38,37 +38,14 @@ const projects = [
 ];
 
 export default function Projects() {
-    useEffect(() => {
-        const projectSection = document.querySelector('.projects-cont');
-        const cards = [...document.querySelectorAll('.project-card')];
-
-        if (!projectSection || !cards.length) return undefined;
-
-        projectSection.classList.add('projects-ready');
-
-        if (!('IntersectionObserver' in window)) {
-            cards.forEach((card) => card.classList.add('is-visible'));
-            return undefined;
-        }
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                });
-            },
-            { rootMargin: '0px 0px -10% 0px', threshold: 0.15 },
-        );
-
-        cards.forEach((card) => observer.observe(card));
-
-        return () => observer.disconnect();
-    }, []);
+    const { ref: projectsRef } = useViewportReveal({
+        targetSelector: '.project-card',
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.15,
+    });
 
     return (
-        <section className="projects-cont" id="projects" aria-labelledby="projects-title">
+        <section ref={projectsRef} className="projects-cont" id="projects" aria-labelledby="projects-title">
             <div className="projects-heading">
                 <span className="projects-kicker">PROJECT INVENTORY</span>
                 <h2 className="project-title" id="projects-title">What have i built?</h2>
@@ -76,13 +53,14 @@ export default function Projects() {
             </div>
 
             <div className="project-cont">
-                {projects.map((project) => (
+                {projects.map((project, index) => (
                     <BlockCard
                         as="article"
-                        className="project-card"
+                        className="project-card block-enter inventory-select"
                         variant="stone"
                         inset
                         key={project.name}
+                        style={{ '--reveal-delay': `${index * 60}ms` }}
                     >
                         <PixelBorder className="project-card-img" variant="wood" inset>
                             <img src={project.image} alt={project.alt} loading="lazy" />

@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import antigravity from './assets/images/Tools/antigravity.png';
+import useViewportReveal from './hooks/useViewportReveal.js';
 import { Badge, BlockCard, BlockGrid, PixelBorder } from './components/ui/index.js';
 
 const skillGroups = [
@@ -74,37 +74,14 @@ function SkillMeter({ level }) {
 }
 
 export default function Skills() {
-    useEffect(() => {
-        const skillsSection = document.querySelector('.skills-cont');
-        const cards = [...document.querySelectorAll('.skill-card')];
-
-        if (!skillsSection || !cards.length) return undefined;
-
-        skillsSection.classList.add('skills-ready');
-
-        if (!('IntersectionObserver' in window)) {
-            cards.forEach((card) => card.classList.add('is-visible'));
-            return undefined;
-        }
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                });
-            },
-            { rootMargin: '0px 0px -10% 0px', threshold: 0.15 },
-        );
-
-        cards.forEach((card) => observer.observe(card));
-
-        return () => observer.disconnect();
-    }, []);
+    const { ref: skillsRef } = useViewportReveal({
+        targetSelector: '.skill-card',
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.15,
+    });
 
     return (
-        <section className="skills-cont" id="skills" aria-labelledby="skills-title">
+        <section ref={skillsRef} className="skills-cont" id="skills" aria-labelledby="skills-title">
             <div className="skills-heading">
                 <span className="skills-kicker">PLAYER INVENTORY</span>
                 <h2 className="skills-title" id="skills-title">What do I know ?</h2>
@@ -136,11 +113,14 @@ export default function Skills() {
 
                                     return (
                                         <article
-                                            className="skill-card"
+                                            className="skill-card block-enter inventory-select"
                                             key={skill.name}
                                             tabIndex="0"
                                             aria-describedby={tooltipId}
-                                            style={{ '--skill-delay': `${index * 60}ms` }}
+                                            style={{
+                                                '--skill-delay': `${index * 60}ms`,
+                                                '--reveal-delay': `${index * 60}ms`,
+                                            }}
                                         >
                                             <PixelBorder className="skill-card-icon-frame" variant={groupVariant} inset>
                                                 <img src={skill.icon} alt={skill.alt} loading="lazy" decoding="async" />
