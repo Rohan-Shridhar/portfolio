@@ -24,6 +24,7 @@ const skillGroups = [
         title: 'Databases',
         skills: [
             { name: 'MySQL', level: 'Intermediate', icon: 'https://skillicons.dev/icons?i=mysql', alt: 'MySQL' },
+            { name: 'Postgres', level: 'Beginner', icon: 'https://skillicons.dev/icons?i=postgres', alt: 'Postgres' },
             { name: 'MongoDB', level: 'Beginner', icon: 'https://skillicons.dev/icons?i=mongodb', alt: 'MongoDB' }
         ]
     },
