@@ -26,13 +26,6 @@ export default function Home(){
         persistEnvironment(theme);
     }, [theme]);
 
-    function downloadResume() {
-        const a = document.createElement('a');
-        a.href = './resume.pdf';
-        a.download = 'Rohan_Mirjankar_Resume.pdf';
-        a.click();
-    }
-
     return (
         <div className="home-cont hero-section" id="home">
             <BlockCard
@@ -59,10 +52,12 @@ export default function Home(){
                     <div className="home-btn-cont hero-actions hero-block-fall" role="group" aria-label="Hero actions">
                         <span className="hero-action-slot">
                             <BlockButton
+                                as="a"
                                 className="resume-btn hero-action-button"
                                 variant="grass"
                                 icon={<i className="fa-solid fa-download" />}
-                                onClick={downloadResume}
+                                href="/resume.pdf"
+                                download="Rohan_Mirjankar_Resume.pdf"
                             >
                                 Resume
                             </BlockButton>
