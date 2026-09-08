@@ -856,6 +856,19 @@ body.theme-switching .theme-toggle {
   text-align: left;
 }
 
+.about-video{
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: var(--border-hairline) solid var(--color-border);
+  background: var(--color-obsidian);
+  box-shadow: var(--shadow-inset), var(--shadow-sm);
+  transition: transform var(--duration-hover) var(--ease-standard),
+    box-shadow var(--duration-hover) var(--ease-standard),
+    border-color var(--duration-hover) var(--ease-standard);
+}
+
 .about-info-heading {
   color: var(--theme-accent);
   font-size: 0.78rem;

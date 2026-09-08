@@ -1,6 +1,7 @@
 import profile from './assets/images/pfp.jpeg';
 import useViewportReveal from './hooks/useViewportReveal.js';
 import { Badge, BlockCard, BlockGrid, PixelBorder } from './components/ui/index.js';
+import video from './assets/images/duck.mp4';
 
 const biography = 'I am a 19 year old undergraduate student from Bangalore, India. I love to learn new things. I am a Frontend Developer currently learning web development. I am good at problem solving and passionate about creating interactive and user-friendly interfaces. ';
 
@@ -62,7 +63,10 @@ export default function About() {
                         <h3 className="about-copy-title" id="about-record-title">Who am I ?</h3>
                         <span className="about-copy-rule" aria-hidden="true" />
                     </header>
-                    <p className="about-desc">{biography}</p>
+                    <p className="about-desc">
+                        {biography}
+                    </p>
+                    <video className="about-video" src={video} autoPlay loop muted playsInline />
                 </BlockCard>
 
                 <BlockCard
