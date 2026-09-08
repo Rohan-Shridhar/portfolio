@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import profile from './assets/images/chick.jpg';
+import sad_chick from './assets/images/chick-sad.png';
+import happy_chick from './assets/images/chick-happy.jpg';
 import { Badge, BlockButton, BlockCard, PixelBorder } from './components/ui/index.js';
 import {
     ENVIRONMENTS,
@@ -11,7 +12,7 @@ import {
 
 export default function Home(){
     const [theme, setTheme] = useState(getInitialEnvironment);
-
+    const [profile,setProfile] = useState(sad_chick);
     function toggleTheme() {
         startEnvironmentTransition();
         setTheme((currentTheme) => (
@@ -19,6 +20,14 @@ export default function Home(){
                 ? ENVIRONMENTS.NETHER
                 : ENVIRONMENTS.END
         ));
+    }
+
+    function updateProfileImage() {
+        setProfile(happy_chick);
+    }
+
+    function revertProfileImage() {
+        setProfile(sad_chick);
     }
 
     useEffect(() => {
@@ -40,7 +49,7 @@ export default function Home(){
                     variant="stone"
                     inset
                 >
-                    <img className="hero-avatar" src={profile} alt="Profile" />
+                    <img className="hero-avatar" src={profile} alt="Profile" onMouseEnter={updateProfileImage} onMouseLeave={revertProfileImage} />
                 </PixelBorder>
 
                 <div className="hero-copy hero-block-fall">
