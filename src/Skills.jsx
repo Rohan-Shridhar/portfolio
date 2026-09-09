@@ -17,7 +17,8 @@ const skillGroups = [
         skills: [
             { name: 'HTML', level: 'Intermediate', icon: 'https://skillicons.dev/icons?i=html', alt: 'HTML' },
             { name: 'CSS', level: 'Intermediate', icon: 'https://skillicons.dev/icons?i=css', alt: 'CSS' },
-            { name: 'React', level: 'Intermediate', icon: 'https://skillicons.dev/icons?i=react', alt: 'React' }
+            { name: 'React', level: 'Intermediate', icon: 'https://skillicons.dev/icons?i=react', alt: 'React' },
+            { name: 'Node.js', level: 'Beginner', icon: 'https://skillicons.dev/icons?i=nodejs', alt: 'Node.js' }
         ]
     },
     {
