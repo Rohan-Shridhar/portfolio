@@ -42,12 +42,12 @@ export default function About() {
                     inset
                     aria-labelledby="about-avatar-caption"
                 >
-                    <PixelBorder as="figure" className="about-avatar-frame" variant="wood" inset>
+                    <PixelBorder as="figure" className="about-avatar-frame" variant="stone" inset>
                         <div className="about-avatar-media">
                             <img className="about-cont-img" src={profile} alt="Profile" loading="lazy" decoding="async" />
                         </div>
                         <figcaption id="about-avatar-caption">
-                            <Badge className="about-avatar-caption" variant="wood">Profile</Badge>
+                            <Badge className="about-avatar-caption" variant="stone">Profile</Badge>
                         </figcaption>
                     </PixelBorder>
                 </BlockCard>

@@ -58,7 +58,7 @@ export default function Contact() {
                 <BlockCard
                     as="section"
                     className="contact-social-panel contact-reveal-item block-enter"
-                    variant="wood"
+                    variant="stone"
                     inset
                     aria-labelledby="contact-social-title"
                 >
@@ -108,7 +108,7 @@ export default function Contact() {
                         </Badge>
                         <span className="contact-panel-rule" aria-hidden="true" />
                     </div>
-                    <PixelBorder as="address" className="contact-email-slot" variant="wood" inset>
+                    <PixelBorder as="address" className="contact-email-slot" variant="stone" inset>
                         <span className="mail-txt">Or you can reach me at </span>
                         <span className="contact-line" aria-hidden="true">
                             <span className="line" />

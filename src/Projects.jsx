@@ -62,7 +62,7 @@ export default function Projects() {
                         key={project.name}
                         style={{ '--reveal-delay': `${index * 60}ms` }}
                     >
-                        <PixelBorder className="project-card-img" variant="wood" inset>
+                        <PixelBorder className="project-card-img" variant="stone" inset>
                             <img src={project.image} alt={project.alt} loading="lazy" />
                         </PixelBorder>
 
@@ -116,7 +116,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="explore-more-btn"
-                    variant="wood"
+                    variant="stone"
                     icon={<i className="fas fa-arrow-right" />}
                     iconPosition="end"
                 >
