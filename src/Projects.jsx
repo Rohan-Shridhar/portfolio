@@ -1,5 +1,5 @@
 import project1 from './assets/images/grid.png';
-import project2 from './assets/images/clipboard.png';
+import project2 from './assets/images/icon128.png';
 import project3 from './assets/images/envguard.png';
 import useViewportReveal from './hooks/useViewportReveal.js';
 import { Badge, BlockButton, BlockCard, PixelBorder } from './components/ui/index.js';
@@ -16,13 +16,13 @@ const projects = [
         demoLabel: 'Live demo',
     },
     {
-        name: 'Kravoxin',
+        name: 'HopTab',
         image: project2,
-        alt: 'Kravoxin project preview',
-        description: 'Browser extension for storing copied itmes along with categorisation and editing',
+        alt: 'HopTab project preview',
+        description: 'Chrome extension that lets you save, organize, and quick-access your most-used websites with beautiful favicons—all just one click away.',
         badges: [{ label: 'Browser extension', variant: 'wood' }],
-        github: 'https://github.com/Rohan-Shridhar/Kravoxin',
-        demo: 'https://rohan-shridhar.github.io/Kravoxin/',
+        github: 'https://github.com/Rohan-Shridhar/HopTab',
+        demo: 'https://rohan-shridhar.github.io/HopTab/',
         demoLabel: 'Landing page',
     },
     {
