@@ -1629,6 +1629,143 @@ body.theme-switching .theme-toggle {
 }
 
 /* ========================================= */
+.certificates-cont {
+  display: grid;
+  width: min(100%, var(--layout-max-width));
+  gap: var(--space-6);
+  margin: 0 auto;
+  padding: clamp(72px, 12vh, 144px) var(--page-gutter) clamp(88px, 14vh, 160px);
+  scroll-margin-top: var(--nav-offset);
+}
+
+.certificates-heading {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 720px;
+}
+
+.certificates-title {
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--font-family-pixel);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+.certificates-divider {
+  display: block;
+  width: min(280px, 60vw);
+  height: 4px;
+  margin-top: var(--space-2);
+  background: var(--color-stone);
+  box-shadow: 12px 0 0 var(--color-dirt), 24px 0 0 var(--theme-accent);
+}
+
+.certificates-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.certificate-item {
+  min-width: 0;
+  margin: 0;
+}
+
+.certificate-item:nth-child(1) {
+  grid-column: 1 / span 7;
+}
+
+.certificate-item:nth-child(2) {
+  grid-column: 8 / span 5;
+  margin-top: var(--space-8);
+}
+
+.certificate-item:nth-child(3) {
+  grid-column: 3 / span 7;
+  margin-top: var(--space-2);
+}
+
+.certificate-card {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-3);
+  border-color: var(--color-border-strong);
+  background: color-mix(in srgb, var(--theme-surface) 70%, transparent);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-inset), var(--shadow-sm);
+}
+
+.certificate-media {
+  display: grid;
+  aspect-ratio: 1.46 / 1;
+  min-width: 0;
+  padding: var(--space-2);
+  overflow: hidden;
+  place-items: center;
+  border-color: var(--color-border-strong);
+  background: var(--theme-void);
+  box-shadow: var(--shadow-inset);
+}
+
+.certificate-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--color-white);
+}
+
+.certificate-media-fallback {
+  display: grid;
+  min-height: 100%;
+  place-items: center;
+  padding: var(--space-4);
+  color: var(--color-text-tertiary);
+  font-family: var(--font-family-ui);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.certificate-caption {
+  display: flex;
+  min-height: 28px;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-1);
+}
+
+.certificate-inlay {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 3px;
+}
+
+.certificate-inlay i {
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: var(--color-stone);
+}
+
+.certificate-inlay i:nth-child(2) {
+  background: var(--color-dirt);
+}
+
+.certificate-inlay i:nth-child(3) {
+  background: var(--theme-accent);
+}
+
+/* ========================================= */
 .projects-cont {
   scroll-margin-top: var(--nav-offset);
   display: grid;
@@ -2001,6 +2138,30 @@ body.theme-switching .theme-toggle {
     padding: var(--space-3) var(--space-2);
   }
 
+  /* --- Certificates --- */
+  .certificates-cont {
+    padding-top: 64px;
+    padding-bottom: 112px;
+  }
+
+  .certificates-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .certificate-item:nth-child(n) {
+    margin-top: 0;
+  }
+
+  .certificate-item:nth-child(1) {
+    grid-column: 1 / span 2;
+  }
+
+  .certificate-item:nth-child(2),
+  .certificate-item:nth-child(3) {
+    grid-column: auto;
+  }
+
   /* --- Projects --- */
   .projects-cont {
     padding: 64px 0 112px;
@@ -2266,6 +2427,28 @@ body.theme-switching .theme-toggle {
     display: none;
   }
 
+  /* --- Certificates --- */
+  .certificates-cont {
+    gap: var(--space-5);
+    padding-top: 48px;
+    padding-bottom: 88px;
+  }
+
+  .certificates-gallery {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .certificate-item:nth-child(n) {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .certificate-media {
+    aspect-ratio: 1.38 / 1;
+    padding: var(--space-1);
+  }
+
   /* --- Projects --- */
   .projects-cont {
     padding: 48px 0 88px;
@@ -2315,6 +2498,7 @@ body.theme-switching .theme-toggle {
   .hero-hud-item,
   .about-avatar-frame,
   .about-highlight-card,
+  .certificate-card,
   .project-card,
   .project-card-img img,
   .project-card-tooltip,
