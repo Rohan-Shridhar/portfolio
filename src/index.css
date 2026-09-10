@@ -1327,9 +1327,10 @@ body.theme-switching .theme-toggle {
 /* ========================================= */
 .skills-cont {
   display: grid;
+  width: min(100%, var(--layout-max-width));
   gap: var(--space-6);
-  margin: 0;
-  padding: clamp(72px, 12vh, 144px) 0 clamp(88px, 14vh, 160px);
+  margin: 0 auto;
+  padding: clamp(72px, 12vh, 144px) var(--page-gutter) clamp(88px, 14vh, 160px);
   scroll-margin-top: var(--nav-offset);
 }
 
