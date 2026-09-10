@@ -1238,7 +1238,7 @@ body.theme-switching .theme-toggle {
 
 .contact-email-slot {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(56px, 1fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(72px, 0.38fr) minmax(max-content, 1.2fr);
   align-items: center;
   gap: var(--space-3);
   min-width: 0;
@@ -1266,13 +1266,17 @@ body.theme-switching .theme-toggle {
 .mail {
   font-variant-numeric: tabular-nums;
   text-align: right;
+  white-space: nowrap;
+  overflow-wrap: normal;
 }
 
 .contact-line {
   display: flex;
+  width: min(100%, 96px);
   min-width: 0;
   align-items: center;
   justify-content: center;
+  justify-self: center;
 }
 
 .line {
