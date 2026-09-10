@@ -5,9 +5,9 @@ const navigationItems = [
     { id: 'home', label: 'Home', href: '#home', sectionId: 'home', icon: 'fa-house' },
     { id: 'about-me', label: 'About Me', href: '#about-me', sectionId: 'about-me', icon: 'fa-book-open' },
     { id: 'skills', label: 'Skills', href: '#skills', sectionId: 'skills', icon: 'fa-gears' },
-    { id: 'contact', label: 'Contact', href: '#contact', sectionId: 'contact', icon: 'fa-envelope' },
     { id: 'projects', label: 'Projects', href: '#projects', sectionId: 'projects', icon: 'fa-screwdriver-wrench' },
-    { id: 'certificates', label: 'Certificates', href: '../404.html', icon: 'fa-certificate' },
+    { id: 'certificates', label: 'Certificates', href: '#certificates', sectionId: 'certificates', icon: 'fa-certificate' },
+    { id: 'contact', label: 'Contact', href: '#contact', sectionId: 'contact', icon: 'fa-envelope' },
 ]
 
 function getInitialActiveId() {
