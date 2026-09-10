@@ -20,18 +20,6 @@ const socialLinks = [
         ariaLabel: 'dev',
         icon: 'fa-brands fa-dev',
     },
-    {
-        label: 'Instagram',
-        href: 'https://www.instagram.com/rohan.mirjankar/',
-        ariaLabel: 'instagram',
-        icon: 'fa-brands fa-instagram',
-    },
-    {
-        label: 'X / Twitter',
-        href: 'https://x.com/Rohan_shridhar',
-        ariaLabel: 'twitter',
-        icon: 'fa-brands fa-x-twitter',
-    },
 ];
 
 export default function Contact() {

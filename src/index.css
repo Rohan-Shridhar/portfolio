@@ -1172,13 +1172,6 @@ body.theme-switching .theme-toggle {
   min-width: 0;
 }
 
-.contact-slot:nth-child(4) {
-  grid-column: 1;
-}
-
-.contact-slot:nth-child(5) {
-  grid-column: 3;
-}
 
 .block-button.contact-link {
   --block-bg: color-mix(in srgb, var(--theme-surface) 68%, transparent);
@@ -2209,16 +2202,6 @@ body.theme-switching .theme-toggle {
     gap: var(--space-2);
   }
 
-  .contact-slot:nth-child(4),
-  .contact-slot:nth-child(5) {
-    grid-column: auto;
-  }
-
-  .contact-slot:nth-child(5) {
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: min(100%, 148px);
-  }
 
   .block-button.contact-link {
     min-height: 92px;
