@@ -1,10 +1,21 @@
 import project1 from './assets/images/grid.png';
 import project2 from './assets/images/icon128.png';
 import project3 from './assets/images/envguard.png';
+import project4 from './assets/images/trashtrace.png';
 import useViewportReveal from './hooks/useViewportReveal.js';
 import { Badge, BlockButton, BlockCard, PixelBorder } from './components/ui/index.js';
 
 const projects = [
+    {
+        name: 'Trashtrace',
+        image: project4,
+        alt: 'Trashtrace project preview',
+        description: 'QR-based waste tracking system using geolocation to monitor and verify waste shipments.',
+        badges: [{ label: 'nodejs', variant: 'grass' }],
+        github: 'https://github.com/Rohan-Shridhar/trashtrace',
+        demo: 'https://ai-trash-trace.vercel.app/',
+        demoLabel: 'Live demo',
+    },
     {
         name: 'GridCraft',
         image: project1,
@@ -30,7 +41,7 @@ const projects = [
         image: project3,
         alt: 'Envguard project preview',
         description: 'envguard is a zero-boilerplate environment variable validator for Node.js that checks all your env vars at startup, coerces types like numbers and booleans, and throws a clear combined error if anything is missing or invalid. ',
-        badges: [{ label: 'Node.js', variant: 'grass' }],
+        badges: [{ label: 'EJS', variant: 'grass' }],
         github: 'https://github.com/Rohan-Shridhar/envguard',
         demo: 'https://www.npmjs.com/package/@rohansm14/envguard',
         demoLabel: 'NPM package',
