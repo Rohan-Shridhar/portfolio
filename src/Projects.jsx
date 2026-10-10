@@ -68,10 +68,11 @@ export default function Projects() {
                     <BlockCard
                         as="article"
                         className="project-card block-enter inventory-select"
+                        id={`project-${project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
                         variant="stone"
                         inset
                         key={project.name}
-                        style={{ '--reveal-delay': `${index * 60}ms` }}
+                        style={{ '--reveal-delay': `${index * 60}ms`, scrollMarginTop: 'var(--nav-offset)' }}
                     >
                         <PixelBorder className="project-card-img" variant="stone" inset>
                             <img src={project.image} alt={project.alt} loading="lazy" />
