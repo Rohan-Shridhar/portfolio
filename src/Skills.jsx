@@ -1,214 +1,143 @@
-import antigravity from './assets/images/Tools/antigravity.png';
-import { useRef, useState } from 'react';
-import useViewportReveal from './hooks/useViewportReveal.js';
-import { Badge, BlockCard, PixelBorder } from './components/ui/index.js';
+import { useEffect, useRef, useState } from 'react';
+import { projectHighlights, skillById, skillGroups } from './data/skills.js';
+import BlueprintView from './components/skills/BlueprintView.jsx';
+import CategoryAnchors from './components/skills/CategoryAnchors.jsx';
+import TechnologyConstellation from './components/skills/TechnologyConstellation.jsx';
+import './components/skills/skills.css';
 
-const skillGroups = [
-    {
-        title: 'Languages',
-        skills: [
-            { name: 'JavaScript', type: 'Programming language', level: 'Intermediate', xp: 68, usage: 'React, Node.js, Express, and npm', projects: 'JSCrafts, GridCraft, EnvGuard', icon: 'https://skillicons.dev/icons?i=js', alt: 'JavaScript' },
-            { name: 'Java', type: 'Programming language', level: 'Intermediate', xp: 62, usage: 'Object-oriented programming and coursework', projects: 'Academic projects', icon: 'https://skillicons.dev/icons?i=java', alt: 'Java' },
-            { name: 'Python', type: 'Programming language', level: 'Beginner', xp: 34, usage: 'Scripting, automation, and problem solving', projects: 'Learning projects', icon: 'https://skillicons.dev/icons?i=python', alt: 'Python' },
-            { name: 'C++', type: 'Programming language', level: 'Intermediate', xp: 58, usage: 'Data structures and competitive programming', projects: 'Practice problems', icon: 'https://skillicons.dev/icons?i=cpp', alt: 'C++' }
-        ]
-    },
-    {
-        title: 'Web Dev',
-        skills: [
-            { name: 'HTML', type: 'Markup language', level: 'Intermediate', xp: 74, usage: 'Semantic page structure and accessible interfaces', projects: 'Portfolio, GridCraft', icon: 'https://skillicons.dev/icons?i=html', alt: 'HTML' },
-            { name: 'CSS', type: 'Styling language', level: 'Intermediate', xp: 71, usage: 'Responsive layouts, animations, and pixel interfaces', projects: 'Portfolio, GridCraft', icon: 'https://skillicons.dev/icons?i=css', alt: 'CSS' },
-            { name: 'React', type: 'UI library', level: 'Intermediate', xp: 66, usage: 'Component-driven frontend applications', projects: 'Portfolio, EnvGuard', icon: 'https://skillicons.dev/icons?i=react', alt: 'React' },
-            { name: 'Node.js', type: 'Runtime environment', level: 'Beginner', xp: 38, usage: 'Backend routes, APIs, and development tooling', projects: 'EnvGuard', icon: 'https://skillicons.dev/icons?i=nodejs', alt: 'Node.js' }
-        ]
-    },
-    {
-        title: 'Databases',
-        skills: [
-            { name: 'MySQL', type: 'Relational database', level: 'Intermediate', xp: 57, usage: 'Relational schemas, queries, and data modeling', projects: 'Academic projects', icon: 'https://skillicons.dev/icons?i=mysql', alt: 'MySQL' },
-            { name: 'Postgres', type: 'Relational database', level: 'Beginner', xp: 35, usage: 'SQL practice and application data', projects: 'Learning projects', icon: 'https://skillicons.dev/icons?i=postgres', alt: 'Postgres' },
-            { name: 'MongoDB', type: 'Document database', level: 'Beginner', xp: 31, usage: 'Exploring flexible document-based storage', projects: 'Learning projects', icon: 'https://skillicons.dev/icons?i=mongodb', alt: 'MongoDB' }
-        ]
-    },
-    {
-        title: 'Tools',
-        skills: [
-            { name: 'Git', type: 'Version control', level: 'Version Control', xp: 78, usage: 'Branches, collaboration, and release history', projects: 'All active projects', icon: 'https://skillicons.dev/icons?i=git', alt: 'Git' },
-            { name: 'VS Code', type: 'Code editor', level: 'Editor', xp: 84, usage: 'Daily development, debugging, and extensions', projects: 'All active projects', icon: 'https://skillicons.dev/icons?i=vscode', alt: 'VS Code' },
-            { name: 'Antigravity', type: 'Code editor', level: 'Editor', xp: 52, usage: 'Experimenting with an AI-assisted workflow', projects: 'Portfolio experiments', icon: antigravity, alt: 'Antigravity' },
-            { name: 'Vercel', type: 'Deployment platform', level: 'Deploying', xp: 46, usage: 'Hosting frontend builds and preview deployments', projects: 'Portfolio', icon: 'https://skillicons.dev/icons?i=vercel', alt: 'Vercel' },
-            { name: 'Excalidraw', type: 'Visualisation tool', level: 'Visualising', xp: 43, usage: 'Wireframes, diagrams, and interface planning', projects: 'Portfolio planning', icon: 'https://www.google.com/s2/favicons?domain=excalidraw.com&sz=32', alt: 'Excalidraw'}
-        ]
-    }
-];
+export default function Skills() {
+    const [view, setView] = useState('constellation');
+    const [selectedSkillId, setSelectedSkillId] = useState(null);
+    const [hoveredSkillId, setHoveredSkillId] = useState(null);
+    const [focusedSkillId, setFocusedSkillId] = useState(null);
+    const [activeCategoryId, setActiveCategoryId] = useState(null);
+    const [highlightedProjectId, setHighlightedProjectId] = useState(null);
+    const returnFocusSkillIdRef = useRef(null);
+    const previousViewRef = useRef(view);
 
-const groupVariants = {
-    Languages: 'diamond',
-    'Web Dev': 'wood',
-    Databases: 'stone',
-    Tools: 'grass',
-};
+    useEffect(() => {
+        const layout = window.matchMedia('(max-width: 600px)').matches
+            ? 'mobile'
+            : window.matchMedia('(max-width: 900px)').matches
+                ? 'tablet'
+                : 'desktop';
+        const blueprintLayout = layout === 'mobile' ? 'mobile' : 'desktop';
 
-function getSkillId(groupTitle, skillName) {
-    return `${groupTitle}-${skillName}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-}
-
-function SkillMeter({ xp }) {
-    const filledSegments = Math.round(xp / 10);
-    return (
-        <div className="skill-meter" aria-label={`${xp}% experience`}>
-            <span className="skill-meter-segments">
-                {Array.from({ length: 10 }, (_, index) => (
-                    <i className={index < filledSegments ? 'is-filled' : undefined} key={index} />
-                ))}
-            </span>
-            <span className="skill-meter-value">{xp}%</span>
-        </div>
-    );
-}
-
-function SkillHotbar({ group, selectedIndex, onSelect }) {
-    const itemRefs = useRef([]);
-
-    const selectSkill = (index, moveFocus = false) => {
-        onSelect(index);
-        if (moveFocus) {
-            requestAnimationFrame(() => itemRefs.current[index]?.focus());
+        if (view === 'blueprint' && previousViewRef.current !== 'blueprint' && selectedSkillId) {
+            document.getElementById(`blueprint-tech-${selectedSkillId}-${blueprintLayout}`)?.focus();
         }
+
+        if (view === 'constellation' && previousViewRef.current === 'blueprint' && !selectedSkillId && returnFocusSkillIdRef.current) {
+            document.getElementById(`technology-node-${returnFocusSkillIdRef.current}-${layout}`)?.focus();
+        }
+
+        previousViewRef.current = view;
+    }, [view, selectedSkillId]);
+
+    const activeProject = projectHighlights.find((project) => project.id === highlightedProjectId) || null;
+    const projectSkillIds = activeProject?.skillIds || [];
+    const highlightedSkillId = focusedSkillId || hoveredSkillId;
+    const activeSkillId = view === 'blueprint' ? selectedSkillId : highlightedSkillId;
+    const liveMessage = view === 'blueprint' && selectedSkillId
+        ? `Blueprint view. ${skillById[selectedSkillId]?.name || selectedSkillId} selected. Select Full map to return to the constellation.`
+        : highlightedSkillId
+            ? `${skillById[highlightedSkillId]?.name || highlightedSkillId} focused; directly connected technologies highlighted.`
+            : activeProject
+                ? `${activeProject.name} highlighted in the constellation.`
+            : activeCategoryId
+                ? `${skillGroups.find((group) => group.id === activeCategoryId)?.title} emphasized.`
+                : 'Constellation view. Select a technology to see its role in a workflow.';
+
+    const handleTechnologySelect = (skillId) => {
+        returnFocusSkillIdRef.current = skillId;
+        setSelectedSkillId(skillId);
+        setHighlightedProjectId(null);
+        setActiveCategoryId(null);
+        setView('blueprint');
+    };
+
+    const handleCategorySelect = (categoryId) => {
+        setSelectedSkillId(null);
+        setView('constellation');
+        setHighlightedProjectId(null);
+        setActiveCategoryId((current) => current === categoryId ? null : categoryId);
+    };
+
+    const handleProjectSelect = (projectId) => {
+        if (highlightedProjectId === projectId) {
+            setHighlightedProjectId(null);
+            return;
+        }
+
+        setHighlightedProjectId(projectId);
+        setActiveCategoryId(null);
+        setSelectedSkillId(null);
+        setView('constellation');
+    };
+
+    const resetConstellation = () => {
+        setView('constellation');
+        setSelectedSkillId(null);
+        setHighlightedProjectId(null);
+        setActiveCategoryId(null);
+        setHoveredSkillId(null);
+        setFocusedSkillId(null);
     };
 
     return (
-        <div className="skill-hotbar-wrap">
-            <span className="skill-hotbar-label">HOTBAR</span>
-            <div className="skill-hotbar" role="tablist" aria-label={`${group.title} skills`}>
-                {group.skills.map((skill, index) => {
-                    const skillId = getSkillId(group.title, skill.name);
-                    return (
+        <section className="skills-cont" id="skills" aria-labelledby="skills-title">
+            <header className="skills-heading">
+                <h2 className="skills-title" id="skills-title">Technical ecosystem</h2>
+                <p className="skills-intro">Select a technology to see its role.</p>
+            </header>
+
+            <div className="skills-controls">
+                <CategoryAnchors
+                    groups={skillGroups}
+                    activeCategoryId={activeCategoryId}
+                    onSelect={handleCategorySelect}
+                />
+                <div className="skills-project-controls" role="group" aria-label="Highlight technologies used in a project">
+                    <span className="skills-project-label">Project</span>
+                    {projectHighlights.map((project) => (
                         <button
-                            ref={(element) => { itemRefs.current[index] = element; }}
-                            className={`skill-hotbar-item${selectedIndex === index ? ' is-selected' : ''}`}
-                            id={`${skillId}-tab`}
-                            key={skill.name}
+                            className={`skills-project-button${highlightedProjectId === project.id ? ' is-active' : ''}`}
                             type="button"
-                            role="tab"
-                            aria-selected={selectedIndex === index}
-                            aria-controls={`${skillId}-inspection`}
-                            aria-label={`${skill.name}, ${skill.level}`}
-                            title={skill.name}
-                            tabIndex={selectedIndex === index ? 0 : -1}
-                            onClick={() => selectSkill(index)}
-                            onKeyDown={(event) => {
-                                if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-                                event.preventDefault();
-                                const direction = event.key === 'ArrowRight' ? 1 : -1;
-                                selectSkill((index + direction + group.skills.length) % group.skills.length, true);
-                            }}
+                            key={project.id}
+                            aria-pressed={highlightedProjectId === project.id}
+                            aria-label={`Highlight ${project.skillIds.join(', ')} used in ${project.name}`}
+                            onClick={() => handleProjectSelect(project.id)}
                         >
-                            <span className="skill-hotbar-slot-number">{index + 1}</span>
-                            <span className="skill-hotbar-icon-frame">
-                                <img src={skill.icon} alt="" loading="lazy" decoding="async" />
-                            </span>
-                            <span className="skill-hotbar-name">{skill.name}</span>
+                            {project.name}
                         </button>
-                    );
-                })}
-            </div>
-        </div>
-    );
-}
-
-function SkillInspectionPanel({ group, skill }) {
-    const skillId = getSkillId(group.title, skill.name);
-
-    return (
-        <div className="skill-inspection" id={`${skillId}-inspection`} role="tabpanel" aria-labelledby={`${skillId}-tab`}>
-            <div className="skill-inspection-heading">
-                <span className="skill-inspection-kicker">ITEM INSPECTION</span>
-                <span className="skill-inspection-index">SLOT {group.skills.indexOf(skill) + 1}</span>
-            </div>
-            <div className="skill-inspection-title">
-                <PixelBorder className="skill-inspection-icon" variant={groupVariants[group.title]} inset>
-                    <img src={skill.icon} alt="" />
-                </PixelBorder>
-                <div>
-                    <h4>{skill.name}</h4>
-                    <p>{skill.type}</p>
+                    ))}
+                    {activeProject && (
+                        <a className="skills-project-link" href={activeProject.href}>View project</a>
+                    )}
                 </div>
             </div>
-            <div className="skill-inspection-experience">
-                <div className="skill-inspection-label">
-                    <span>EXPERIENCE</span>
-                    <Badge className="skill-level" variant={groupVariants[group.title]}>{skill.level}</Badge>
-                </div>
-                <SkillMeter xp={skill.xp} />
+
+            <div className={`skills-stage${view === 'blueprint' ? ' is-blueprint' : ''}`}>
+                {view === 'blueprint' && selectedSkillId ? (
+                    <BlueprintView
+                        skillId={selectedSkillId}
+                        onSelect={handleTechnologySelect}
+                        onReset={resetConstellation}
+                    />
+                ) : (
+                    <TechnologyConstellation
+                        activeSkillId={activeSkillId}
+                        activeCategoryId={activeCategoryId}
+                        projectSkillIds={projectSkillIds}
+                        onSelect={handleTechnologySelect}
+                        onFocus={setFocusedSkillId}
+                        onBlur={(skillId) => setFocusedSkillId((current) => current === skillId ? null : current)}
+                        onPointerEnter={setHoveredSkillId}
+                        onPointerLeave={(skillId) => setHoveredSkillId((current) => current === skillId ? null : current)}
+                    />
+                )}
             </div>
-            <div className="skill-inspection-details">
-                <div>
-                    <span className="skill-inspection-label">USED FOR</span>
-                    <p>{skill.usage}</p>
-                </div>
-                <div>
-                    <span className="skill-inspection-label">PROJECTS</span>
-                    <p>{skill.projects}</p>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function SkillCategory({ group, groupVariant, groupId }) {
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const selectedSkill = group.skills[selectedIndex];
-
-    return (
-        <BlockCard
-            as="section"
-            className="skill-group"
-            variant={groupVariant}
-            inset
-            aria-labelledby={groupId}
-        >
-            <div className="skill-group-heading">
-                <span className="skill-group-marker" aria-hidden="true" />
-                <h3 className="lang" id={groupId}>{group.title}</h3>
-                <span className="skill-group-count">{group.skills.length} ITEMS</span>
-            </div>
-            <SkillHotbar group={group} selectedIndex={selectedIndex} onSelect={setSelectedIndex} />
-            <SkillInspectionPanel key={selectedSkill.name} group={group} skill={selectedSkill} />
-        </BlockCard>
-    );
-}
-
-export default function Skills() {
-    const { ref: skillsRef } = useViewportReveal({
-        targetSelector: '.skill-group',
-        rootMargin: '0px 0px -10% 0px',
-        threshold: 0.15,
-    });
-
-    return (
-        <section ref={skillsRef} className="skills-cont" id="skills" aria-labelledby="skills-title">
-            <div className="skills-heading">
-                <span className="skills-kicker">PLAYER INVENTORY</span>
-                <h2 className="skills-title" id="skills-title">What do I know ?</h2>
-                <span className="skills-divider" aria-hidden="true" />
-            </div>
-
-            <div className="skills-groups">
-                {skillGroups.map((group) => {
-                    const groupVariant = groupVariants[group.title] || 'stone';
-                    const groupId = `${getSkillId(group.title, 'group')}-title`;
-
-                    return (
-                        <SkillCategory
-                            key={group.title}
-                            group={group}
-                            groupVariant={groupVariant}
-                            groupId={groupId}
-                        />
-                    );
-                })}
-            </div>
+            <p className="skills-announcement" aria-live="polite" role="status">{liveMessage}</p>
         </section>
     );
 }
