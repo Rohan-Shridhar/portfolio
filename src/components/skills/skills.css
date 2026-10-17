@@ -33,7 +33,7 @@
 .skills-title {
   margin: 0;
   color: var(--skills-ink);
-  font-family: var(--skills-font);
+  font-family: var(--font-family-pixel);
   font-size: clamp(1.85rem, 4.2vw, 3rem);
   font-weight: 600;
   letter-spacing: -0.04em;

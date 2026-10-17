@@ -87,7 +87,7 @@ export default function Skills() {
     return (
         <section className="skills-cont" id="skills" aria-labelledby="skills-title">
             <header className="skills-heading">
-                <h2 className="skills-title" id="skills-title">Technical ecosystem</h2>
+                <h2 className="skills-title" id="skills-title">Equipped Skills</h2>
                 <p className="skills-intro">Select a technology to see its role.</p>
             </header>
 
