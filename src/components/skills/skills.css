@@ -207,7 +207,7 @@
 .skills-cluster-label text {
   fill: currentColor;
   font-family: var(--skills-font);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.045em;
 }
@@ -328,8 +328,8 @@
 .skills-node-label {
   fill: var(--skills-ink);
   font-family: var(--skills-font);
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
   paint-order: stroke;
   stroke: var(--skills-map-base);
   stroke-linejoin: round;
@@ -340,7 +340,7 @@
 .skills-node-fallback {
   fill: var(--skills-ink);
   font-family: var(--skills-font);
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -574,7 +574,30 @@
   }
 
   .skills-node-label {
-    font-size: 20px;
+    font-size: 16px;
+  }
+
+  .skills-cluster-label text {
+    font-size: 14px;
+  }
+
+  .skills-map--tablet .skills-node-orbit,
+  .skills-map--tablet .skills-node-core,
+  .skills-map--tablet .skills-node-logo {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .skills-map--tablet .skills-node-orbit {
+    transform: scale(0.82);
+  }
+
+  .skills-map--tablet .skills-node-core {
+    transform: scale(0.83);
+  }
+
+  .skills-map--tablet .skills-node-logo {
+    transform: scale(0.85);
   }
 
   .skills-blueprint-zone text {
@@ -600,6 +623,30 @@
   .skills-map--mobile,
   .skills-blueprint-map--mobile {
     display: block;
+  }
+
+  .skills-map--mobile .skills-node-orbit,
+  .skills-map--mobile .skills-node-core,
+  .skills-map--mobile .skills-node-logo {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .skills-map--mobile .skills-node-orbit,
+  .skills-map--mobile .skills-node-logo {
+    transform: scale(0.85);
+  }
+
+  .skills-map--mobile .skills-node-core {
+    transform: scale(0.83);
+  }
+
+  .skills-node-label {
+    font-size: 15px;
+  }
+
+  .skills-cluster-label text {
+    font-size: 14px;
   }
 
   .skills-cont {

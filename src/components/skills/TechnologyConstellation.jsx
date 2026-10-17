@@ -6,8 +6,8 @@ const clusterCaptions = {
     desktop: [
         { id: 'languages', text: 'LANGUAGES', x: 72, y: 100 },
         { id: 'web', text: 'WEB DEVELOPMENT', x: 540, y: 100 },
-        { id: 'databases', text: 'DATABASES', x: 72, y: 616 },
-        { id: 'tools', text: 'TOOLS & PLATFORMS', x: 765, y: 445 },
+        { id: 'databases', text: 'DATABASES', x: 72, y: 585 },
+        { id: 'tools', text: 'TOOLS & PLATFORMS', x: 765, y: 425 },
     ],
     tablet: [
         { id: 'languages', text: 'LANGUAGES', x: 32, y: 82 },
@@ -16,10 +16,10 @@ const clusterCaptions = {
         { id: 'tools', text: 'TOOLS & PLATFORMS', x: 420, y: 455 },
     ],
     mobile: [
-        { id: 'languages', text: 'LANGUAGES', x: 18, y: 58 },
-        { id: 'web', text: 'WEB DEVELOPMENT', x: 18, y: 282 },
-        { id: 'databases', text: 'DATABASES', x: 18, y: 535 },
-        { id: 'tools', text: 'TOOLS & PLATFORMS', x: 18, y: 710 },
+        { id: 'languages', text: 'LANGUAGES', x: 18, y: 60 },
+        { id: 'web', text: 'WEB DEVELOPMENT', x: 18, y: 300 },
+        { id: 'databases', text: 'DATABASES', x: 18, y: 540 },
+        { id: 'tools', text: 'TOOLS & PLATFORMS', x: 18, y: 640 },
     ],
 };
 

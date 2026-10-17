@@ -42,27 +42,27 @@ export default function TechnologyNode({
             onMouseLeave={() => onPointerLeave(skill.id)}
         >
             <title>{`${skill.name}: ${skill.role}`}</title>
-            <circle className="skills-node-hit" r="35" />
-            <circle className="skills-node-orbit" r="25" />
-            <circle className="skills-node-core" r="20" />
+            <circle className="skills-node-hit" r="48" />
+            <circle className="skills-node-orbit" r="38" />
+            <circle className="skills-node-core" r="30" />
             {iconFailed ? (
-                <text className="skills-node-fallback" x="0" y="5" textAnchor="middle" aria-hidden="true">
+                <text className="skills-node-fallback" x="0" y="6" textAnchor="middle" aria-hidden="true">
                     {skill.name.slice(0, 2)}
                 </text>
             ) : (
                 <image
                     className="skills-node-logo"
                     href={skill.icon}
-                    x="-14"
-                    y="-14"
-                    width="28"
-                    height="28"
+                    x="-20"
+                    y="-20"
+                    width="40"
+                    height="40"
                     preserveAspectRatio="xMidYMid meet"
                     aria-hidden="true"
                     onError={() => setIconFailed(true)}
                 />
             )}
-            <text className="skills-node-label" id={titleId} x="0" y="49" textAnchor="middle">
+            <text className="skills-node-label" id={titleId} x="0" y="57" textAnchor="middle">
                 {skill.name}
             </text>
         </g>
