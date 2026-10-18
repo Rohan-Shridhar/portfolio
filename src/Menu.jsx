@@ -129,7 +129,7 @@ export default function Menu({ isScrolled = false }) {
                     </div>
                     <div className="player-hud__meters player-hud__meters--hunger" role="img" aria-label="10 out of 10 hunger">
                         {Array.from({ length: 10 }, (_, index) => (
-                            <i key={index} className="fa-solid fa-drumstick-bite" aria-hidden="true" />
+                            <img key={index} src="/wallpapers/hunger.png" alt="" />
                         ))}
                     </div>
                 </div>
