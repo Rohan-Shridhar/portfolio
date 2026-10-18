@@ -279,7 +279,8 @@ body.theme-switching .theme-toggle {
   pointer-events: none;
 }
 
-.site-header > .menu-frame {
+.site-header > .menu-frame,
+.site-header .player-hud {
   pointer-events: auto;
 }
 
@@ -437,6 +438,7 @@ body.theme-switching .theme-toggle {
     inset -2px -2px 0 rgba(0, 0, 0, 0.85),
     0 4px 16px rgba(0, 0, 0, 0.6);
   color: #fff;
+  pointer-events: auto;
 }
 
 .player-hud__status {
@@ -513,7 +515,7 @@ body.theme-switching .theme-toggle {
 
 .player-hud__hotbar {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 4px;
 }
 
@@ -531,6 +533,9 @@ body.theme-switching .theme-toggle {
   color: #f4f4f4;
   font-size: 1rem;
   text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  pointer-events: auto;
   transition: background-color var(--duration-hover) var(--ease-standard),
     border-color var(--duration-hover) var(--ease-standard),
     box-shadow var(--duration-hover) var(--ease-standard),
@@ -549,6 +554,10 @@ body.theme-switching .theme-toggle {
   transform: translateY(-2px);
 }
 
+.player-hud__slot:active {
+  transform: translateY(1px);
+}
+
 .player-hud__slot:focus-visible {
   z-index: 2;
   outline: 2px solid var(--theme-accent);
@@ -564,6 +573,17 @@ body.theme-switching .theme-toggle {
   font-size: 0.5rem;
   line-height: 1;
   text-shadow: 1px 1px #222;
+  pointer-events: none;
+}
+
+.player-hud__slot > img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* ========================================= */

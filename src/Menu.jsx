@@ -174,6 +174,18 @@ export default function Menu({ isScrolled = false }) {
                             </a>
                         )
                     })}
+                    <a
+                        className="player-hud__slot"
+                        href="/resume.pdf"
+                        download="Rohan_Mirjankar_Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Download resume"
+                        title="Download resume"
+                    >
+                        <span className="player-hud__slot-number" aria-hidden="true">7</span>
+                        <img src="/wallpapers/book.png" alt="" aria-hidden="true" draggable="false" />
+                    </a>
                 </nav>
             </div>
         </>

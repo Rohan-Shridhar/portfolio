@@ -40,11 +40,7 @@ function InventoryItem({
     );
 }
 
-function InventoryCategory({
-    group,
-    activeCategoryId,
-    projectSkillIds,
-}) {
+function InventoryCategory({ group }) {
     const emptySlotCount = Math.max(0, 9 - group.skills.length);
 
     return (
@@ -61,11 +57,6 @@ function InventoryCategory({
                         skill={skill}
                         category={group}
                         index={index}
-                        dimmed={Boolean(
-                            (activeCategoryId && activeCategoryId !== group.id)
-                            || (projectSkillIds.length && !projectSkillIds.includes(skill.id)),
-                        )}
-                        highlighted={projectSkillIds.includes(skill.id)}
                     />
                 ))}
                 {Array.from({ length: emptySlotCount }, (_, index) => (
@@ -76,41 +67,18 @@ function InventoryCategory({
     );
 }
 
-export default function InventoryView({
-    groups,
-    activeCategoryId,
-    projectSkillIds,
-    onReset,
-}) {
-    const totalSkills = groups.reduce((count, group) => count + group.skills.length, 0);
-    const hasFilters = Boolean(activeCategoryId || projectSkillIds.length);
-
+export default function InventoryView({ groups }) {
     return (
         <div className="skills-inventory" role="region" aria-label="Technology inventory">
-            <header className="skills-inventory__header">
-                <div>
-                    <span className="skills-inventory__eyebrow">SKILL STORAGE</span>
-                    <h3 className="skills-inventory__title">Inventory</h3>
-                </div>
-                <span className="skills-inventory__count">{totalSkills} ITEMS</span>
-            </header>
-
             <div className="skills-inventory__storage">
                 <div className="skills-inventory__storage-heading">
                     <h3>Storage</h3>
-                    {hasFilters && (
-                        <button type="button" className="skills-inventory__clear" onClick={onReset}>
-                            Clear filters
-                        </button>
-                    )}
                 </div>
                 <div className="skills-inventory__categories">
                     {groups.map((group) => (
                         <InventoryCategory
                             key={group.id}
                             group={group}
-                            activeCategoryId={activeCategoryId}
-                            projectSkillIds={projectSkillIds}
                         />
                     ))}
                 </div>
