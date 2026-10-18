@@ -89,7 +89,7 @@ export default function Menu({ isScrolled = false }) {
     const menuFrameClassName = ['menu-frame', isScrolled && 'is-scrolled']
         .filter(Boolean)
         .join(' ')
-    const level = Math.max(1, Math.ceil(scrollProgress))
+    const experienceScore = 20
 
     return (
         <>
@@ -124,7 +124,7 @@ export default function Menu({ isScrolled = false }) {
                 <div className="player-hud__status">
                     <div className="player-hud__meters" role="img" aria-label="10 out of 10 hearts">
                         {Array.from({ length: 10 }, (_, index) => (
-                            <i key={index} className="fa-solid fa-heart" aria-hidden="true" />
+                            <img key={index} src="/wallpapers/heart.webp" alt="" />
                         ))}
                     </div>
                     <div className="player-hud__meters player-hud__meters--hunger" role="img" aria-label="10 out of 10 hunger">
@@ -135,7 +135,7 @@ export default function Menu({ isScrolled = false }) {
                 </div>
 
                 <div className="player-hud__experience">
-                    <span className="player-hud__level">{level}</span>
+                    <span className="player-hud__level">{experienceScore}</span>
                     <div
                         className="player-hud__experience-track"
                         role="progressbar"
@@ -144,10 +144,14 @@ export default function Menu({ isScrolled = false }) {
                         aria-valuemax="100"
                         aria-valuenow={Math.round(scrollProgress)}
                     >
-                        <span
-                            className="player-hud__experience-fill"
-                            style={{ width: `${scrollProgress}%` }}
-                        />
+                        {Array.from({ length: 10 }, (_, index) => (
+                            <span key={index} className="player-hud__experience-segment">
+                                <span
+                                    className="player-hud__experience-fill"
+                                    style={{ width: `${Math.min(100, Math.max(0, scrollProgress * 10 - index * 100))}%` }}
+                                />
+                            </span>
+                        ))}
                     </div>
                 </div>
 

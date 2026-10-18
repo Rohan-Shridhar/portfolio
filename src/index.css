@@ -451,11 +451,15 @@ body.theme-switching .theme-toggle {
   display: flex;
   align-items: center;
   gap: clamp(1px, 0.35vw, 3px);
-  color: #ef3340;
-  font-size: clamp(0.56rem, 1.4vw, 0.78rem);
-  line-height: 1;
-  text-shadow: 1px 1px 0 #571317;
   white-space: nowrap;
+}
+
+.player-hud__meters img {
+  display: block;
+  width: clamp(17px, 4.2vw, 22px);
+  height: clamp(17px, 4.2vw, 22px);
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 
 .player-hud__meters--hunger {
@@ -484,11 +488,19 @@ body.theme-switching .theme-toggle {
 }
 
 .player-hud__experience-track {
-  height: 6px;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 2px;
+  height: 10px;
   border: 1px solid #111;
   background: #343434;
   box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.75);
+}
+
+.player-hud__experience-segment {
+  min-width: 0;
+  overflow: hidden;
+  background: #343434;
 }
 
 .player-hud__experience-fill {
@@ -496,7 +508,7 @@ body.theme-switching .theme-toggle {
   height: 100%;
   background: linear-gradient(180deg, #8bff5d, #37a925);
   box-shadow: 0 0 5px rgba(112, 255, 75, 0.55);
-  transition: width 180ms linear;
+  transition: width 100ms linear;
 }
 
 .player-hud__hotbar {
@@ -2132,7 +2144,12 @@ body.theme-switching .theme-toggle {
   }
 
   .player-hud__meters {
-    font-size: clamp(0.5rem, 2.7vw, 0.68rem);
+    gap: 1px;
+  }
+
+  .player-hud__meters img {
+    width: clamp(10px, 3.2vw, 13px);
+    height: clamp(10px, 3.2vw, 13px);
   }
 
   .player-hud__experience {
@@ -2400,7 +2417,6 @@ body.theme-switching .theme-toggle {
   .menu-link::after,
   .menu-icon,
   .player-hud__slot,
-  .player-hud__experience-fill,
   .hero-avatar-frame,
   .hero-hud-item,
   .about-avatar-frame,
@@ -2423,6 +2439,7 @@ body.theme-switching .theme-toggle {
   .menu-link:active,
   .menu-link:hover .menu-icon,
   .menu-link[aria-current='page'] .menu-icon,
+  .player-hud__experience-fill,
   .hero-avatar-frame:hover,
   .hero-hud-item:hover,
   .about-avatar-frame:hover,
