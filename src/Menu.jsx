@@ -19,6 +19,7 @@ function getInitialActiveId() {
 
 export default function Menu({ isScrolled = false }) {
     const [activeId, setActiveId] = useState(getInitialActiveId)
+    const [scrollProgress, setScrollProgress] = useState(0)
 
     useEffect(() => {
         const sections = navigationItems
@@ -65,38 +66,112 @@ export default function Menu({ isScrolled = false }) {
         }
     }, [])
 
+    useEffect(() => {
+        const updateScrollProgress = () => {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight
+            const progress = scrollableHeight > 0
+                ? Math.min(100, Math.max(0, (window.scrollY / scrollableHeight) * 100))
+                : 0
+
+            setScrollProgress(progress)
+        }
+
+        updateScrollProgress()
+        window.addEventListener('scroll', updateScrollProgress, { passive: true })
+        window.addEventListener('resize', updateScrollProgress)
+
+        return () => {
+            window.removeEventListener('scroll', updateScrollProgress)
+            window.removeEventListener('resize', updateScrollProgress)
+        }
+    }, [])
+
     const menuFrameClassName = ['menu-frame', isScrolled && 'is-scrolled']
         .filter(Boolean)
         .join(' ')
+    const level = Math.max(1, Math.ceil(scrollProgress))
 
     return (
-        <PixelBorder
-            as="nav"
-            className={menuFrameClassName}
-            variant="stone"
-            aria-label="Primary navigation"
-        >
-            <ul className="menu-bar">
-                {navigationItems.map((item) => {
-                    const isActive = item.sectionId === activeId
+        <>
+            <PixelBorder
+                as="nav"
+                className={menuFrameClassName}
+                variant="stone"
+                aria-label="Primary navigation"
+            >
+                <ul className="menu-bar">
+                    {navigationItems.map((item) => {
+                        const isActive = item.sectionId === activeId
 
-                    return (
-                        <li key={item.id}>
+                        return (
+                            <li key={item.id}>
+                                <a
+                                    className="menu-link"
+                                    href={item.href}
+                                    aria-current={isActive ? 'page' : undefined}
+                                    onClick={() => setActiveId(item.sectionId)}
+                                >
+                                    <i className={`menu-icon fa-solid ${item.icon}`} aria-hidden="true" />
+                                    <span className="menu-label">{item.label}</span>
+                                </a>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </PixelBorder>
+
+            <div className="player-hud" role="group" aria-label="Player status and quick navigation">
+                <div className="player-hud__status">
+                    <div className="player-hud__meters" role="img" aria-label="10 out of 10 hearts">
+                        {Array.from({ length: 10 }, (_, index) => (
+                            <i key={index} className="fa-solid fa-heart" aria-hidden="true" />
+                        ))}
+                    </div>
+                    <div className="player-hud__meters player-hud__meters--hunger" role="img" aria-label="10 out of 10 hunger">
+                        {Array.from({ length: 10 }, (_, index) => (
+                            <i key={index} className="fa-solid fa-drumstick-bite" aria-hidden="true" />
+                        ))}
+                    </div>
+                </div>
+
+                <div className="player-hud__experience">
+                    <span className="player-hud__level">{level}</span>
+                    <div
+                        className="player-hud__experience-track"
+                        role="progressbar"
+                        aria-label="Experience"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow={Math.round(scrollProgress)}
+                    >
+                        <span
+                            className="player-hud__experience-fill"
+                            style={{ width: `${scrollProgress}%` }}
+                        />
+                    </div>
+                </div>
+
+                <nav className="player-hud__hotbar" aria-label="Quick navigation">
+                    {navigationItems.map((item, index) => {
+                        const isActive = item.sectionId === activeId
+
+                        return (
                             <a
-                                className="menu-link"
+                                key={item.id}
+                                className="player-hud__slot"
                                 href={item.href}
+                                aria-label={item.label}
                                 aria-current={isActive ? 'page' : undefined}
-                                onClick={() => {
-                                    if (item.sectionId) setActiveId(item.sectionId)
-                                }}
+                                title={item.label}
+                                onClick={() => setActiveId(item.sectionId)}
                             >
-                                <i className={`menu-icon fa-solid ${item.icon}`} aria-hidden="true" />
-                                <span className="menu-label">{item.label}</span>
+                                <span className="player-hud__slot-number" aria-hidden="true">{index + 1}</span>
+                                <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
                             </a>
-                        </li>
-                    )
-                })}
-            </ul>
-        </PixelBorder>
+                        )
+                    })}
+                </nav>
+            </div>
+        </>
     )
 }
