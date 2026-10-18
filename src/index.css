@@ -452,7 +452,6 @@ body.theme-switching .theme-toggle {
 .player-hud__meters {
   display: flex;
   align-items: center;
-  gap: clamp(1px, 0.35vw, 3px);
   white-space: nowrap;
 }
 
