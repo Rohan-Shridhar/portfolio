@@ -7,8 +7,8 @@ const biography = 'Computer Science Engineering undergraduate at BMS College of 
 const profileHighlights = [
     {
         label: 'GitHub',
-        value: '19 followers',
-        details: ['45 repos', '102 stars'],
+        value: '20 followers',
+        details: ['49 repos', '113 stars'],
         tone: 'github',
         icon: 'fab fa-github',
     },
